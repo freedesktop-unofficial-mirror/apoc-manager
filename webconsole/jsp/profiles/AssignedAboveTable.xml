@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <column name="NameColumn" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="javascript:openProfileEditorWindow(this); return false;" />
+            <cc name="NameText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+    <column name="AssignedToColumn" extrahtml="nowrap='nowrap'">
+        <cc name="AssignedToText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+</table>

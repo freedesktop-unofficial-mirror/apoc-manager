@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+    
+<pagetitle>
+    <pagebuttons>
+       <cc name="OkButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="defaultValue" value="APOC.button.OK"/>
+         <attribute name="title" value="APOC.browse.ok.help"/>
+         <attribute name="onClick" value="javascript:opener.submitBrowse(getEntityId(), getEntityType()); window.close(); return false;"/>
+         <attribute name="type" value="default"/>
+       </cc>
+       <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="defaultValue" value="APOC.button.cancel"/>
+         <attribute name="title" value="APOC.browse.cancel.help"/>
+         <attribute name="onClick" value="javascript:window.close(); return false;"/>
+         <attribute name="type" value="primary"/>
+       </cc>
+    </pagebuttons>
+</pagetitle>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE registrationInfo SYSTEM "Registration.dtd">
+
+<registrationInfo version="3.0">
+    
+    <!--Root element containing description of application elements-->
+    <managementApp version="2.0"
+       category="desktop applications"
+       package="com.sun.apoc.manager"
+       bundle="com.sun.apoc.manager.resource.apoc_manager_en"
+       bundleJar="apoc_manager">
+
+        <!--Localizable plug-in name-->
+        <name localizable="true">APOC.masthead.altTextVer</name>
+
+        <!--Internal plug-in name-->
+        <pluginName>com.sun.apoc.manager</pluginName>
+
+        <!--The application's icon-->
+        <icon localizable="false">/apoc/images/appIcon.gif</icon>
+
+        <!--Brief description of this management application-->
+        <shortDescription localizable="true"></shortDescription>
+
+        <!--Arbitrary length description of this management application-->
+        <description localizable="true"></description>
+
+        <!--Primary product name - used in Primary Masthead component-->
+        <primaryProductName>Sun Desktop Manager 1.0.1</primaryProductName>
+        
+        <!--Secondary product name - used in Secondary Masthead component-->
+        <secondaryProductName>Desktop Manager</secondaryProductName>
+
+        <!--Version product name - used in Version component-->
+        <versionProductName>Sun Desktop Manager 1.0.1</versionProductName>
+
+        <!--Description of common masthead properties-->
+        <!--The following attributes are deprecated at version 2.1: showClose-->
+        <masthead bundle="com.sun.apoc.manager.resource.apoc_manager_en"
+            bundleJar="apoc_manager"
+            logoAltText="APOC.masthead.altTextVer"
+            logoBorder="0"
+            logoHeight="40"
+            logoWidth="242" 
+            showUserRole="true"
+            showServer="true"
+            showClose="true"
+            showHelp="true" />
+                
+        <help bundle="com.sun.apoc.manager.resource.apoc_manager_en"
+            bundleJar="apoc_manager"
+            helpType="help2"
+            helpFileName="gbgca.html"
+            versionFileName="versionInfo.shtml"
+            status="APOC.help.helpTooltip"
+            helpTooltip="APOC.help.helpTooltip"
+            windowTitle="APOC.help.windowTitle"
+            helpLogoWidth="169" 
+	        helpLogoHeight="20"/>
+            
+    </managementApp>
+        
+    <!--Tags used to determine a user's access to this app. Leave empty to 
+        indicate no auths required-->
+    <authTypes>
+        <authType name="">
+            <classType></classType>
+            <permissionParam name=""></permissionParam>
+        </authType>
+    </authTypes>
+    
+    <!--Value of the URL to be used in invoking this app-->
+    <urlDesc>
+        <url>/apoc/manager/Welcome?ClosePopups=true</url>
+    </urlDesc>
+
+</registrationInfo>

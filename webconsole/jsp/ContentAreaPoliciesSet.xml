@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+<table>
+    <actions>
+        <cc name="NewButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+        </cc>
+        <cc name="DeleteButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+        </cc>
+        <cc name="RenameButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+        </cc>
+    </actions>
+    <column name="NameColumn" rowheader="true" sortname="PropertyName" extrahtml="width='180px' nowrap='nowrap'">
+        <cc name="SubPageHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="onClick" value="javascript:return(submitCurrentSelection(this));"/>
+            <attribute name="SubmitFormData" value="true"/>
+            <cc name="PropertyName" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+        </cc>
+    </column>
+</table>

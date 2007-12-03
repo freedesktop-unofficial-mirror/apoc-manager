@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+    
+<pagetitle>
+   <pagebuttons>
+       <cc name="SaveButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="type" value="primary"/>
+         <attribute name="disabled" value="true" /> 
+         <attribute name="defaultValue" value="APOC.profilewnd.buttons.save"/>
+         <attribute name="title" value="APOC.profilewnd.buttons.save.help"/>
+         <attribute name="onClick" value="javascript:saveChanges(); return false;"/>
+       </cc>
+       <cc name="CloseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="type" value="secondary"/>
+         <attribute name="defaultValue" value="APOC.profilewnd.buttons.close"/>
+         <attribute name="title" value="APOC.profilewnd.buttons.close.help"/>
+         <attribute name="elementId" value="CloseEditorButton" />
+         <attribute name="onClick" value="javascript:return closeEditorWindow();"/>
+       </cc>
+     </pagebuttons>
+</pagetitle>

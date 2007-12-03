@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE propertysheet SYSTEM "tags/dtd/propertysheet.dtd">
+
+<propertysheet>
+    <section name="params" defaultValue=" ">
+        <property span="true">
+            <cc name="FindText" tagclass="com.sun.web.ui.taglib.html.CCTextFieldTag" >
+                <attribute name="defaultValue" value="*"/>
+                <attribute name="onKeyPress" value="javascript:setTimeout('handlePressedKey()',0); return true"/>
+            </cc>
+            <cc name="FindButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag" >
+                <attribute name="bundleID" value="apocBundle"/>
+                <attribute name="defaultValue" value="APOC.find.button"/>
+                <attribute name="type" value="default"/>
+            </cc>
+        </property>
+    </section>
+</propertysheet>

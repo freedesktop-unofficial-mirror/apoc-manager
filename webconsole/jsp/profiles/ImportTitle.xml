@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+    <pagebuttons>
+        <cc name="ImportButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="bundleID" value="apocBundle"/>
+            <attribute name="defaultValue" value="APOC.groupimport.import"/>
+            <attribute name="type" value="primary"/>
+            <attribute name="onClick" value="javascript:if (isNameExisting()) { return confirm(overwrite);} else {return true;};" />
+        </cc>
+        <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="bundleID" value="apocBundle"/>
+            <attribute name="defaultValue" value="APOC.button.cancel"/>
+            <attribute name="type" value="secondary"/>
+            <attribute name="onClick" value="javascript:window.close(); return false;" />
+	</cc>
+    </pagebuttons>
+</pagetitle>

@@ -1,0 +1,30 @@
+<!-- ident   "%Z%%M% %I%   %E% SMI" --><?xml version='1.0' encoding='UTF-8'?><!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="指定設定檔"></indexitem>
+<indexitem target="gbgce" text="配置儲存庫"><indexitem target="gbgcn" text="新建"></indexitem><indexitem target="gbzbc" text="移除"></indexitem><indexitem target="gbzci" text="重新命名"></indexitem><indexitem target="gbgqm" text="同步化"></indexitem><indexitem text="類型"><indexitem target="gbgpt" text="檔案型"></indexitem><indexitem target="gbgpt" text="混合型"></indexitem><indexitem target="gbgpt" text="LDAP (簡易目錄存取協定)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="檢視詳細資訊"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="建立設定檔"></indexitem>
+<indexitem target="gbgcn" text="建立儲存庫"></indexitem>
+<indexitem target="gbgpr" text="刪除設定檔"></indexitem>
+<indexitem target="gbgce" text="網域"></indexitem>
+<indexitem target="gbgoz" text="有效設定, 檢視"></indexitem>
+<indexitem target="gbgcm" text="元素樹狀結構"></indexitem>
+<indexitem target="gbgce" text="元素"><indexitem target="gbgqt" text="尋找函數"></indexitem><indexitem target="gbgoy" text="相關資訊"></indexitem><indexitem target="gbgpa" text="搜尋"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="匯出設定檔"></indexitem>
+<indexitem target="gbgps" text="匯入設定檔"></indexitem>
+<indexitem target="gbgpt" text="LDAP (簡易目錄存取協定)"></indexitem>
+<indexitem target="gbgqa" text="登出"></indexitem>
+<indexitem target="gbgcm" text="瀏覽"></indexitem>
+<indexitem target="gbgce" text="組織"></indexitem>
+<indexitem target="gbgcm" text="設定檔樹狀結構"></indexitem>
+<indexitem target="gbgce" text="設定檔"><indexitem target="gbgpn" text="指定"></indexitem><indexitem target="gbgni" text="新建"></indexitem><indexitem target="gbgpr" text="刪除"></indexitem><indexitem target="gbgqh" text="匯出"></indexitem><indexitem target="gbgps" text="匯入"></indexitem><indexitem target="gbgcm" text="瀏覽"></indexitem><indexitem target="gbgqj" text="取消指定"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="儲存庫"></indexitem>
+<indexitem target="gbgpa" text="搜尋"></indexitem>
+<indexitem target="gbgqm" text="同步化"></indexitem>
+<indexitem target="gbgcd" text="檢視所有設定檔"></indexitem>
+<indexitem target="gbgdc" text="檢視指定的設定檔"></indexitem>
+</index>

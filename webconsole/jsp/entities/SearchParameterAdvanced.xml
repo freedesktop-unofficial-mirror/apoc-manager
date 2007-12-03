@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE propertysheet SYSTEM "tags/dtd/propertysheet.dtd">
+
+<propertysheet>
+    <section name="search" defaultValue=" ">
+        <property span="true">
+            <cc name="EntityTypeMenu" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag" >
+                <attribute name="onChange" value="javascript:handlePressedKey(); return true;"/>
+                <option label="APOC.search.all" value="ALL" />
+                <option label="APOC.search.organizations" value="ORG" />
+                <option label="APOC.search.users" value="USERID" />
+                <option label="APOC.search.roles" value="ROLE" />
+                <option label="APOC.search.domains" value="DOMAIN" />
+                <option label="APOC.search.hosts" value="HOST" />
+                <option label="APOC.search.dtus" value="DTU" />
+                <option label="APOC.search.fogs" value="FOG" />
+                <option label="APOC.search.smartcards" value="SMARTCARD" />
+            </cc>
+            <cc name="SearchText" tagclass="com.sun.web.ui.taglib.html.CCTextFieldTag">
+                <attribute name="onKeyPress" value="javascript:setTimeout('handlePressedKey()',0); return true"/>
+                <attribute name="defaultValue" value="*"/>
+            </cc>
+        </property>
+        <property>
+            <label name="StartPointLabel" defaultValue="APOC.search.advanced.start.label"/>
+            <cc name="RestrictCheckbox" tagclass="com.sun.web.ui.taglib.html.CCCheckBoxTag" >
+                <attribute name="Label" value="APOC.search.advanced.restrict.label"/>
+                <attribute name="onClick" value="javascript:setTimeout('handlePressedKey()',0); return true;"/>
+            </cc>
+             <ccgroup>
+                 <property span="true">
+                    &lt;span id="SptToggle">
+                    <cc name="StartPointText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+                    &lt;/span>
+                    <cc name="BrowseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag" >
+                        <attribute name="bundleID" value="apocBundle"/>
+                        <attribute name="defaultValue" value="APOC.button.browse"/>
+                        <attribute name="type" value="secondaryMini"/> 
+                        <attribute name="title" value="APOC.search.advanced.browse.help"/>
+                        <attribute name="disabled" value="true"/> 
+                        <attribute name="onClick" value="javascript:openBrowseTreeWindow(); return false"/>
+                    </cc>
+                 </property>
+             </ccgroup>
+        </property>
+        <property>
+            <label name="ResultsLabel" defaultValue="APOC.search.perpage.label" />
+            <cc name="ResultsMenu" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag" >
+                <attribute name="onChange" value="javascript:handlePressedKey(); return true;"/>
+                <option label="10" value="10" />
+                <option label="25" value="25" />
+                <option label="50" value="50" />
+                <option label="100" value="100" />
+            </cc>
+        </property>
+        <property span="true">
+            <cc name="space" tagclass="com.sun.web.ui.taglib.spacer.CCSpacerTag">
+            <attribute name="Height" value="7"/>
+            <attribute name="Width" value="1"/>
+            </cc>&lt;br />
+            <cc name="HideOptionsButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag" >
+                <attribute name="bundleID" value="apocBundle"/>
+                <attribute name="defaultValue" value="APOC.search.advanced.hide.button"/>
+                <attribute name="type" value="secondary"/> 
+                <attribute name="title" value="APOC.search.advanced.hide.help"/>
+                <attribute name="onClick" value="document.SearchForm.action='../manager/EntitiesSearchParameter?EntitiesSearchParameter.ToggleOptions=a&amp;';document.SearchForm.target='parameters';document.SearchForm.submit();return false;"/> 
+            </cc>
+        </property>
+    </section>
+</propertysheet>
+

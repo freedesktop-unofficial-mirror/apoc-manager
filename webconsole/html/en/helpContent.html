@@ -1,0 +1,666 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager - Help Content</title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+<script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+<script type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+</head>
+
+<body class="help-body">
+<a name="top"></a>
+
+<p><a name="intro"> </a><div class="help-header-1">Configuration Manager Help</div></p>
+<p>Welcome to the Sun Java[TM] Desktop System Configuration Manager Help pages. 
+To get help for a specific part of the Java Desktop System Configuration Manager,
+ click on one of the links on the left.</p>
+<p>The help starts by describing the Configuration Manager general product
+ background and concepts - <a
+class="help-link" href="#concepts">Background & Concepts</a>. Some general
+ layout and behavioral aspects of the Configuration Manager can be found in
+ <a
+class="help-link" href="#ui">Layout and Behavior</a>.
+</p>
+<p>After the general pages more specific help is available for the <a
+class="help-link" href="#masthead"><b>Masthead</b></a>, the <a
+class="help-link" href="#navigation"><b>Navigation pane</b></a> and the <a
+class="help-link" href="#content"><b>Content
+pane</b></a>.  There are also pages that cover the <a class="help-link"
+href="#login">Login</a> and the <a href="#reporting">Reporting</a> feature. 
+
+<p><a name="concepts"> </a>
+<div class="help-header-1">Background & Concepts</div></p>
+<p>The Configuration Manager enables the centralized management of configuration
+ settings. It is possible to view, define, and enforce configuration settings on
+ different levels of an organization's hierarchy. Configuration settings that are
+ semantically coherent are referred to as "configuration policies" in the rest of
+ this document.</p>
+<P>The Configuration Manager deals with three different hierarchical structures,
+ also known as trees. To understand the Configuration Manager user interface, it
+ is important to distinguish between the two trees:</P>
+<p><div class="help-header-2"><a name="dataStructures">Data Structures</a></div></p>
+<P>One tree is formed by the configuration policies, and is thus called the
+ configuration policy tree (see blue parts of figure 1 - "Trees"). A hierarchical
+ organization of configuration settings is already familiar to users from many
+ programs that have a more sophisticated configuration, like Mozilla. A typical
+ configuration policy can be referred to with "/Mozilla/Navigator", a configuration
+ setting with "/Mozilla/Navigator/HomeUrl".</P>
+<P>Configuration policy trees are incorporated into the second type of tree, the
+ organization tree (see gray parts of figure 1 - "Trees"). The organization tree
+ represents relationships between organizational units. The result is an
+ "organization tree containing configuration policy trees". The organization tree
+ is represented using an LDAP server.</P>
+<p>The third type of tree is the domain tree. The domain tree represents
+ relationships between hardware units.  Configuration policy trees are incorporated
+ into the domain tree, resulting in a domain tree containing configuration policy
+ trees. The domain tree is represented using an LDAP server.</p>
+<p>The concepts for working with the organization tree and the domain tree are the 
+same. The main difference between the two is that the organization tree maintains
+ users and the domain tree maintains hosts. Having users and hosts in two separate 
+trees enables the Configuration Manager to provide user-based and host-based configuration.
+ Due to the similarities between the two trees, this section focuses on the organization
+ tree and only mentions the domain tree when differences exist between the organization
+ tree and the domain tree.</p>
+<P>LDAP servers are commonly used in large enterprises to map
+organizational data in a hierarchical way. Each location within the
+organization tree in LDAP is called an entity.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="Trees" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1>
+<P><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure
+1 &ndash; Trees</FONT></FONT></I></P>
+<p><div class="help-header-2"><a name="SecDataManagement">Security and Data
+Management</a></div></p>
+<p>This "tree of trees" facilitates hierarchical security and data management. 
+This is accomplished by initially inserting the whole configuration policy tree 
+once at the root of the organization tree. Entity-specific changes to the 
+configuration settings of that initial configuration policy tree are stored at 
+the corresponding entity. For simplicity, figure 1 only illustrates the configuration
+ policy trees associated with the organizational entities that are called 
+"marketing" and "jclarke".</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">Generation of Configuration
+Settings</a></div></p>
+<P>The configuration settings for an entity are gotten by merging. All configuration
+ settings, which are associated with an entity in the organization or domain tree,
+ are called layers. The merging begins with the root layer and follows the tree
+ until the desired entity is reached. A change in a configuration setting, in a
+ layer associated with an entity, is inherited by the layers that are associated
+ with entities farther down in the tree hierarchy (see <A class="help-link" HREF="#fig_merging">figure 2 - "Layer
+Merging"</a>).
+ The inherited values can be overwritten if a particular layer defines its own
+settings.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Layer Merging" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1>
+<P><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure
+2 &ndash; Layer Merging</FONT></FONT></I></P>
+<p>This inheritance holds true for configuration settings, and also holds true for
+ security characteristics: specifying the security attribute "protected" for one 
+configuration setting in the layer attached to "o=marketing" will make this configuration
+ setting in all subsequent layers of the tree read-only (see <A class="help-link" HREF="#fig_protection">figure 3 -
+"Protection"</a>).</P>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Protection" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1>
+<P><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure
+3 &ndash; Protection</FONT></FONT></I></P>
+<p><div class="help-header-2"><a name="BCAssociating">Associating a Configuration Policy Tree with an Organization or Domain
+Tree</a></div></p> 
+<p>Configuration policy trees are bound to the entities
+ of an organization tree in two different ways:</P>
+<UL>
+	<li>Stored at an entity as
+	 self-contained configuration policy trees</li>
+	 <li>Linked to an entity from a policy
+	 group</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">Policy
+Groups</a></div></p>
+<P>Policy groups are containers for configuration
+policies, they each have a (unique) name associated with them. They
+are also containers for a configuration policy tree, because
+configuration policies store their configuration settings in a
+configuration policy tree (see <A class="help-link" HREF="#fig_trees">figure 1 &ndash;
+&quot;Trees&quot;</A>). Policy groups are stored in a policy repository
+ and can be used by all types of entities by creating link(s)
+to policy group(s). This allows more flexibility, independent of the
+backend used. Another advantage of the policy groups is that they can
+be imported and exported which eases maintenance.</P>
+<P>The administrator can create collections of configuration policies for
+ separate semantic ranges, for instance an "Experts" and a "Novice" policy group
+ stored in the policy repository. The configuration policies can then be used 
+throughout the organization tree.</P>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="ui"> </a>
+<div class="help-header-1">Layout and Behaviour</div>
+<p>The layout for the Configuration Manager consists of three areas: a Masthead,
+ a Navigation pane, and a Content pane. The masthead is located on the top section
+ of the page. The area on the lower left side contains the Navigation pane.
+ The area on the lower right is the Content pane. This type of layout is also
+ referred to as Left-Right pane set. Separate browser windows are opened for
+ displaying additional dialogs and displaying help content.</p>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+
+<a name="login"> </a>
+<div class="help-header-1">Login</div>
+<p>To use the Configuration Manager, you must login to the Sun Web Console. The
+ Sun Web Console is the location for management applications, all of which have
+ a consistent user interface. An advantage of the Console is that an administrator
+ can log in once and use any application inside the console. For this purpose the 
+Sun Web Console provides a standard login page.</p>
+<p>On the standard login page, the server that you are going to log into is displayed
+ above the text fields for the user name and password.</p>
+<p>After you have logged into the Web Console successfully, you arrive at the Web
+ Console application launch page. From there, you can select the "Configuration Manager"
+ application, which launches the Configuration Manager.</p>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="masthead"> </a>
+<div class="help-header-1">Masthead</div>
+<p>The Masthead has the full product name (Sun Java[TM] Desktop System Configuration Manager) across it. 
+The Masthead also provides a number of general links:</p>
+<ul><li>The <b>Console</b> link returns you to the Sun Web Console application launch page.</li>
+    <li>The <b>version</b> link opens a version window.</li>
+    <li>The <b>Log Out</b> link logs you out of the Sun Web Console, and thus the
+ Configuration Manager, returning you to the Login page.</li>
+    <li>The <b>Help</b> link opens these help pages.</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="navigation"> </a>
+<div class="help-header-1">Navigation pane</div>
+<p>The Navigation pane allows you to browse the organization tree, which contains
+ organizations, users and roles, and to browse the domain tree, which contains
+ domains and hosts. It also allows you to manage policy groups in the corresponding
+ users and hosts policy repositories.</p>
+<p>There are two top-level tabs in the Navigation pane: <b>Users</B> and
+<b>Hosts</B>.</p>
+<a name="entities"> </a>
+<div class="help-header-2">Users Tab</div>
+<p>Two sub-tabs, <b>Organization Tree</B> and <b>Policy Repository</B>, are provided. Browse
+ the organization tree using the <b>Organization Tree</B> tab.</p>
+<a name="parpath"></a><div class="help-header-3">Parentage Path</div>
+<p>At the top of the <b>Organization Tree</B> tab is the parentage path, which is a
+ control that visualizes the path to the current entity. Every path particle
+ is a link that represents an entity, except for the last link, which is displayed
+ as normal text and denotes the current entity. To navigate using the parentage
+ path, click on a link. This will:
+<ul><li>Refresh the Navigation pane so that the parentage path points to the 
+clicked entity, and so that the navigation table contains the sub-entities of
+ that entity.</li>
+    <li>Refresh the Content pane with the configuration policy data associated 
+with that entity. </li>
+</ul>
+The navigation and Content pane are synchronized throughout the application to 
+provide a homogeneous view of the data.</p>
+<a name="navtable"></a><div class="help-header-3">Navigation Table</div>
+<p>The navigation table is located below the parentage path, and lists the 
+sub-entities of the current entity. The "Name" column contains the names of all 
+sub-entities of the current entity. The "Type" column displays the type of the 
+entity. The "Action" column contains a <b>View</B> link for every row.</p>
+<p>To navigate to an entity click on a listed name, this will:
+<ul><li>Make the selected sub-entity the current entity.</li>
+    <li>Refresh the Navigation pane so that the parentage path points to the new
+ current entity, and so that the navigation table contains the sub-entities of that entity.</li>
+    <li>Refresh the Content pane with the configuration policy associated with that entity.</li>
+</ul></p>
+An entity can be of type "Organization", "User" or "Role".</p>
+<p>To view a listed entity's details click on the <b>View</B> link. This will:
+<ul><li>Change the background color of the selected row to blue. </li>
+    <li>Refresh the Content pane with the data associated with the selected entity.</li>
+</ul>
+A row with blue background marks the entity whose data is currently visible in 
+the Content pane.</p>
+<p>The action bar of the navigation table contains the <b>Filter</B> drop-down menu 
+and and the <b>Advanced Filter</b> icon. When the table contains more than ten entries, 
+the <b>Page/Scroll Through All Data</b> icon appears, which allows you to change the view of 
+the table entries.</p> 
+<p>The<b>Filter</b> drop-down menu allows you to choose which type of entity to display in the 
+navigation table. It contains the following items:
+<ul><li>"All Items" displays all types of entities in the navigation table.</li>
+    <li>"Organizations" displays only entities of type "Organization" in the 
+navigation table.</li>
+    <li>"Users" displays only entities of type "User" in the navigation
+table.</li>
+    <li>"Roles" displays only entities of type "Role" in the navigation
+table.</li>    
+</ul></p>
+
+<a name="adfilter"></a><div class="help-header-3">Advanced Filter</div>
+<p>Click the <b>Advanced Filter</B> icon in the navigation table to open the Advanced Filter dialog.</P>
+<p>In the <b>Type</b> section, mark the type of entity that you want to filter. For a 
+more specific filter, enter the name that you want to perform the filter on in 
+the <b>Name</b> text field. Then click the <b>Filter</B> button at the bottom of the dialog 
+to run the filter.</p>
+
+<a name="search"></a><div class="help-header-3">Search</div>
+<p>To open the Search window click the <b>Search</b> button above the navigation table. 
+The Search window contains a masthead, a parameter area on the left, and a result 
+area on the right. The Search window can be used to recursively search through 
+the organization tree for certain entity types and entity names. If the
+<b>Search</b> 
+button in the Navigation pane of the main window is clicked while the Search window 
+is open in the background, the Search window becomes the topmost window. The 
+current entity of the Search window, which is displayed by the parentage path 
+in the parameter area of the Search window, is refreshed. All other parameters 
+and the content of the result area are unchanged.</p>
+<p>The parameter area displays the parentage path at the top, and it visualizes the
+path to the current entity.  The use of the parameter area is described in the
+ <a class="help-link" href="#parpath">Parentage Path</a> section.</p>
+<p>To search for a particular entity type, select that type from the drop-down 
+list underneath the parentage path. The six selections are "Search All", 
+"Search Organizations", "Search Users", "Search Roles", "Search Domains", and 
+"Search Hosts".</p>
+<p>To further narrow the search, you can use the text box that is located next to the drop-down 
+list. This allows you to search for entity names that match the search string 
+that you entered in this field. The starting point to search from in the tree 
+can be specified selecting one of the <b>Starting Point</b> radio buttons. The choices 
+are to search from the current location or to search from the top of the tree. 
+The default value is to search from the current location. The locations are r
+epresented by their names. Clicking on any path particle in the parentage path 
+will change the current location for the search to the selected entity but will 
+not change the scope of the navigator's view.</p>
+<p>Select the number of results to be displayed from the
+"Results displayed per page" drop-down list.</p>
+<p>All search fields in the search pane accept the asterisk "*" as a wildcard at
+ any position in a search string. The asterisk represents an arbitrary number of
+ arbitrary characters. If multiple search criteria are specified, all search 
+criteria must be fulfilled for an entity to be added to the result table. 
+The search is not case-sensitive.</p>
+<p>To perform the search, click on the <b>Search</b> button, which refreshes the result
+ area with a table containing the search results.</p>
+<p>To reset the page values click on the <b>Reset</b> button, which refreshes the 
+parameter area with the default values. All text boxes are emptied, and the 
+first value is selected in all drop-down lists and radio button groups.</p>
+<p>The result area contains a blank page when the Search window is created. 
+After performing a search, a result table is displayed. The result table 
+contains three columns: "Name", "Type" and "Path".</p>
+<p>To view a result, click on the corresponding name under the "Name" column. This will: 
+    <ul><li>Make the main window the topmost window.</li>
+        <li>Refresh the Navigation pane of the main window so that the entity 
+represented by the "Name" link is an entry in the navigation table with a blue 
+background. </li>
+        <li>Refresh the content area of the main window with the configuration
+policy associated with that entity.</li>
+    </UL>
+</p>
+<p>The "Type" column displays the type of the entity. An entity can be either of
+type "Organization", "User"or "Role".</p>
+<p>The "Path" column contains the path to the entity. The path is relative to
+the starting point of the search.</p>
+<p>If the type searched for is "User", the parameter area displays different 
+text boxes to accommodate the characteristics of a user: "User ID", "First Name", 
+and "Last Name". In the result area, an additional "User ID" column appears to 
+the right to the "Name" column, containing the user IDs. If the "User ID" text 
+box in the parameter area contains at least one character, the primary sort 
+column is the "User ID" column. If not, the primary sort column is the "Name" column.</p>
+<a name="hoststab"> </a>
+<div class="help-header-2">Hosts Tab</div>
+<p>The <b>Hosts</B> tab contains two sub-tabs that are called <b>Domain Tree</B> and
+<b>Policy Repository</B>, respectively.</p>
+<a name="domtree"></a><div class="help-header-3">Domain Tree Tab</div>
+<p>The Domain Tree displays the configuration settings for the hardware that the 
+user is working on.</P>
+<p>Navigation through the Domain Tree works in the same way as navigation through
+ the Organization Tree, see the <a href="#entities">Users Tab</A> section for more details.
+<a name="actionbar"></a><div class="help-header-3">Action Bar</div>
+<p>The <b>Filter</B> drop down menu in the navigation table contains four items:
+<ul><li>"All Items" - displays all types of entities</li>
+    <li>"Domains" - displays entities of type Domain</li>
+    <li>"Hosts" - displays entities of type Host</li>
+</ul>
+</p>
+<a name="adfilterhosts"></a><div class="help-header-3">Advanced Filter</div>
+<p>The Advanced Filter for the Domain Tree works in the same way as the Advanced
+Filter for the Organization Tree (see the previous <a href="#adfilter">Advanced
+Filter</a> section).  The Advanced Filter for the Domain tree provides "Domain" and "Host" entity types to
+filter from.</p>
+<a name="searchhosts"></a><div class="help-header-3">Search</div>
+<p>When you click on the <b>Search</b> button in the <b>Domain Tree</b> tab, the 
+Domain Search appears. The Domain Search operates in the same way as the search 
+in the Organization Tree (see <a href="#">above</a>), but the Staring Point field 
+is set to "Hardware".</p>
+
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="psptab"> </a>
+<div class="help-header-2">Policy Repositories</div>
+<p>A <b>Policy Repository</b> tab exists under both the <b>Users</B> tab and under 
+the <b>Hosts</B> tab.</P>
+<p>A policy repository is a container for either user policy groups or host 
+policy groups. The policy groups are organized in an ordered list. The sequence
+ is defined by priorities.</p>
+
+<a name="psptable"></a><div class="help-header-3">Policy Group Table</div>
+<P>The policy group table is located at the top of the page and lists the policy
+ groups. The table contains three columns: a selection column, "Name", and "Priority". </P>
+<P>The selection column is used to mark the rows to which the actions listed in
+ the <b>Policy Group Action</b> drop-down menu are applied.</P>
+<P>To navigate to a Policy Group, click on its name. This will:</P>
+<UL>
+   	<li>Change the background color of the row clicked on to blue.</li>
+   	<li>Refresh the Content pane with the data that is associated with the 
+selected policy.</li>
+</ul>
+<p>The "Priority" column contains the priority of the policy group. The priority 
+is used to define the merge order of the policy groups if an administrator has
+ associated more than one policy group to an entity.</p>
+<P>A row with blue background marks the policy group whose data is currently viewed
+ in the Content pane, the viewed policy group.</P>
+
+<a name="pspactions"></a><div class="help-header-3">Policy Group Action Bar</div>
+<P>The <b>Policy Group Actions</B> drop-down menu contains the following actions, displayed from top to bottom:
+</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>Name</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>Action</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>New</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>A dialog window opens, where the user enters the (unique) name of the policy group. After clicking OK, the policy group is added. The Navigation pane is refreshed to reflect the changes.</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>Delete</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>A pop-up window opens, with a warning message to confirm deletion of the policy group(s). If the user clicks OK, the policy group(s) are deleted. The Navigation pane is refreshed to reflect the changes.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Rename</p>
+                </td>
+                <td width="89%">
+                    <p>A dialog window opens, the user enters the new (unique) name for the policy group, the policy group is renamed and the Navigation pane is refreshed to reflect the changes.</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Edit Priorities</p>
+                </td>
+                <td width="89%">
+                    <p>A dialog window opens, which contains a list box for changing the priorities.</p>
+                </td>
+            </tr>            
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Export</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>A dialog window opens. The user enters the destination path where the selected policy group(s) are exported to.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Import</p>
+                </td>
+                <td width="89%">
+                    <p>A dialog window opens. The user selects the policy group(s) to be imported. After clicking OK, the policy group is added and the Navigation pane is refreshed to reflect the changes.</p>
+                </td>
+            </tr>            
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">Policy Group
+Priorities</div></p>
+<p>The concept of policy group priorities allows the administrator to define the order in which the layers are merged. The policy group priorities are used during merging if an entity has more than one policy group assigned. In this case, the hierarchy of entities is not sufficient to determine the sequence in which the policy groups are merged. This is solved by assigning priorities to policy groups.</p>
+<p>To open the policy group priorities dialog select <b>Edit Priorities</b> from the
+ <b>Policy Group Actions</b> drop down menu. To increase or decrease the priority of a policy group:</p>
+<ol>
+    <li>Select the policy group from the list</li>
+    <li>Click on the <b>Move Up</b> or <b>Move Down</b> button to increase/decrease the priority </li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="content"> </a>
+<div class="help-header-1">Content Pane</div>
+<p>The Content pane displays the data associated with the selected entity or
+ policy group in the Navigation pane. The data is grouped in tabs. The
+ selections made in the Navigation pane determine the number and type of
+ tabs displayed in the Content pane. The <b>Policies</b> tab is the default active 
+tab. The currently active tab stays active if selections are changed in the
+ Navigation pane, as long as the selection made offers that tab. If not, the
+ <b>Policies</b> tab becomes the active tab. The internal state of a tab (parentage path,
+ sort order) is recalled when the tab becomes active again.</p>
+<a name="policies"> </a>
+<div class="help-header-2">Policies Tab</div>
+<p>Use the <b>Policies</B> tab to navigate the configuration policy tree displaying subgroups, configuration settings or both.</p>
+<p>Every Policies page has two buttons: 
+<ul><li><b>Report</b>: see the <a href="#reporting">Reporting</a> section for details.</li>
+    <li><b>Clear Settings</b>: this button recursively deletes all configuration data below the subgroup currently displayed for the viewed entity. </li>
+</ul>
+</P>
+<p>Every root entry in the configuration policy tree denotes an application, for instance, "StarOffice 7". The tree below the application organizes the configuration policies that belong to that application. Configuration policies can be located anywhere in the configuration policy tree. If a configuration policy is not a leaf of the configuration policy tree, the policy table as well as the configuration policy need to be displayed for one current location in the configuration policy tree. </p>
+<a name="caparpath"> </a>
+<div class="help-header-3">Parentage Path</div>
+<p>The parentage path is displayed at the top of the page underneath the tabs. 
+It visualizes the current location in the configuration policy tree.  It
+functions in the same way as the parentage path in the Navigation pane (see
+previous<a
+class="help-link" href="#parpath">Parentage Path</a> section).</p>
+<a name="subgroupstable"> </a>
+<div class="help-header-3">Subgroups Table</div>
+<P>The Subgroups table is located below the parentage path. The table lists the subgroups of the current location in the configuration policy tree. It contains two columns: "Name" and "Comment".</P>
+<P>The "Name" column contains the names of all subgroups of the current location in the configuration policy tree. The name is displayed as a link. To navigate through the configuration policy tree click on a name link. This will:</P>
+<UL>
+    	<li>Refresh the Content pane so that the parentage path points to the new location in the configuration policy
+tree.</li>
+   	<li>Refresh the Content pane so that either a policy table or a policy is
+displayed.</LI>
+</UL>
+<P>This kind of navigation is referred to as "drill down"
+type navigation.</P>
+<P>The Comment column contains a short description of the subgroup.</P>
+<A NAME="capolicies"></A>
+<div class="help-header-3">Policy</div>
+<P>If valid configuration policy data is available for the combination of the current entity and the current configuration policy, the "Policies" tab in the Content pane displays that data.</p>
+<p>The data is presented in tables. The tables have four columns. A selection column that contains selection icons, a "Status" column, a "Name" column and a "Value" column. The action bar on the table has a drop down actions menu </p>
+<p>To select an element check the checkbox in front it. An action from the drop down actions menu in the action bar can now be performed on the selected element. The following table describes all actions:</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>Action</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>Operation</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Protect</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Set the selected element to be protected.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Unprotect</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Removes the protection for the selected element.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Apply Default</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Uses the hard-coded default data from the policy template.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Clear</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Deletes the data that is stored in the element.</P>
+            </TD>
+        </TR>
+        
+</TABLE>
+<p>To the left of an element name, two icons show the status of that element. The following table summarizes the icons and their function:</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>Icon</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>Meaning</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>Operation</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="Defined
+Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>This icon illustrates that the value of the element was set at
+                    this level of the organization tree.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered"
+ALT="Defined Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>This icon, which is also a link, illustrates that the value of the element was set at a higher level of the organization (or domain) tree. The value that the user sees is the result of the merging of layers, or entity levels, within the organization.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>When you click on the icon, it navigates you to where the value was set.</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere"
+ALT="Protected Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>This icon illustrates that the protection of the element was set at this level of the organization (or domain) tree. Protection is inherited through both the organization and configuration policy trees.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered"
+ALT="Protected Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>This icon, which is also a link, illustrates that the protection of the element was set at a higher level of the organization (or domain) tree. The protection of this element or item is as a result of merging of layers, or entity levels, within the organization.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Clicking on this icon navigates the user to where the protection was set.</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>Data values can be changed by changing the values in the "Value" column. Value changes as well as status changes must be saved. Saving is done by clicking on the
+<b>Save</b> button.</p>
+<a name="casets"> </a>
+<div class="help-header-3">Sets</div>
+<p>Sets are dynamic collections of properties. You can add and remove elements from the set.</p>
+<p>To add an element to a set:
+<ol><li>Click on the <b>New</b> button. </li>
+    <li>A dialog allows you to enter the name of the new element.  The element
+is then added and the main window refreshed.</li>
+    <li>In the main window the new element can be editied</li>
+</ol>
+<p>To delete elements from a set, select the element and click the <b>Delete</B> button.</p>
+<p>Note that sets can contain sets and they are represented as links.  Clicking
+on the link will navigate you to the set and the set can be edited from
+there</p>
+
+<a name="policysets"> </a>
+<div class="help-header-2">Policy Groups Tab</div>
+<p>This Policy Group page allows you to add and remove policy groups to the selected entity.</p>
+<p>To add a policy group listed in the <b>Available</b> list on the left side:</p>
+<ol>
+    <li>Select the policy group from the list</li>
+    <li>Click the <b>Add</b> button to add the selected policy group to the
+<b>Selected</B> list on the right side.</li>
+    <li>Click <b>Save</b> to store the new assignment. </LI>
+</ol>
+
+<a name="caentities"> </a>
+<div class="help-header-2">Assignees Tab</div>
+<p>If a policy group is selected in the Policy Repository of the Navigation pane, the Content pane contains the
+<b>Assignees</b> tab page. The Assignees page lists all entities that the selected policy group is assigned to.</p>
+<p>Actions that can be performed on the Assignees Tab page are:
+<ul><li><b>Remove</B> breaks the association between the selected entity(s) and the policy group selected in the Navigation pane. </li>
+    <li>Clicking on an entity in the "Name" column refreshes the Navigation pane, so that the clicked entity is the entity in the Navigation pane with the blue background. </li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="roles"> </a>
+<div class="help-header-2">Roles Tab</div>
+<p>If an entity of type "User" is selected in the Navigation pane, and that user is a member of at least one role, the Content pane contains the
+<b>Roles</B> tab page. The
+<b>Roles</B> page lists all the roles that the selected user is a member of.</p>
+<p>This page has two columns "Name" and "Path".  "Name" contains the names of
+the roles and "Path" contains the absolute path to the Role.</p>
+<a name="users"> </a>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+<a name="reporting"> </a>
+<div class="help-header-1">Reporting</div>
+<p>A report is a read-only view of all configuration settings that contain data. A report is triggered by clicking a
+<b>Report</B> button. The Configure Report dialog then appears.</p>
+<p>The "Configure Report" dialog allows you to customise: 
+<ul><li>Which tree (organization and/or domain tree) to take into account (<b>Use for
+Report</B>) </li>
+    <li>Which columns to show in the generated report (<b>Status Path</b> and
+<b>Description</B> can be disabled) </li>
+</ul>
+<p>Once customised clicking on the report will open a read only view of the
+selected data.</p>
+<div align="right"><a href="#top" class="help-return-link">
+    <img src="/com_sun_web_ui/images/href/to_top.gif"
+        alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">
+    Back to top</a></div>
+
+</body>
+</html>

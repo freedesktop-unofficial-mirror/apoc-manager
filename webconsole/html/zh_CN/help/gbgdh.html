@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- GenHTML@12751-->
+<head> <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=GBK"><!-- ident      "%Z%%M% %I%     %E% SMI" --><title>高级选项</title><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script><meta name="Copyright" content="Copyright &copy; 2006 by Sun Microsystems, Inc. All Rights Reserved." />
+</head>
+<body class="HlpBdy"><A NAME="gbgdh"></A><h3>高级选项</h3>
+<p>使用&#8220;高级选项&#8221;页面可以为当前配置文件指定高级选项。在此页面中有两个主要的可用选项：</p>
+<ul><li><p>应用于：允许将配置文件移动到组织或域树中的不同存储位置。移动存储位置的同时，也更改了可以将配置文件指定或应用到的一组元素。这是因为，只能将配置文件指定给存储该配置文件的元素，或该元素下的子树中的元素。</p>
+<hr size="1" noshade><p><IMG ALT="小心" src="graphics/caution.gif"> <b>小心 &#8211; </b>如果移动的结果不符合上述规则，则无法更改&#8220;应用于&#8221;参数。例如，在执行以下操作时将会出现上述问题：沿树的层次结构向下移动配置文件，并且现有指定将该配置文件连接到其存储位置下的某个元素，在移动配置文件之后，此指定仍然将该配置文件连接到同一元素。但是，该元素现在位于配置文件存储位置之上。如果尝试执行以上操作，则会取消该操作，并显示警告消息。</p><hr size="1" noshade></li>
+<li><p>合并顺序：指定对存储在同一元素内的所有配置文件进行合并时采用的顺序。</p>
+<p>因为可以将多个配置文件指定给一个元素，且多个配置文件可以定义相同的设置，所以为一个元素合并配置文件时，必须定义合并顺序。这解决了在指定给同一元素的多个配置文件中定义一个设置时的冲突问题。</p>
+<p>存储位置首先用于确定合并顺序。首先合并的是存储在距树根较近的元素中的配置文件。其次合并的是存储在树层次结构中较深层位置的配置文件。较晚合并的配置文件设置将会覆盖较早合并的配置文件设置。</p>
+</li>
+</ul>
+<p>请参见<A HREF="gbgqu.html#gbgqu">更改应用位置</A>和<A HREF="gbgqe.html#gbgqe">为配置文件指定合并顺序</A></p>
+<br />
+</body>
+</html>

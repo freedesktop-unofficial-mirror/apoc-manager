@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+    
+<pagetitle>
+    <pagebuttons>
+       <cc name="OkButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="defaultValue" value="OK"/>
+         <attribute name="Title" value="Creates a new profile with the values given and closes this window."/>
+         <attribute name="onClick" value="javascript:self.opener.submitNew(document.NewForm['ProfilesNew.ProfileText'].value, document.NewForm['ProfilesNew.CommentText'].value, 'dummy'); window.close(); return false;"/>
+         <attribute name="type" value="default"/>
+       </cc>
+       <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="defaultValue" value="Cancel"/>
+         <attribute name="title" value="Discards all entered values and closes this window."/>
+         <attribute name="onClick" value="javascript:window.close(); return false;"/>
+         <attribute name="type" value="primary"/>
+       </cc>
+    </pagebuttons>
+</pagetitle>

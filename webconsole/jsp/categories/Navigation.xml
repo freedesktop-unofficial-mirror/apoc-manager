@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+<table>
+    <column name="NameColumn" rowheader="true" sortname="CategoryName" extrahtml="width='180px'">
+        <cc name="CategoryHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <cc name="CategoryName" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+        </cc>    
+    </column>
+    <column name="DescriptionColumn" rowheader="true">
+        <cc name="CategoryDescription" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+</table>

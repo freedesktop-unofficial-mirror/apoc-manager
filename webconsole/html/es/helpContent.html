@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager -  Contenido de la ayuda </title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><!-- Empty script so IE5.0 Windows will draw table and button borders --><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"></script>  </head>
+
+<body class="help-body"><a name="top"></a> <p><a name="intro"> </a><div class="help-header-1">Ayuda del Configuration Manager</div></p>
+<p>Bienvenido a las p&aacute;ginas de ayuda del Sun Java[TM] Desktop System Configuration Manager. Si desea obtener ayuda sobre una parte espec&iacute;fica del Java Desktop System Configuration Manager, haga clic en uno de los v&iacute;nculos que se encuentran a la izquierda.</p>
+<p>La ayuda comienza con la descripci&oacute;n de los conceptos y una introducci&oacute;n general del Configuration Manager: <a class="help-link" href="#concepts">Introducci&oacute;n y conceptos</a>. Algunos aspectos del comportamiento y del dise&ntilde;o general del Configuration Manager se pueden encontrar en <a class="help-link" href="#ui">Dise&ntilde;o y comportamiento</a>. </p>
+<p>Tras las p&aacute;ginas generales se incluye ayuda m&aacute;s concreta para la <a class="help-link" href="#masthead"><b>cabecera</b></a>, el <a class="help-link" href="#navigation"><b>panel de navegaci&oacute;n</b></a> y el <a class="help-link" href="#content"><b>panel de contenidos</b></a>. Tambi&eacute;n hay p&aacute;ginas que tratan de las caracter&iacute;sticas  <a class="help-link" href="#login">Iniciar sesi&oacute;n</a> e <a href="#reporting">Informe</a>. <p><a name="concepts"> </a> <div class="help-header-1">Introducci&oacute;n y conceptos</div></p>
+<p>El Configuration Manager permite la gesti&oacute;n centralizada de la configuraci&oacute;n. Es posible visualizar, definir y confirmar los valores de la configuraci&oacute;n en los diversos niveles de la jerarqu&iacute;a de una organizaci&oacute;n. Los valores de configuraci&oacute;n sem&aacute;nticamente coherentes reciben el nombre de "normas de configuraci&oacute;n" en el resto de este documento.</p>
+<P>El Configuration Manager trata tres estructuras jer&aacute;rquicas diferentes, tambi&eacute;n conocidas como &aacute;rboles. Con el fin de comprender la interfaz del usuario del Configuration Manager, es importante distinguir entre los dos &aacute;rboles:</P>
+<p><div class="help-header-2"><a name="dataStructures">Estructuras de datos</a></div></p>
+<P>Un &aacute;rbol est&aacute; formado por las normas de configuraci&oacute;n y por este motivo recibe el nombre de &aacute;rbol de normas de configuraci&oacute;n (zonas azules de la figura 1, "&Aacute;rboles"). Los usuarios ya est&aacute;n familiarizados con una organizaci&oacute;n jer&aacute;rquica de los valores de configuraci&oacute;n gracias a los muchos programas que muestran una configuraci&oacute;n m&aacute;s sofisticada, como Mozilla. Una norma de configuraci&oacute;n habitual puede recibir el nombre de "/Mozilla/Navigator"; un valor de configuraci&oacute;n puede ser "/Mozilla/Navigator/HomeUrl".</P>
+<P>Los &aacute;rboles de normas de configuraci&oacute;n se incorporan al segundo tipo de &aacute;rboles, el &aacute;rbol de la organizaci&oacute;n (zonas grises de la figura 1, "&Aacute;rboles"), que representa las relaciones entre las unidades organizativas. El resultado es un "&aacute;rbol de la organizaci&oacute;n que contiene los &aacute;rboles de normas de configuraci&oacute;n". El &aacute;rbol de la organizaci&oacute;n se representa mediante un servidor LDAP.</P>
+<p>El tercer tipo de &aacute;rbol es el &aacute;rbol del dominio, que representa las relaciones entre las unidades de hardware. A &eacute;l se incorporan, adem&aacute;s, los &aacute;rboles de normas de configuraci&oacute;n. El &aacute;rbol del dominio se representa mediante un servidor LDAP.</p>
+<p>Los conceptos para el trabajo con el &aacute;rbol de la organizaci&oacute;n y el &aacute;rbol del dominio son los mismos. La &uacute;nica diferencia es que el &aacute;rbol de la organizaci&oacute;n mantiene los usuarios y el &aacute;rbol del dominio mantiene los sistemas. Al tener a los usuarios y sistemas en dos &aacute;rboles separados, el Configuration Manager puede proporcionar una configuraci&oacute;n basada en el usuario y en el sistema. Debido a las similitudes entre ambos &aacute;rboles, esta secci&oacute;n se centra en el &aacute;rbol de la organizaci&oacute;n y s&oacute;lo menciona al &aacute;rbol del dominio cuando haya diferencias.</p>
+<P>Los servidores LDAP se utilizan habitualmente en grandes empresas para ubicar los datos de la organizaci&oacute;n de un modo jer&aacute;rquico. Cada ubicaci&oacute;n de un &aacute;rbol de la organizaci&oacute;n en LDAP recibe el nombre de entidad.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="&Aacute;rboles" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figura 1: &aacute;rboles</FONT></FONT></I></FONT></P>
+<p><div class="help-header-2"><a name="SecDataManagement">Seguridad y gesti&oacute;n de los datos</a></div></p>
+<p>Este "&aacute;rbol de &aacute;rboles" facilita la seguridad jer&aacute;rquica y la gesti&oacute;n de los datos. Esto se consigue introduciendo al inicio todo el &aacute;rbol de normas de configuraci&oacute;n, cuando se encuentre en la ra&iacute;z del &aacute;rbol de la organizaci&oacute;n. Los cambios concretos de las entidades en los valores de configuraci&oacute;n de ese &aacute;rbol de normas de configuraci&oacute;n inicial se almacenan en la entidad correspondiente. Para una mejor comprensi&oacute;n, la figura 1 s&oacute;lo ilustra los &aacute;rboles de normas de configuraci&oacute;n asociados con las entidades de organizaci&oacute;n llamadas "marketing" y "jclarke".</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">Generaci&oacute;n de los valores de configuraci&oacute;n</a></div></p>
+<P>Los valores de configuraci&oacute;n de una entidad se obtienen mediante la uni&oacute;n. Todos los valores de la configuraci&oacute;n, asociados con una entidad en el &aacute;rbol del dominio o de la organizaci&oacute;n, reciben el nombre de capas. La uni&oacute;n comienza con la capa ra&iacute;z y contin&uacute;a por el &aacute;rbol hasta que se alcanza la entidad deseada. Las capas asociadas con las entidades inferiores en la jerarqu&iacute;a del &aacute;rbol heredan un cambio en el valor de una configuraci&oacute;n, en una capa asociada con una entidad (vea la <A class="help-link" HREF="#fig_merging">figura 2: "Uni&oacute;n de capas"</a>). Los valores heredados se pueden sobrescribir cuando una capa concreta define sus propios valores.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Uni&oacute;n de capas" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figura 2: uni&oacute;n de capas</FONT></FONT></I></FONT></P>
+<p><FONT COLOR="#000000">Esta herencia se mantiene en los valores de la configuraci&oacute;n y tambi&eacute;n en las caracter&iacute;sticas de la seguridad:</FONT> <FONT COLOR="#000000">si se especifica el atributo de seguridad "protegido" como valor de una configuraci&oacute;n en la capa adjunta a "o=marketing", dicho valor ser&aacute; de s&oacute;lo lectura en todas las capas inferiores del &aacute;rbol (vea la <A class="help-link" HREF="#fig_protection">figura 3: "Protecci&oacute;n"</a>).</FONT></P>
+<P><FONT COLOR="#000000"><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Protecci&oacute;n" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1> </FONT></FONT><P><FONT COLOR="#000000"><FONT COLOR="#000000"><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figura 3: protecci&oacute;n</FONT></FONT></I></FONT></FONT></P>
+<p><div class="help-header-2"><a name="BCAssociating">Asociaci&oacute;n de un &aacute;rbol de normas de configuraci&oacute;n con un &aacute;rbol del dominio o de la organizaci&oacute;n</a></div></p> 
+<p>Los &aacute;rboles de normas de configuraci&oacute;n est&aacute;n vinculados con las entidades de un &aacute;rbol de la organizaci&oacute;n de dos maneras diferentes:</P>
+<UL>
+	<li>Se almacenan en una entidad como &aacute;rboles de normas de configuraci&oacute;n independiente</li>
+	 <li>Se vinculan con una entidad de un grupo de normas</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">Grupos de normas</a></div></p>
+<P>Los grupos de normas son contenedores de normas de configuraci&oacute;n, cada uno de los cuales tiene un nombre (exclusivo) asociado con ellos. Tambi&eacute;n son contenedores de un &aacute;rbol de normas de configuraci&oacute;n, puesto que &eacute;stas almacenan sus valores en un &aacute;rbol de normas de configuraci&oacute;n (vea la <A class="help-link" HREF="#fig_trees">figura 1: "&Aacute;rboles"</A>). Los grupos de normas se almacenan en un dep&oacute;sito de normas y pueden usarlos todas las clases de entidades mediante la creaci&oacute;n de v&iacute;nculos con grupos de normas. As&iacute; se consigue m&aacute;s flexibilidad e independencia respecto al componente trasero utilizado. Otra ventaja de los grupos de normas es que se pueden importar y exportar, lo cual facilita el mantenimiento.</P>
+<P>El administrador puede crear colecciones de normas de configuraci&oacute;n para rangos sem&aacute;nticos separados, por ejemplo, un grupo de normas "Expertos" y otro "Novato", que almacena en el dep&oacute;sito de normas. Las normas de configuraci&oacute;n se pueden utilizar despu&eacute;s en todo el &aacute;rbol de la organizaci&oacute;n.</P>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="ui"> </a> <div class="help-header-1">Dise&ntilde;o y comportamiento</div>
+<p>El dise&ntilde;o del Configuration Manager consta de tres &aacute;reas: una cabecera, un panel de navegaci&oacute;n y un panel de contenidos. La cabecera ocupa la parte superior de la p&aacute;gina. El &aacute;rea del lado inferior izquierdo contiene el panel de navegaci&oacute;n. El &aacute;rea del lado inferior derecho es el panel de contenidos. Este tipo de dise&ntilde;o tambi&eacute;n recibe el nombre de conjunto de paneles izquierdo-derecho. Las ventanas separadas de navegaci&oacute;n se abren para mostrar cuadros de di&aacute;logo adicionales y el contenido de la ayuda.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="login"> </a> <div class="help-header-1">Iniciar sesi&oacute;n</div>
+<p>Para usar el Configuration Manager, debe iniciar una sesi&oacute;n en la Sun Web Console, que es donde se encuentran las aplicaciones de gesti&oacute;n; todas ellas cuentan con una interfaz de usuario coherente. Una de las ventajas principales de la consola es que el administrador puede iniciar la sesi&oacute;n una vez y utilizar cualquier aplicaci&oacute;n dentro de la consola. Para este fin la Sun Web Console proporciona una p&aacute;gina de inicio de sesi&oacute;n est&aacute;ndar.</p>
+<p>En la p&aacute;gina est&aacute;ndar de inicio de sesi&oacute;n el servidor en el que se va a iniciar &eacute;sta aparece m&aacute;s arriba de los campos de texto del nombre del usuario y de la contrase&ntilde;a.</p>
+<p>Una vez iniciada la sesi&oacute;n, se accede a la p&aacute;gina de inicio de la aplicaci&oacute;n Web Console, en la que se puede seleccionar la aplicaci&oacute;n "Configuration Manager", para iniciar el Configuration Manager.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="masthead"> </a> <div class="help-header-1">Cabecera</div>
+<p>La cabecera muestra el nombre completo del producto (Sun Java[TM] Desktop System Configuration Manager); tambi&eacute;n proporciona varios v&iacute;nculos generales:</p>
+<ul><li>El v&iacute;nculo <b>Consola</b> devuelve al usuario a la p&aacute;gina de inicio de la aplicaci&oacute;n Sun Web Console.</li>
+    <li>El v&iacute;nculo <b>Versi&oacute;n</b> abre una ventana de la versi&oacute;n.</li>
+    <li>El v&iacute;nculo <b>Cerrar sesi&oacute;n</b> sale de la Sun Web Console y del Configuration Manager y devuelve al usuario a la p&aacute;gina de inicio de sesi&oacute;n.</li>
+    <li>El v&iacute;nculo <b>Ayuda</b> abre estas p&aacute;ginas de ayuda.</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="navigation"> </a> <div class="help-header-1">Panel de navegaci&oacute;n</div>
+<p>El panel de navegaci&oacute;n permite explorar tanto el &aacute;rbol de la organizaci&oacute;n, que contiene organizaciones, usuarios y roles, como el &aacute;rbol del dominio, que contiene dominios y sistemas. Tambi&eacute;n permite gestionar grupos de normas en los dep&oacute;sitos correspondientes de las normas de usuarios y sistemas.</p>
+<p>Hay dos fichas en el nivel superior del panel de navegaci&oacute;n: <b>Usuarios</B> y <b>Sistemas</B>. </p><a name="entities"> </a> <div class="help-header-2">Ficha Usuarios</div>
+<p>Incluye dos subfichas, <b>&Aacute;rbol de la organizaci&oacute;n</B> y <b>Dep&oacute;sito de normas</B>. La ficha <b>&Aacute;rbol de la organizaci&oacute;n</B> permite explorar el &aacute;rbol de la organizaci&oacute;n. </p><a name="parpath"></a><div class="help-header-3">Ruta de relaci&oacute;n</div>
+<p>En la parte superior de la ficha <b>&Aacute;rbol de la organizaci&oacute;n</B> se encuentra la ruta de relaci&oacute;n, un control que visualiza la ruta a la entidad actual. Cada parte de la ruta es un v&iacute;nculo que representa una entidad, excepto el &uacute;ltimo, que aparece como texto normal y representa a la entidad actual. Si desea navegar mediante una ruta de relaci&oacute;n, haga clic en un v&iacute;nculo. De este modo: <ul><li>Se actualiza el panel de navegaci&oacute;n de manera que la ruta de relaci&oacute;n apunte a la entidad en la que se ha hecho clic, con el fin de que la tabla de navegaci&oacute;n contenga las subentidades de esa entidad.</li>
+    <li>Se actualiza el panel de contenidos con los datos de las normas de configuraci&oacute;n asociadas con esa entidad.  </li>
+</ul>Los paneles de navegaci&oacute;n y de contenido se sincronizan en toda la aplicaci&oacute;n para proporcionar un aspecto homog&eacute;neo de los datos. </p><a name="navtable"></a><div class="help-header-3">Tabla de navegaci&oacute;n</div>
+<p>La tabla de navegaci&oacute;n se encuentra bajo la ruta de relaci&oacute;n y enumera las subentidades de la entidad actual. La columna "Nombre" contiene los nombres de todas las subentidades de la entidad actual. La columna "Tipo" muestra el tipo de entidad. La columna "Acci&oacute;n" contiene un v&iacute;nculo <b>Ver</B> para cada fila.</p>
+<p>Si desea desplazarse a una entidad haga clic en un nombre de la lista; de este modo: <ul><li>Convertir&aacute; la subentidad seleccionada en la entidad actual.</li>
+    <li>El panel de navegaci&oacute;n se actualiza y la ruta de relaci&oacute;n apunta a la nueva entidad actual en la que se ha hecho clic, a fin de que la tabla de navegaci&oacute;n contenga las subentidades de esa entidad.</li>
+    <li>El panel de contenidos se actualiza con la norma de configuraci&oacute;n asociada con esa entidad. </li>
+</ul></p>Una entidad puede ser del tipo "Organizaci&oacute;n", "Usuario" o "Rol".</p>
+<p>Si desea ver los detalles de una entidad de la lista haga clic en el v&iacute;nculo <b>Ver</B>. De este modo: <ul><li>El color del fondo de la fila seleccionada se convierte en azul. </li>
+    <li>El panel de contenidos se actualiza con los datos asociados con la entidad seleccionada. </li>
+</ul>Una fila con el fondo azul marca la entidad cuyos datos son visibles en el panel de contenidos.</p>
+<p>La barra de acciones de la tabla de navegaci&oacute;n contiene el men&uacute; desplegable <b>Filtro</B> y el icono <b>Filtro avanzado</b>. Cuando la tabla contiene m&aacute;s de diez entradas aparece el icono <b>Desplazarse por los datos</b>, que permite cambiar la presentaci&oacute;n de las entradas de la tabla.</p> 
+<p>El men&uacute; desplegable <b>Filtro</b> permite elegir el tipo de entidad mostrado en la tabla de navegaci&oacute;n. Contiene los elementos siguientes: <ul><li>"Todos los elementos" muestra en la tabla de navegaci&oacute;n todos los tipos de entidades.</li>
+    <li>"Organizaciones": muestra s&oacute;lo las entidades del tipo "Organizaci&oacute;n" en la tabla de navegaci&oacute;n.</li>
+    <li>"Usuarios": muestra s&oacute;lo las entidades del tipo "Usuario" en la tabla de navegaci&oacute;n.</li>
+    <li>"Roles": muestra s&oacute;lo las entidades del tipo "Rol" en la tabla de navegaci&oacute;n. </li>    
+</ul></p><a name="adfilter"></a><div class="help-header-3">Filtro avanzado</div>
+<p>Haga clic en el icono <b>Filtro avanzado</B> en la tabla de navegaci&oacute;n para abrir el cuadro de di&aacute;logo Filtro avanzado.</P>
+<p>En la secci&oacute;n <b>Tipo</b>, marque el tipo de entidad que desee filtrar. Si desea un filtro m&aacute;s concreto, escriba el nombre donde desee ejecutar el filtro en el campo de texto <b>Nombre</b>. Despu&eacute;s haga clic en el bot&oacute;n <b>Filtro</B> en la parte inferior del cuadro de di&aacute;logo para ejecutar el filtro. </p><a name="search"></a><div class="help-header-3">Buscar</div>
+<p>Haga clic en el bot&oacute;n <b>Buscar</b> que se encuentra encima de la tabla de navegaci&oacute;n si desea abrir una ventana de b&uacute;squeda. La ventana Buscar muestra una cabecera, un &aacute;rea de par&aacute;metros en la parte izquierda y un &aacute;rea de resultados en la derecha; permite buscar continuamente en el &aacute;rbol de la organizaci&oacute;n ciertos tipos y nombres de entidades. Si se hace clic en el bot&oacute;n <b>Buscar</b> del panel de navegaci&oacute;n de la ventana principal mientras la ventana Buscar est&aacute; abierta en segundo plano, &eacute;sta queda por encima de las dem&aacute;s. La entidad actual de la ventana Buscar, mostrada por la ruta de relaci&oacute;n en el &aacute;rea de par&aacute;metros de la ventana Buscar, se actualiza. El resto de los par&aacute;metros y el contenido del &aacute;rea de resultados no experimentan cambios.</p>
+<p>El &aacute;rea de par&aacute;metros muestra en la parte superior la ruta de relaci&oacute;n hasta la entidad actual. El uso del &aacute;rea de par&aacute;metros se describe en la secci&oacute;n <a class="help-link" href="#parpath">Ruta de relaci&oacute;n</a>.</p>
+<p>Si desea buscar un tipo concreto de entidad, selecci&oacute;nelo en la lista desplegable que se encuentra bajo la ruta de relaci&oacute;n. Las seis selecciones son "Buscar todo", "Buscar organizaciones", "Buscar usuarios", "Buscar roles", "Buscar dominios" y "Buscar sistemas".</p>
+<p>Para precisar m&aacute;s la b&uacute;squeda, puede utilizar el cuadro de texto situado junto a la lista desplegable. De esta manera puede buscar nombres de entidades que concuerden con la cadena de b&uacute;squeda que escribi&oacute; en este campo. El punto de inicio para buscar desde el &aacute;rbol se puede especificar seleccionando uno de los botones de opciones de <b>Punto de inicio</b>. Las opciones son buscar desde la ubicaci&oacute;n actual o desde la parte superior del &aacute;rbol. El valor predeterminado es buscar desde la ubicaci&oacute;n actual. Las ubicaciones est&aacute;n representadas por los nombres. Si hace clic en cualquier elemento de la ruta de relaci&oacute;n, se cambiar&aacute; la ubicaci&oacute;n actual en la b&uacute;squeda de la entidad seleccionada, pero no cambiar&aacute; el &aacute;mbito de la vista del navegador.</p>
+<p>Seleccione el n&uacute;mero de resultados que desee mostrar en la lista desplegable "Resultados mostrados por p&aacute;gina".</p>
+<p>Todos los campos del panel de b&uacute;squeda aceptan el asterisco "*" con la funci&oacute;n de comod&iacute;n en cualquier posici&oacute;n en la cadena de b&uacute;squeda. El asterisco representa un n&uacute;mero cualquiera de caracteres arbitrarios. Si se especifican varios criterios de b&uacute;squeda, todos se deben rellenar con el fin de a&ntilde;adir una entidad a la tabla de resultados. La b&uacute;squeda no distingue may&uacute;sculas de min&uacute;sculas.</p>
+<p>Para efectuar la b&uacute;squeda, haga clic en el bot&oacute;n <b>Buscar</b>; se actualiza el &aacute;rea de resultados con una tabla que contiene los resultados de la b&uacute;squeda.</p>
+<p>Si desea restablecer los valores de la p&aacute;gina haga clic en el bot&oacute;n <b>Restablecer</b>; se actualiza el &aacute;rea de par&aacute;metros con los valores predeterminados. Todos los cuadros de texto est&aacute;n vac&iacute;os y el primer valor est&aacute; seleccionado en todos los grupos de listas desplegables y botones de opciones.</p>
+<p>El &aacute;rea de resultados contiene una p&aacute;gina en blanco cuando se abre la ventana Buscar. Despu&eacute;s de efectuar una b&uacute;squeda aparece una tabla de resultados que contiene tres columnas: "Nombre", "Tipo" y "Ruta".</p>
+<p>Si desea ver un resultado, haga clic en el nombre correspondiente en la columna "Nombre". De este modo: <ul><li>Se colocar&aacute; la ventana principal como la primera de todas.</li>
+        <li>Se actualizar&aacute; el panel de navegaci&oacute;n de la ventana principal: la entidad representada por el v&iacute;nculo "Nombre" ser&aacute; una entrada en la tabla de navegaci&oacute;n con un fondo azul. </li>
+        <li>Se actualizar&aacute; el &aacute;rea de contenidos de la ventana principal con la norma de configuraci&oacute;n asociada a esa entidad.</li>
+    </UL>
+</p>
+<p>La columna "Tipo" muestra el tipo de entidad. Una entidad puede ser del tipo "Organizaci&oacute;n", "Usuario" o "Rol".</p>
+<p>La columna "Ruta" contiene la ruta hasta la entidad; es relativa al punto de inicio de la b&uacute;squeda.</p>
+<p>Si el tipo que se ha buscado es "Usuario", el &aacute;rea de par&aacute;metros muestra varios cuadros de texto para especificar las caracter&iacute;sticas de un usuario: "ID de usuario", "Nombre" y "Apellidos". En el &aacute;rea de resultados aparece una columna adicional para el "ID de usuario" en la parte derecha de la columna "Nombre", que contiene los ID del usuario. Si el cuadro de texto "ID de usuario" del &aacute;rea de par&aacute;metros contiene al menos un car&aacute;cter, la columna de ordenaci&oacute;n principal es la de "ID de usuario". Si no es as&iacute;, la columna de ordenaci&oacute;n principal es la columna "Nombre". </p><a name="hoststab"> </a> <div class="help-header-2">Ficha Sistemas</div>
+<p>La ficha <b>Sistemas</B> contiene dos subfichas: <b>&Aacute;rbol del dominio</B> y <b>Dep&oacute;sito de normas</B>. </p><a name="domtree"></a><div class="help-header-3">Ficha &Aacute;rbol del dominio</div>
+<p>El &Aacute;rbol del dominio muestra la configuraci&oacute;n del hardware sobre el que trabaja el usuario.</P>
+<p>La navegaci&oacute;n por el &aacute;rbol del dominio es similar a la navegaci&oacute;n por el &Aacute;rbol de la organizaci&oacute;n; consulte la secci&oacute;n <a href="#entities">Ficha Usuarios</A> para obtener m&aacute;s detalles. <a name="actionbar"></a><div class="help-header-3">Barra de acciones</div>
+<p>El men&uacute; desplegable <b>Filtro</B>, en la tabla de navegaci&oacute;n, contiene cuatro elementos: <ul><li>"Todos los elementos": muestra todos los tipos de entidades</li>
+    <li>"Dominios": muestra entidades del tipo Dominio</li>
+    <li>"Sistemas": muestra entidades del tipo Sistema </li>
+</ul>
+</p><a name="adfilterhosts"></a><div class="help-header-3">Filtro avanzado</div>
+<p>El Filtro avanzado del &aacute;rbol del dominio trabaja como el Filtro avanzado del &Aacute;rbol de la organizaci&oacute;n (consulte la secci&oacute;n anterior <a href="#adfilter">Filtro avanzado</a>). El Filtro avanzado del &aacute;rbol del dominio proporciona los tipos de entidad "Dominio" y "Sistema" desde los que filtrar. </p><a name="searchhosts"></a><div class="help-header-3">Buscar</div>
+<p>Si hace clic en el bot&oacute;n <b>Buscar</b> de la ficha <b>&Aacute;rbol del dominio</b>, se abre una ventana de b&uacute;squeda de dominios que funciona igual que la b&uacute;squeda en el &Aacute;rbol de la organizaci&oacute;n (consulte las <a href="#">p&aacute;ginas anteriores</a>), pero el campo del punto de inicio est&aacute; establecido en "Hardware".</p>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="psptab"> </a> <div class="help-header-2">Dep&oacute;sitos de normas</div>
+<p>La ficha <b>Dep&oacute;sito de normas</b> se encuentra tanto en <b>Usuarios</B> como en <b>Sistemas</B>.</P>
+<p>Un dep&oacute;sito de normas es un contenedor para los grupos de normas del usuario y de los sistemas. Los grupos de normas se organizan en una lista ordenada cuya secuencia se define mediante prioridades. </p><a name="psptable"></a><div class="help-header-3">Tabla del grupo de normas</div>
+<P>La tabla del grupo de normas se encuentra en la parte superior de la p&aacute;gina y enumera los grupos de normas. La tabla contiene tres columnas: un columna de selecci&oacute;n, "Nombre" y "Prioridad". </P>
+<P>La columna de selecci&oacute;n se utiliza para marcar las filas a las que se aplican las acciones enumeradas en el men&uacute; desplegable <b>Acciones del grupo de normas</b>.</P>
+<P>Para examinar un grupo de normas, haga clic en su nombre. De este modo:</P>
+<UL>
+   	<li>El color del fondo de la fila seleccionada se convierte en azul.</li>
+   	<li>El panel de contenidos se actualiza con los datos asociados con la entidad seleccionada.</li>
+</ul>
+<p>La columna "Prioridad" contiene la prioridad del grupo de normas que se utiliza para definir el orden de uni&oacute;n de los grupos de normas si un administrador ha asociado m&aacute;s de un grupo de normas a una entidad.</p>
+<P>Una fila con el fondo azul marca los grupos de normas cuyos datos son visibles en el panel de contenidos, el grupo de normas visualizadas. </P><a name="pspactions"></a><div class="help-header-3">Barra de acciones del grupo de normas</div>
+<P>El men&uacute; desplegable <b>Acciones del grupo de normas</B> contiene las acciones siguientes, mostradas de arriba abajo: </P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>Nombre</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>Acci&oacute;n</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Nuevo</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Se abre un cuadro de di&aacute;logo, donde el usuario introduce el nombre (exclusivo) del grupo de normas. Despu&eacute;s de hacer clic, se a&ntilde;ade el grupo de normas. El panel de navegaci&oacute;n se actualiza para reflejar los cambios.</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>Borrar</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>Se abre una ventana emergente, con un mensaje de advertencia para confirmar la supresi&oacute;n de los grupos de normas. Si el usuario hace clic en Aceptar, se borran los grupos de normas. El panel de navegaci&oacute;n se actualiza para reflejar los cambios.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Cambiar nombre</p>
+                </td>
+                <td width="89%">
+                    <p>Se abre un cuadro de di&aacute;logo, el usuario escribe el nuevo nombre (exclusivo) del grupo de normas, &eacute;ste recibe el nuevo nombre y el panel de navegaci&oacute;n se actualiza para reflejar los cambios.</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Editar prioridades</p>
+                </td>
+                <td width="89%">
+                    <p>Se abre un cuadro de di&aacute;logo, que contiene un cuadro de lista para cambiar las prioridades.</p>
+                </td>
+            </tr>            
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Exportar</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Se abre un cuadro de di&aacute;logo. El usuario escribe la ruta de destino donde se exportan los grupos de normas seleccionados.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Importar</p>
+                </td>
+                <td width="89%">
+                    <p>Se abre un cuadro de di&aacute;logo. El usuario selecciona los grupos de normas que desee importar. Despu&eacute;s de hacer clic en Aceptar, el grupo de normas se a&ntilde;ade y el panel de navegaci&oacute;n se actualiza para reflejar los cambios.</p>
+                </td>
+            </tr>            
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">Prioridades del grupo de normas</div></p>
+<p>El concepto de prioridades de los grupos de normas permite al administrador definir el orden en el que se unen las capas. Las prioridades se utilizan durante la uni&oacute;n si una entidad tiene m&aacute;s de un grupo de normas asignado. En este caso, la jerarqu&iacute;a de entidades no es suficiente para determinar la secuencia en que se unen los grupos de normas. Esta cuesti&oacute;n se soluciona asignando prioridades a los grupos de normas.</p>
+<p>Si desea abrir el cuadro de di&aacute;logo de prioridades de los grupos de normas seleccione <b>Editar prioridades</b> en el men&uacute; desplegable <b>Acciones del grupo de normas</b>. Si desea aumentar o reducir la prioridad de un grupo de normas:</p>
+<ol>
+    <li>Seleccione el grupo de normas de la lista.</li>
+    <li>Haga clic en los botones <b>Desplazar hacia arriba</b> o <b>Desplazar hacia abajo</b> para aumentar o reducir la prioridad. </li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="content"> </a> <div class="help-header-1">Panel de contenidos</div>
+<p>El panel de contenidos muestra los datos asociados con una entidad seleccionada o un grupo de normas del panel de navegaci&oacute;n. Los datos se agrupan en fichas. Las selecciones efectuadas en el panel de navegaci&oacute;n determinan el n&uacute;mero y tipo de fichas mostradas en el panel de contenidos. La ficha <b>Normas</b> es la ficha activa de manera predeterminada. La ficha activa actual permanece activa aunque las selecciones se cambien en el panel de navegaci&oacute;n, siempre que la selecci&oacute;n efectuada proporcione esa ficha. Si no es as&iacute;, la ficha <b>Normas</b> se convierte en la ficha activa. Cuando la ficha vuelve a estar de nuevo activa se llama al estado interno de dicha ficha (ruta de relaci&oacute;n, tipo de orden). </p><a name="policies"> </a> <div class="help-header-2">Ficha Normas</div>
+<p>La ficha <b>Normas</B> permite explorar el &aacute;rbol de normas de configuraci&oacute;n que muestra los subgrupos, la configuraci&oacute;n o ambos.</p>
+<p>Cada p&aacute;gina de normas cuenta con dos botones: <ul><li><b>Crear Informe</b>: consulte la secci&oacute;n <a href="#reporting">Informe</a> para conocer los detalles.</li>
+    <li><b>Borrar valores de configuraci&oacute;n</b>: este bot&oacute;n borra regularmente todos los datos de la configuraci&oacute;n de la entidad visualizada bajo el subgrupo que se muestre. </li>
+</ul>
+</P>
+<p>Cada entrada de la ra&iacute;z del &aacute;rbol de normas de configuraci&oacute;n representa una aplicaci&oacute;n, por ejemplo "StarOffice 7". El &aacute;rbol dependiente de la aplicaci&oacute;n organiza las normas de configuraci&oacute;n que pertenecen a esa aplicaci&oacute;n y que se pueden encontrar en cualquier lugar del &aacute;rbol de normas de configuraci&oacute;n. Si alguna norma no es una hoja del &aacute;rbol de normas de configuraci&oacute;n, ser&aacute; necesario mostrar tanto la tabla de normas como la norma de configuraci&oacute;n en una ubicaci&oacute;n actual del &aacute;rbol de normas de configuraci&oacute;n.  </p><a name="caparpath"> </a> <div class="help-header-3">Ruta de relaci&oacute;n</div>
+<p>La ruta de relaci&oacute;n se muestra en la parte superior de la p&aacute;gina bajo en nombre de las fichas. Muestra la situaci&oacute;n en el &aacute;rbol de normas de configuraci&oacute;n. Funciona del mismo modo que la ruta de relaci&oacute;n del panel de navegaci&oacute;n (consulte la secci&oacute;n anterior <a class="help-link" href="#parpath">Ruta de relaci&oacute;n</a>). </p><a name="subgroupstable"> </a> <div class="help-header-3">Tabla de subgrupos</div>
+<P>La tabla de subgrupos se encuentra bajo la ruta de relaci&oacute;n; muestra los subgrupos de la ubicaci&oacute;n en el &aacute;rbol de normas de configuraci&oacute;n. Contiene dos columnas: "Nombre" y "Comentario".</P>
+<P>La columna "Nombre" contiene los nombres de todos los subgrupos de la ubicaci&oacute;n en el &aacute;rbol de normas de configuraci&oacute;n. El nombre se muestra como un v&iacute;nculo. Si desea navegar por el &aacute;rbol de normas de configuraci&oacute;n haga clic en el v&iacute;nculo de un nombre. De este modo:</P>
+<UL>
+    	<li>Se actualiza el panel de contenidos y la ruta de relaci&oacute;n apunta a la nueva ubicaci&oacute;n en el &aacute;rbol de normas de configuraci&oacute;n.</li>
+   	<li>Se actualiza el panel de contenidos y se muestra una tabla de normas o una norma.</LI>
+</UL>
+<P>Este tipo de navegaci&oacute;n se conoce como del tipo "profundizaci&oacute;n".</P>
+<P>La columna Comentario contiene una breve descripci&oacute;n del subgrupo. </P><A NAME="capolicies"></A> <div class="help-header-3">Norma</div>
+<P>Si hay datos de normas de configuraci&oacute;n disponibles para la combinaci&oacute;n de la entidad y la norma de configuraci&oacute;n actuales, la ficha "Normas" del panel de contenidos los muestra.</p>
+<p>Los datos se presentan en tablas que se dividen en cuatro columnas: iconos de selecci&oacute;n, "Estado", "Nombre" y "Valor". La barra de acciones de la tabla tiene un men&uacute; desplegable. </p>
+<p>Si desea seleccionar un elemento, marque la casilla de verificaci&oacute;n que hay delante de &eacute;l. Se puede realizar ahora una acci&oacute;n del men&uacute; desplegable de acciones de la barra de acciones del elemento seleccionado. La tabla siguiente describe todas las acciones</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>Acci&oacute;n</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>Funcionamiento</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Proteger</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Protege el elemento seleccionado.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Desproteger</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Suprime la protecci&oacute;n del elemento seleccionado.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Aplicar valores predeterminados</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Utiliza los datos predeterminados no modificables de la plantilla de normas.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Vaciar</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Borra los datos almacenados en el elemento.</P>
+            </TD>
+        </TR>
+        
+</TABLE>
+<p>Dos iconos, situados a la izquierda del nombre del elemento, muestran el estado de &eacute;ste. La tabla siguiente explica los iconos y sus funciones:</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>Icono</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>Significado</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>Funcionamiento</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="Defined Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Este icono ilustra que el valor del elemento se defini&oacute; en este nivel del &aacute;rbol de organizaci&oacute;n.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered" ALT="Defined Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Este icono, que tambi&eacute;n es un v&iacute;nculo, ilustra que el valor del elemento se defini&oacute; en un nivel superior del &aacute;rbol de organizaci&oacute;n (o dominio). El valor que el usuario ve es el resultado de la uni&oacute;n de capas o niveles de entidades, dentro de la organizaci&oacute;n.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Si hace clic en este icono le lleva donde se ha definido el valor.</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere" ALT="Protected Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Este icono ilustra que la protecci&oacute;n del elemento se defini&oacute; en este nivel del &aacute;rbol de organizaci&oacute;n (o de dominio). La protecci&oacute;n se hereda a trav&eacute;s de los &aacute;rboles de normas de configuraci&oacute;n y de organizaci&oacute;n.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered" ALT="Protected Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Este icono, que tambi&eacute;n es un v&iacute;nculo, ilustra que la protecci&oacute;n del elemento se defini&oacute; en un nivel superior del &aacute;rbol de organizaci&oacute;n (o dominio). La protecci&oacute;n de este elemento es resultado de la uni&oacute;n de capas o niveles de entidades, dentro de la organizaci&oacute;n.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Si el usuario hace clic en este icono llegar&aacute; al lugar donde se defini&oacute; la protecci&oacute;n.</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>Los valores de los datos se pueden cambiar modificando los valores de la columna "Valor". Los cambios en los valores y en el estado se deben guardar. Para ello debe hacer clic en el bot&oacute;n <b>Guardar</b>. </p><a name="casets"> </a> <div class="help-header-3">Conjuntos</div>
+<p>Los conjuntos son colecciones din&aacute;micas de propiedades. Puede a&ntilde;adir o borrar elementos del conjunto.</p>
+<p>Si desea a&ntilde;adir un elemento a un conjunto: <ol><li>Haga clic en el bot&oacute;n <b>Nuevo</b>. </li>
+    <li>Un cuadro de di&aacute;logo permite escribir el nombre del nuevo elemento. El elemento se a&ntilde;ade y la ventana principal se actualiza.</li>
+    <li>El nuevo elemento se puede editar en la ventana principal.</li>
+</ol>
+<p>Si desea borrar un elemento de un conjunto, selecci&oacute;nelo y haga clic en el bot&oacute;n <b>Borrar</B>.</p>
+<p>Tenga en cuenta que los conjuntos pueden contener otros conjuntos representados como v&iacute;nculos. Si el usuario hace clic en el v&iacute;nculo llegar&aacute; al conjunto, desde el cual podr&aacute; editar &eacute;ste. </p><a name="policysets"> </a> <div class="help-header-2">Tabla de los grupos de normas</div>
+<p>La p&aacute;gina Grupos de normas permite a&ntilde;adir y suprimir grupos de normas en la entidad seleccionada.</p>
+<p>Si desea a&ntilde;adir un grupo de normas que aparezca en la lista <b>Disponible</b> en el lado izquierdo:</p>
+<ol>
+    <li>Seleccione el grupo de normas de la lista.</li>
+    <li>Haga clic en el bot&oacute;n <b>Agregar</b> para a&ntilde;adir el grupo de normas seleccionadas a la lista <b>Seleccionados</B>.</li>
+    <li>Haga clic en <b>Guardar</b> para almacenar la nueva asignaci&oacute;n.  </LI>
+</ol><a name="caentities"> </a> <div class="help-header-2">Ficha Asignados</div>
+<p>Si se selecciona un grupo de normas en el Dep&oacute;sito de normas del panel de navegaci&oacute;n, el panel de contenidos contendr&aacute; la p&aacute;gina <b>Asignados</b>. en la cual se enumeran todas las entidades a las que se asigna el grupo de normas seleccionadas.</p>
+<p>Las acciones que se pueden efectuar en la p&aacute;gina Asignados son: <ul><li><b>Borrar</B> interrumpe la asociaci&oacute;n que existe entre las entidades seleccionadas y el grupo de normas seleccionadas en el panel de navegaci&oacute;n. </li>
+    <li>Si se hace clic en una entidad en la columna "Nombre" se actualiza el panel de navegaci&oacute;n, de manera que la entidad sobre la que se ha hecho clic es la entidad del panel de navegaci&oacute;n con el fondo azul. </li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="roles"> </a> <div class="help-header-2">Ficha Roles</div>
+<p>Si se selecciona una entidad del tipo "Usuario" en el panel de navegaci&oacute;n y ese usuario es miembro de al menos un rol, el panel de contenidos incluir&aacute; la p&aacute;gina <b>Roles</B> en la cual se enumeran todos los roles de los que es miembro el usuario seleccionado.<b></B></p>
+<p>Esta p&aacute;gina tiene dos columnas, "Nombre" y "Ruta". "Nombre" contiene los nombres de los roles y "Ruta", la ruta absoluta al rol. </p><a name="users"> </a> <div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a> </div><a name="reporting"> </a> <div class="help-header-1">Informe</div>
+<p>Un informe es una visualizaci&oacute;n de s&oacute;lo lectura de todos los valores de configuraci&oacute;n que contienen datos. Un informe se genera al hacer clic en el bot&oacute;n <b>Crear informe</B>. Este bot&oacute;n abre el cuadro de di&aacute;logo Configurar un informe.</p>
+<p>En este cuadro se permite personalizar: <ul><li>Qu&eacute; &aacute;rbol (de organizaci&oacute;n o de dominio) se debe tener en cuenta (<b>Usar para informe</B>) </li>
+    <li>Qu&eacute; columnas se deben mostrar en el informe generado (se pueden desactivar la <b>Ruta de estado</b> y la <b>Descripci&oacute;n</B>) </li>
+</ul>
+<p>Despu&eacute;s de la personalizaci&oacute;n, si se hace clic en el informe se abrir&aacute; una visualizaci&oacute;n de s&oacute;lo lectura de los datos seleccionados.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> Volver al principio</a></div>
+
+</body>
+</html>

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE propertysheet SYSTEM "tags/dtd/propertysheet.dtd">
+
+<propertysheet>
+    <section name="contexts" defaultValue=" ">
+        <property>
+            <label name="LeftContextLabel" defaultValue="APOC.sync.sourcerep.label" />
+            <cc name="LeftContext" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag" >
+                <attribute name="title" value="APOC.sync.sourcerep.help"/>
+                <attribute name="onChange" value="javascript:handleSelection(this); return true;"/>
+            </cc> 
+        </property>
+        <property>
+            <label name="LeftContextPath" defaultValue="APOC.sync.sourcepath.label" />
+            <cc name="LeftPath" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+            <cc name="LeftSpace" tagclass="com.sun.web.ui.taglib.spacer.CCSpacerTag" >
+                <attribute name="height" value="1"/>
+                <attribute name="width" value="15"/> 
+            </cc>
+            <cc name="LeftBrowseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag" >
+                <attribute name="bundleID" value="apocBundle"/>
+                <attribute name="defaultValue" value="APOC.sync.sourcepath.button"/>
+                <attribute name="type" value="secondaryMini"/> 
+                <attribute name="title" value="APOC.sync.sourcepath.help"/>
+                <attribute name="onClick" value="javascript:openLeftBrowseTreeWindow(); return false"/>
+            </cc>
+        </property>
+        <property>
+            <label name="RightContextLabel" defaultValue="APOC.sync.targetrep.label" />
+            <cc name="RightContext" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag" >
+                <attribute name="title" value="APOC.sync.targetrep.help"/>
+                <attribute name="onChange" value="javascript:handleSelection(this); return true;"/>
+            </cc> 
+        </property>
+        <property>
+            <label name="RightContextPath" defaultValue="APOC.sync.targetpath.label" />
+            <cc name="RightPath" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+            <cc name="RightSpace" tagclass="com.sun.web.ui.taglib.spacer.CCSpacerTag" >
+                <attribute name="height" value="1"/>
+                <attribute name="width" value="15"/> 
+            </cc>
+            <cc name="RightBrowseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag" >
+                <attribute name="bundleID" value="apocBundle"/>
+                <attribute name="defaultValue" value="APOC.sync.targetpath.button"/>
+                <attribute name="type" value="secondaryMini"/> 
+                <attribute name="title" value="APOC.sync.targetpath.help"/>
+                <attribute name="onClick" value="javascript:openRightBrowseTreeWindow(); return false"/>
+            </cc>
+        </property>
+    </section>
+</propertysheet>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <column name="LeftNameColumn" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="LeftRightSort" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        <cc name="LeftIdHidden" tagclass="com.sun.web.ui.taglib.html.CCHiddenTag" />
+        <cc name="RightIdHidden" tagclass="com.sun.web.ui.taglib.html.CCHiddenTag" />
+    </column>
+    <column name="DiffsColumn" extrahtml="nowrap='nowrap'">
+        <cc name="DiffsHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="submitFormData" value="true" />
+            <cc name="DiffsText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+        <cc name="DiffsText2" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+</table>

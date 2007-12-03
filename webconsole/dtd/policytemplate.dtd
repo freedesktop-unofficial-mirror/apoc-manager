@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+ DO NOT ALTER OR REMOVE COPYRIGHT NOTICES OR THIS HEADER.
+ 
+ Copyright 2007 Sun Microsystems, Inc. All rights reserved.
+ 
+ The contents of this file are subject to the terms of either
+ the GNU General Public License Version 2 only ("GPL") or
+ the Common Development and Distribution License("CDDL")
+ (collectively, the "License"). You may not use this file
+ except in compliance with the License. You can obtain a copy
+ of the License at www.sun.com/CDDL or at COPYRIGHT. See the
+ License for the specific language governing permissions and
+ limitations under the License. When distributing the software,
+ include this License Header Notice in each file and include
+ the License file at /legal/license.txt. If applicable, add the
+ following below the License Header, with the fields enclosed
+ by brackets [] replaced by your own identifying information:
+ "Portions Copyrighted [year] [name of copyright owner]"
+ 
+ Contributor(s):
+ 
+ If you wish your version of this file to be governed by
+ only the CDDL or only the GPL Version 2, indicate your
+ decision by adding "[Contributor] elects to include this
+ software in this distribution under the [CDDL or GPL
+ Version 2] license." If you don't indicate a single choice
+ of license, a recipient has the option to distribute your
+ version of this file under either the CDDL, the GPL Version
+ 2 or to extend the choice of license to its licensees as
+ provided above. However, if you add GPL Version 2 code and
+ therefore, elected the GPL Version 2 license, then the
+ option applies only if the new code is made subject to such
+ option by the copyright holder.
+-->
+ 
+
+<!ELEMENT apt:template (resImport*, category)>
+<!ATTLIST apt:template
+    xmlns:apt CDATA #FIXED "http://www.sun.com/jds/apoc/2004/template"
+    xmlns:oor CDATA #FIXED "http://openoffice.org/2001/registry"
+    xmlns:xs  CDATA #FIXED "http://www.w3.org/2001/XMLSchema"
+    xmlns:xsi CDATA #FIXED "http://www.w3.org/2001/XMLSchema-instance"
+>
+
+<!ELEMENT resImport EMPTY>
+<!ATTLIST resImport
+    apt:packagePath NMTOKEN #REQUIRED
+>
+
+<!ELEMENT category (category | page)>
+<!ATTLIST category
+    apt:name ID #REQUIRED
+    apt:scope (user | host | global) #IMPLIED
+    apt:label NMTOKEN #IMPLIED
+    apt:inlineHelp NMTOKEN #IMPLIED
+>
+
+<!ELEMENT page ((section | set)+, xmlHandler*)>
+<!ATTLIST page
+    apt:name ID #REQUIRED
+    apt:scope (user | host | global) #IMPLIED
+    apt:label NMTOKEN #IMPLIED
+    apt:inlineHelp NMTOKEN #IMPLIED
+    apt:onlineHelp CDATA #IMPLIED
+>
+
+<!ELEMENT section (property+)>
+<!ATTLIST section
+    apt:name ID #REQUIRED
+    apt:scope (user | host | global) #IMPLIED
+    apt:label NMTOKEN #IMPLIED
+>
+
+<!ELEMENT set (page)>
+<!ATTLIST set
+    apt:name ID #REQUIRED
+    apt:scope (user | host | global) #IMPLIED
+    apt:label NMTOKEN #IMPLIED
+    apt:labelPopup NMTOKEN #IMPLIED
+    apt:dataPath CDATA #REQUIRED
+    apt:elementNamePath CDATA #IMPLIED
+>
+
+<!ELEMENT property (constraints?, value*, visual?)>
+<!ATTLIST property
+    apt:name ID #REQUIRED
+    apt:scope (user | host | global) #IMPLIED
+    apt:label NMTOKEN #IMPLIED
+    apt:inlineHelp NMTOKEN #IMPLIED
+    apt:dataPath CDATA #REQUIRED
+    oor:type (xs:boolean | xs:short | xs:int | xs:long | xs:double | xs:string | xs:hexBinary | oor:any | oor:boolean-list | oor:short-list | oor:int-list | oor:long-list | oor:double-list | oor:string-list | oor:hexBinary-list) #IMPLIED
+    apt:storeDefault (true | false) #IMPLIED
+    apt:xmlHandler IDREF #IMPLIED
+>
+
+<!ELEMENT visual (checkBox | chooser)?>
+<!ATTLIST visual
+    apt:type (textField | password | textArea | radioButtons | comboBox | stringList | colorSelector | hidden) #IMPLIED
+>
+
+<!ELEMENT  checkBox EMPTY>
+<!ATTLIST checkBox
+    apt:labelPost NMTOKEN #IMPLIED
+>
+
+<!ELEMENT  chooser EMPTY>
+<!ATTLIST chooser
+    apt:labelPopup NMTOKEN #IMPLIED
+    apt:dataPath CDATA #IMPLIED
+    apt:extendsChooser CDATA #IMPLIED
+>
+
+<!ELEMENT value (#PCDATA)>
+<!ATTLIST value
+    xsi:nil (true | false) #IMPLIED
+    oor:separator CDATA #IMPLIED
+>
+
+<!ELEMENT constraints (enumeration*, length?, minLength?, maxLength?, minInclusive?, maxInclusive?, minExclusive?, maxExclusive?)>
+
+<!ELEMENT enumeration EMPTY>
+<!ATTLIST enumeration
+    oor:value CDATA #REQUIRED
+    apt:label NMTOKEN #IMPLIED
+>
+<!ELEMENT length EMPTY>
+<!ATTLIST length oor:value CDATA #REQUIRED
+>
+<!ELEMENT minLength EMPTY>
+<!ATTLIST minLength oor:value CDATA #REQUIRED
+>
+<!ELEMENT maxLength EMPTY>
+<!ATTLIST maxLength oor:value CDATA #REQUIRED
+>
+<!ELEMENT minInclusive EMPTY>
+<!ATTLIST minInclusive oor:value CDATA #REQUIRED
+>
+<!ELEMENT maxInclusive EMPTY>
+<!ATTLIST maxInclusive oor:value CDATA #REQUIRED
+>
+<!ELEMENT minExclusive EMPTY>
+<!ATTLIST minExclusive oor:value CDATA #REQUIRED
+>
+<!ELEMENT maxExclusive EMPTY>
+<!ATTLIST maxExclusive oor:value CDATA #REQUIRED
+>
+
+<!ELEMENT xmlHandler (event+, action+)>
+<!ATTLIST xmlHandler apt:name ID #REQUIRED>
+
+<!ELEMENT event EMPTY>
+<!ATTLIST event apt:type (onChange) #IMPLIED>
+
+<!ELEMENT action (choose|command)+>
+
+<!ELEMENT choose (when+, otherwise?)>
+
+<!ELEMENT when (command+)>
+<!ATTLIST when apt:test CDATA #REQUIRED>
+
+<!ELEMENT otherwise (command+)>
+
+<!ELEMENT command (#PCDATA)>

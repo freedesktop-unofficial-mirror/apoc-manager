@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager - Inhalt der Hilfe </title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><!-- Empty script so IE5.0 Windows will draw table and button borders --><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"></script>  </head>
+
+<body class="help-body"><a name="top"></a> <p><a name="intro"> </a><div class="help-header-1">Hilfe zu Configuration Manager</div></p>
+<p>Willkommen bei den Hilfeseiten zu Sun Java[TM] Desktop System Configuration Manager. Wenn Sie Hilfe zu einer bestimmten Komponente von Java Desktop System Configuration Manager ben&ouml;tigen, klicken Sie auf die entsprechende Verkn&uuml;pfung auf der linken Seite.</p>
+<p>Die Hilfe beginnt mit einer Einf&uuml;hrung in den Hintergrund und die Konzepten des Produkts - <a class="help-link" href="#concepts">Hintergrund und Konzepte</a>. In <a class="help-link" href="#ui">Struktur und Verhalten</a> wird der Aufbau und das Verhalten von Configuration Manager behandelt. </p>
+<p>Nach diesen allgemeinen Informationen finden Sie spezifischere Hilfe zum <a class="help-link" href="#masthead"><b>Impressum</b></a>, dem <a class="help-link" href="#navigation"><b>Navigationsbereich</b></a> und dem <a class="help-link" href="#content"><b>Inhaltsbereich</b></a>. Au&szlig;erdem stehen Seiten mit Informationen &uuml;ber die <a class="help-link" href="#login">Anmeldung</a> und die <a href="#reporting">Berichterstellungsfunktion</a>. <p><a name="concepts"> </a> <div class="help-header-1">Hintergrund und Konzepte</div></p>
+<p>Configuration Manager erm&ouml;glicht eine zentralisierte Verwaltung von Konfigurationseinstellungen. Es k&ouml;nnen Konfigurationseinstellungen auf den unterschiedlichen Ebenen einer Unternehmenshierarchie angezeigt, definiert und in Kraft gesetzt werden. In semantischer Hinsicht zusammenh&auml;ngende Konfigurationseinstellungen werden im Folgenden als "Konfigurationsrichtlinien" bezeichnet.</p>
+<P>In Configuration Manager werden drei verschiedene hierarchische Strukturen, auch B&auml;ume genannt, verwendet. Die Unterscheidung dieser B&auml;ume ist eine wichtige Voraussetzung f&uuml;r das Verst&auml;ndnis der Benutzeroberfl&auml;che von Configuration Manager:</P>
+<p><div class="help-header-2"><a name="dataStructures">Datenstrukturen</a></div></p>
+<P>Einer der B&auml;ume besteht aus den Konfigurationsrichtlinien und wird folglich als Konfigurationsrichtlinienbaum bezeichnet (siehe blaue Teile in Abbildung 1 - "B&auml;ume"). Die hierarchische Organisation von Konfigurationseinstellungen ist bereits aus zahlreichen anderen Programmen bekannt, die wie z. B. Mozilla eine eher anspruchsvolle Konfiguration bieten. Eine typische Konfigurationsrichtlinie kann beispielsweise "/Mozilla/Navigator", eine Konfigurationseinstellung "/Mozilla/Navigator/HomeUrl" hei&szlig;en.</P>
+<P>Konfigurationsrichtlinienb&auml;ume sind in den zweiten Baumtyp, den Organisationsbaum (siehe graue Teile in Abbildung 1 - "B&auml;ume"), eingegliedert. Im Organisationsbaum sind die Beziehungen zwischen einzelnen Organisationseinheiten dargestellt. Daraus ergibt sich ein "Organisationsbaum mit Konfigurationsrichtlinienb&auml;umen". Der Organisationsbaum wird mithilfe eines LDAP-Servers dargestellt.</P>
+<p>Bei dem dritten Baumtyp handelt es sich um den Dom&auml;nenbaum. Im Dom&auml;nenbaum sind die Beziehungen zwischen einzelnen Hardware-Einheiten dargestellt. Auch im Dom&auml;nenbaum sind Konfigurationsrichtlinienb&auml;ume enthalten. Dadurch ergibt sich ein Dom&auml;nenbaum mit Konfigurationsrichtlinenb&auml;umen. Der Dom&auml;nenbaum wird ebenfalls mithilfe eines LDAP-Servers dargestellt.</p>
+<p>F&uuml;r die Arbeit mit dem Organisations- und dem Dom&auml;nenbaum gelten dieselben Prinzipien. Der Hauptunterschied zwischen beiden besteht darin, dass im Organisationsbaum Benutzer und im Dom&auml;nenbaum Rechner behandelt werden. Durch die Trennung von Benutzern und Rechnern in zwei separate B&auml;ume bietet Configuration Manager die M&ouml;glichkeit, sowohl benutzerbasierte als auch rechnerbasierte Konfigurationen durchzuf&uuml;hren. Aufgrund der Parallellen zwischen den beiden B&auml;umen wird in diesem Abschnitt der Organisationsbaum behandelt und der Dom&auml;nenbaum nur im Fall von Abweichungen ausdr&uuml;cklich genannt.</p>
+<P>LDAP-Server sind in gro&szlig;en Unternehmen ein &uuml;bliches Hilfsmittel zur hierarchischen Strukturierung von Organisationsdaten. Jede Position (Adresse) innerhalb des LDAP-Organisationsbaums wird als eine Entit&auml;t bezeichnet.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="B&auml;ume" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Abbildung 1 &ndash; B&auml;ume</FONT></FONT></I></FONT></P>
+<p><div class="help-header-2"><a name="SecDataManagement">Sicherheit und Datenverwaltung</a></div></p>
+<p>Dieser "Baum der B&auml;ume" erleichtert die hierarchische Sicherheits- und Datenverwaltung. Hierzu wird zun&auml;chst der gesamte Konfigurationsrichtlinienbaum einmal am Ursprung (Root) des Organisationsbaums eingef&uuml;gt. Entit&auml;tsspezifische &Auml;nderungen an den Konfigurationseinstellungen dieses urspr&uuml;nglichen Konfigurationsrichtlinienbaums werden bei der entsprechenden Entit&auml;t gespeichert. Der Einfachheit halber sind in Abbildung 1 nur die Konfigurationsrichtlinienb&auml;ume der Organisationsentit&auml;ten namens "marketing" und "jclarke" dargestellt.</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">Generierung von Konfigurationseinstellungen</a></div></p>
+<P>Die Konfigurationseinstellungen f&uuml;r eine Entit&auml;t erhalten Sie durch Zusammenf&uuml;hrung. S&auml;mtliche Konfigurationeinstellungen einer Entit&auml;t im Organisations- oder Dom&auml;nenbaum hei&szlig;en Ebenen. Die Zusammenf&uuml;hrung beginnt an der Root-Ebene und verl&auml;uft den Baum entlang bis zur gew&uuml;nschten Entit&auml;t. Eine &Auml;nderung einer Konfigurationseinstellung auf der Ebene einer bestimmten Entit&auml;t wird an die Ebenen, die weiter unten im Baum befindlichen Entit&auml;ten zugeordnet sind, vererbt (siehe <A class="help-link" HREF="#fig_merging">Abbildung 2 - "Zusammenf&uuml;hrung von Ebenen"</a>). Die geerbten Werte k&ouml;nnen &uuml;berschrieben werden, wenn f&uuml;r eine bestimmte Ebene eigene Einstellungen definiert sind.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Zusammenf&uuml;hrung von Ebenen" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Abbildung 2 &ndash; Zusammenf&uuml;hrung von Ebenen</FONT></FONT></I></FONT></P>
+<p><FONT COLOR="#000000">Diese Vererbung gilt f&uuml;r Konfigurationseinstellungen sowie f&uuml;r Sicherheitsmerkmale:</FONT> <FONT COLOR="#000000">Wenn Sie f&uuml;r eine Konfigurationseinstellung in der "o=marketing" zugeordneten Ebene das Sicherheitsattribut "protected" angeben, ist diese Konfigurationseinstellung in allen nachfolgenden Ebenen des Baums schreibgesch&uuml;tzt (siehe <A class="help-link" HREF="#fig_protection">Abbildung 3 - "Schutz"</a>).</FONT></P>
+<P><FONT COLOR="#000000"><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Schutz" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1> </FONT></FONT><P><FONT COLOR="#000000"><FONT COLOR="#000000"><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Abbildung 3 &ndash; Schutz</FONT></FONT></I></FONT></FONT></P>
+<p><div class="help-header-2"><a name="BCAssociating">Zuordnung zwischen einem Konfigurationsrichtlinienbaum und einem Organisations- oder Dom&auml;nenbaum</a></div></p>
+<p>Konfigurationsrichtlinienb&auml;ume sind auf zwei Arten mit den Entit&auml;ten eines Organisationsbaums verbunden:</P>
+<UL>
+	<li>Sie sind als selbst&auml;ndige Konfigurationsrichtlinienb&auml;ume bei der Entit&auml;t gespeichert.</li>
+	 <li>Sie sind mit einer Entit&auml;t aus einer Richtliniengruppe verkn&uuml;pft.</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">Richtliniengruppen</a></div></p>
+<P>Bei Richtliniengruppen handelt es sich um Beh&auml;lter f&uuml;r Konfigurationsrichtlinien mit eindeutigen Namen. Gleichzeitig sind sie Beh&auml;lter f&uuml;r einen Konfigurationsrichtlinienbaum, da die Konfigurationseinstellungen einer Konfigurationsrichtlinie in einem Konfigurationsrichtlinienbaum abgelegt werden (siehe <A class="help-link" HREF="#fig_trees">Abbildung 1 -  "B&auml;ume"</A>). Richtliniengruppen werden ihrerseits in einer Richtliniensammlung abgelegt und k&ouml;nnen durch Erstellung von Verkn&uuml;pfungen jedem Typ von Entit&auml;ten zug&auml;nglich gemacht werden. Dadurch entsteht eine gr&ouml;&szlig;ere Flexibilit&auml;t und Unabh&auml;ngigkeit von der verwendeten Datenquelle. Ein weiterer Vorteil dieser Richtliniengruppen besteht in ihrer Import- und Exportf&auml;higkeit, die wesentlich zur Erleichterung der Datenpflege beitr&auml;gt.</P>
+<P>Als Administrator k&ouml;nnen Sie Gruppen von Konfigurationsrichtlinien f&uuml;r separate semantische Bereiche erstellen, beispielsweise eine Richtliniengruppe f&uuml;r "Experten" und eine f&uuml;r "Anf&auml;nger", die in einer Richtliniensammlung gespeichert sind. Die Konfigurationsrichtlinien k&ouml;nnen dann im gesamten Organisationsbaum eingesetzt werden.</P>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="ui"> </a> <div class="help-header-1">Struktur und Verhalten</div>
+<p>Configuration Manager ist in drei Bereiche gegliedert: das Impressum, einen Navigations- und einen Inhaltsbereich. Das Impressum befindet sich im oberen Seitenabschnitt. Unten links befindet sich der Navigationsbereich. Der Abschnitt unten rechts ist der Inhaltsbereich. Diese Struktur wird auch ald Links-Rechts-Layout bezeichnet. F&uuml;r die Anzeige zus&auml;tzlicher Dialoge oder der Hilfe werden separate Browser-Fenster ge&ouml;ffnet.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="login"> </a> <div class="help-header-1">Anmeldung</div>
+<p>F&uuml;r die Arbeit mit Configuration Manager m&uuml;ssen Sie sich bei Sun Web Console anmelden. Unter Sun Web Console finden Sie verschiedene Verwaltungsanwendungen mit einheitlichen Benutzeroberfl&auml;chen. Diese Konsole bietet den Vorteil, dass Sie sich als Administrator nur einmal anmelden m&uuml;ssen, um beliebige &uuml;ber die Konsole zug&auml;ngliche Anwendungen verwenden k&ouml;nnen. Zu diesem Zweck verf&uuml;gt Sun Web Console &uuml;ber eine Standard-Anmeldeseite.</p>
+<p>Auf der Anmeldeseite wird &uuml;ber den Textfeldern f&uuml;r Benutzernamen und Passwort der Server angezeigt, bei dem Sie sich anmelden.</p>
+<p>Nach einer erfolgreichen Anmeldung bei Sun Web Console sehen Sie die Anwendungsstartseite von Sun Web Console. Dort w&auml;hlen Sie die Anwendung "Configuration Manager" aus, und Configuration Manager wird gestartet.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="masthead"> </a> <div class="help-header-1">Impressum</div>
+<p>Quer &uuml;ber den Impressumsbereich erstreckt sich der vollst&auml;ndige Produktname (Sun Java[TM] Desktop System Configuration Manager). Dar&uuml;ber hinaus enth&auml;lt das Impressum verschiedene allgemeine Verkn&uuml;pfungen:</p>
+<ul><li>Die Verkn&uuml;pfung <b>Konsole</b> bringt Sie zur Anwendungsstartseite von Sun Web Console zur&uuml;ck.</li>
+    <li>Die Verkn&uuml;pfung <b>Version</b> &ouml;ffnet ein Fenster mit Versionsinformationen.</li>
+    <li>&Uuml;ber die Verkn&uuml;pfung <b>Abmelden</b> melden Sie sich von Sun Web Console ab und somit auch von Configuration Manager. Es wird wieder die Anmeldeseite angezeigt.</li>
+    <li>Die Verkn&uuml;pfung <b>Hilfe</b> f&uuml;hrt Sie zu diesen Hilfeseiten.</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="navigation"> </a> <div class="help-header-1">Navigationsbereich</div>
+<p>Der Navigationsbereich dient zum Durchsuchen des Organisationsbaums mit seinen Organisationen, Benutzern und Rollen sowie des Dom&auml;nenbaums, der Dom&auml;nen und Rechner enth&auml;lt. Hier k&ouml;nnen Sie au&szlig;erdem Richtliniengruppen in den entsprechenden Benutzer- und Rechner-Richtliniensammlungen verwalten.</p>
+<p>Der Navigationsbereich weist zwei &uuml;bergeordnete Register auf: <b>Benutzer</B> und <b>Rechner</B>. </p><a name="entities"> </a> <div class="help-header-2">Benutzer-Register</div>
+<p>Dieses Register verf&uuml;gt &uuml;ber die zwei Unterregister <b>Organisationsbaum</B> und <b>Richtliniensammlung</B>. Das Register <b>Organisationsbaum</B> dient zum Durchsuchen des Organisationsbaums. </p><a name="parpath"></a><div class="help-header-3">Ursprungspfad</div>
+<p>An oberster Stelle im Register <b>Organisationsbaum</B> sehen Sie den Ursprungspfad, ein Bedienelement, das den Pfad zur aktuellen Entit&auml;t darstellt. Die einzelnen Pfadsegmente au&szlig;er dem letzten sind Verkn&uuml;pfungen, die je eine Entit&auml;t darstellen. Das letzte Segment wird als normaler Text angezeigt und steht f&uuml;r die aktuelle Entit&auml;t. Zur Navigation mittels des Ursprungspfads klicken Sie auf die gew&uuml;nschte Verkn&uuml;pfung. Dadurch wird: <ul><li>der Navigationsbereich aktualisiert, sodass der Pfad der Entit&auml;t, auf die Sie geklickt haben, und in der Navigationstabelle die dieser Entit&auml;t untergeordneten Entit&auml;ten sichtbar werden.</li>
+    <li>der Inhaltsbereich um die dieser Entit&auml;t zugeordneten Konfigurationsrichtliniendaten aktualisiert.  </li>
+</ul>Navigations- und Inhaltsbereich werden stets synchronisiert, um eine einheitliche Ansicht der Daten zu gew&auml;hrleisten. </p><a name="navtable"></a><div class="help-header-3">Navigationstabelle</div>
+<p>Die Navigationstabelle befindet sich unter dem Ursprungspfad und enth&auml;lt die der aktuellen Entit&auml;t untergeordneten Entit&auml;ten. In der Spalte "Name" sind die Namen aller der aktuellen Entit&auml;t untergeordneten Entit&auml;ten aufgef&uuml;hrt. Die Spalte "Typ" zeigt den Typ der einzelnen Entit&auml;ten an. Die Spalte "Aktion" enth&auml;lt f&uuml;r jede Zeile eine Verkn&uuml;pfung namens <b>Ansicht</B>.</p>
+<p>Um eine Entit&auml;t aufzurufen, klicken Sie auf einen der aufgelisteten Namen. Dadurch wird: <ul><li>die ausgew&auml;hlte untergeordnete Entit&auml;t zur aktuellen Entit&auml;t.</li>
+    <li>der Navigationsbereich aktualisiert, sodass der Pfad der neuen aktuellen Entit&auml;t und in der Navigationstabelle die dieser Entit&auml;t untergeordneten Entit&auml;ten sichtbar werden.</li>
+    <li>der Inhaltsbereich um die dieser Entit&auml;t zugeordnete Konfigurationsrichtlinie aktualisiert. </li>
+</ul></p>M&ouml;gliche Entit&auml;tstypen sind "Organisation", "Benutzer" und "Rolle".</p>
+<p>Klicken Sie auf die Verkn&uuml;pfung <b>Ansicht</B>, um die Detailangaben einer aufgelisteten Entit&auml;t anzuzeigen. Dadurch wird: <ul><li>der Hintergrund der ausgew&auml;hlten Reihe blau angezeigt. </li>
+    <li>der Inhaltsbereich um die der ausgew&auml;hlten Entit&auml;t zugeordneten Daten aktualisiert. </li>
+</ul>Eine blau hinterlegte Zeile kennzeichnet die Entit&auml;t, deren Daten aktuell im Inhaltsbereich angezeigt werden.</p>
+<p>Die Aktionsleiste der Navigationstabelle enth&auml;lt das Dropdown-Men&uuml; <b>Filter</B> und das Symbol <b>Erweiterter Filter</b>. Wenn die Tabelle mehr als zehn Eintr&auml;ge enth&auml;lt, wird das Symbol <b>Page/Scroll Through All Data</b> eingeblendet, das zum &Auml;ndern der Ansicht der Tabelleneintr&auml;ge dient.</p>
+<p>Mit dem Dropdown-Men&uuml; <b>Filter</b> k&ouml;nnen Sie ausw&auml;hlen, welcher Entit&auml;tstyp in der Navigationstabelle angezeigt wird. Es enth&auml;lt folgende Eintr&auml;ge: <ul><li>Mit "Alle Elemente" werden in der Navigationstabelle Entit&auml;ten aller Typen angezeigt.</li>
+    <li>Mit "Organisationen" werden in der Navigationstabelle nur Entit&auml;ten vom Typ "Organisation" angezeigt.</li>
+    <li>Mit "Benutzer" werden in der Navigationstabelle nur Entit&auml;ten vom Typ "Benutzer" angezeigt.</li>
+    <li>Mit "Rollen" werden in der Navigationstabelle nur Entit&auml;ten vom Typ "Rolle" angezeigt. </li>
+</ul></p><a name="adfilter"></a><div class="help-header-3">Erweiterter Filter</div>
+<p>Klicken Sie auf das Symbol <b>Erweiterter Filter</B> in der Navigationstabelle, um den gleichnamigen Dialog zu &ouml;ffnen.</P>
+<p>Markieren Sie im Bereich <b>Typ</b> den Entit&auml;tstyp, der gefiltert werden soll. Wenn Sie einen spezifischeren Filter w&uuml;nschen, geben Sie den Namen des zu filternden Elements in das Textfeld <b>Name</b> ein. Klicken Sie dann auf die Schaltfl&auml;che <b>Filtern</B> am unteren Dialogfeldrand, um den Filter auszuf&uuml;hren. </p><a name="search"></a><div class="help-header-3">Suchen</div>
+<p>Zum &Ouml;ffnen des Suchfensters klicken Sie auf die Schaltfl&auml;che <b>Suchen</b> &uuml;ber der Navigationstabelle. Das Suchfenster enth&auml;lt ein Impressum, einen Parameterbereich auf der linken und einen Ergebnisbereich auf der rechten Seite. Es erm&ouml;glicht eine gezielte, rekursive Suche nach Entit&auml;tstypen und Entit&auml;tsnamen im Organisationsbaum. Wenn Sie auf die Schaltfl&auml;che <b>Suchen</b> im Navigationsbereich des Hauptfensters klicken, w&auml;hrend das Suchfenster im Hintergrund ge&ouml;ffnet ist, wird das Suchfenster in den Vordergrund gestellt. Die aktuelle Entit&auml;t des Suchfensters, die durch den Ursprungspfad im Parameterbereich des Suchfensters dargestellt ist, wird aktualisiert. Alle anderen Parameter sowie der Inhalt des Ergebnisbereichs bleiben unver&auml;ndert.</p>
+<p>An oberster Stelle im Parameterbereich sehen Sie den Ursprungspfad, der den Pfad zur aktuellen Entit&auml;t darstellt. Die Verwendung des Parameterbereichs ist unter <a class="help-link" href="#parpath">Ursprungspfad</a> beschrieben.</p>
+<p>F&uuml;r die Suche nach einem bestimmten Entit&auml;tstyp w&auml;hlen Sie diesen Typ in der Dropdown-Liste unter dem Ursprungspfad aus. Es stehen die sechs Auswahlm&ouml;glichkeiten "Alles Suchen", "Organisationen suchen", "Benutzer suchen", "Rollen suchen", "Dom&auml;nen suchen" und "Rechner suchen" zur Verf&uuml;gung.</p>
+<p>Um die Suche weiter einzugrenzen, verwenden Sie das Textfeld neben der Dropdown-Liste. Sie k&ouml;nnen einen Suchtext in dieses Feld eingeben und eine Suche nach Entit&auml;tsnamen durchf&uuml;hren, die mit der Eingabe &uuml;bereinstimmen. Indem Sie eine der Optionen f&uuml;r <b>Startpunkt</b> ausw&auml;hlen, k&ouml;nnen Sie festlegen, an welcher Stelle im Baum die Suche beginnt. Dabei k&ouml;nnen Sie zwischen der aktuellen Position oder der obersten Stelle im Baum als Startpunkt w&auml;hlen. Bei &Uuml;bernahme der Voreinstellung wird die Suche ab der aktuellen Position durchgef&uuml;hrt. Die Positionen werden durch ihre Namen dargestellt. Durch Klicken auf eines der Pfadsegmente im Ursprungspfad wird die ausgew&auml;hlte Entit&auml;t zur aktuellen Position f&uuml;r die Suche. Der im Navigator angezeigte Bereich &auml;ndert sich dadurch jedoch nicht.</p>
+<p>W&auml;hlen Sie in der Dropdown-Liste "Angezeigte Ergebnisse pro Seite" die gew&uuml;nschte Ergebnisanzahl aus.</p>
+<p>In allen Suchfeldern des Suchbereichs und an jeder beliebigen Stelle im Suchtext kann das Sternchen (*) als Platzhalter eingesetzt werden. Das Sternchen steht f&uuml;r eine beliebige Anzahl beliebiger Zeichen. Wenn Sie mehrere Suchkriterien angeben, werden nur die Enti&auml;ten in der Ergebnistabelle aufgef&uuml;hrt, die s&auml;mtliche Kriterien erf&uuml;llen. Die Gro&szlig;-/Kleinschreibung wird in der Suche nicht ber&uuml;cksichtigt.</p>
+<p>Zum Starten der Suche klicken Sie auf die Schaltfl&auml;che <b>Suchen</b>. Dadurch wird der Ergebnisbereich aktualisiert und zeigt eine Tabelle mit den Suchergebnissen an.</p>
+<p>Zum Zur&uuml;cksetzen der Seitenwerte klicken Sie auf die Schaltfl&auml;che <b>Zur&uuml;cksetzen</b>, wodurch der Parameterbereich aktualisiert wird und die Standardwerte anzeigt. S&auml;mtliche Textfelder werden geleert, und in allen Dropdown-Listen und Optionsgruppen wird der erste Wert ausgew&auml;hlt.</p>
+<p>Wenn das Suchfenster ge&ouml;ffnet wird, sehen Sie im Ergebnisbereich eine leere Seite. Nach der Durchf&uuml;hrung einer Suche wird eine Ergebnistabelle angezeigt. Die Ergebnistabelle enth&auml;lt drei Spalten: "Name", "Typ" und "Pfad".</p>
+<p>Zum Anzeigen eines Ergebnisses klicken Sie auf den entsprechenden Namen in der Spalte "Name". Dadurch wird: <ul><li>das Hauptfenster in den Vordergrund gestellt.</li>
+        <li>der Navigationsbereich des Hauptfensters aktualisiert, sodass die durch die Verkn&uuml;pfung "Name" dargestellte Entit&auml;t als blau hinterlegter Eintrag in der Navigationstabelle zu sehen ist. </li>
+        <li>der Inhaltsbereich des Hauptfensters um die dieser Entit&auml;t zugeordnete Konfigurationsrichtlinie aktualisiert.</li>
+    </UL>
+</p>
+<p>Die Spalte "Typ" zeigt den Typ der einzelnen Entit&auml;ten an. M&ouml;gliche Entit&auml;tstypen sind "Organisation", "Benutzer" und "Rolle".</p>
+<p>Die Spalte "Pfad" enth&auml;lt den Pfad zur Entit&auml;t. Dabei handelt es sich um den zum Startpunkt der Suche relativen Pfad.</p>
+<p>Bei einer Suche nach dem Typ "Benutzer" sehen Sie im Parameterbereich folgende Textfelder f&uuml;r die Anzeige der Benutzermerkmale: "Benutzer ID", "Vorname" und "Nachname". Im Ergebnisbereich wird rechts neben der Spalte "Name" eine weitere Spalte mit der Bezeichnung "Benutzer ID" angezeigt, in der die Benutzer-IDs aufgef&uuml;hrt sind. Wenn das Textfeld "Benutzer ID" im Paremeterbereich mindestens ein Zeichen enth&auml;lt, wird die Tabelle nach der Spalte "Benutzer ID" sortiert. Anderenfalls gibt die Spalte "Name" die Sortierreihenfolge vor. </p><a name="hoststab"> </a> <div class="help-header-2">Rechner-Register</div>
+<p>Das Register <b>Rechner</B> enth&auml;lt die zwei Unterregister <b>Dom&auml;nenbaum</B> und <b>Richtliniensammlung</B>. </p><a name="domtree"></a><div class="help-header-3">Dom&auml;nenbaum-Register</div>
+<p>Im Dom&auml;nenbaum werden die Konfigurationseinstellungen f&uuml;r die vom Benutzer verwendete Hardware angezeigt.</P>
+<p>Die Navigation im Dom&auml;nenbaum unterscheidet sich nicht von der Navigation im Organisationsbaum. N&auml;heres hierzu lesen Sie bitte unter <a href="#entities">Benutzer-Register</A> nach. <a name="actionbar"></a><div class="help-header-3">Aktionsleiste</div>
+<p>Das Dropdown-Men&uuml; <b>Filter</B> in der Navigationstabelle enth&auml;lt vier Eintr&auml;ge: <ul><li>"Alle Elemente" - es werden Entit&auml;ten aller Typen angezeigt.</li>
+    <li>"Dom&auml;nen" - es werden Dom&auml;nen-Entit&auml;ten angezeigt.</li>
+    <li>"Rechner" - es werden Rechner-Entit&auml;ten angezeigt. </li>
+</ul>
+</p><a name="adfilterhosts"></a><div class="help-header-3">Erweiterter Filter</div>
+<p>Der erweiterte Filter f&uuml;r den Dom&auml;nenbaum funktioniert wie derjenige f&uuml;r den Organisationsbaum (siehe hierzu den vorigen Abschnitt <a href="#adfilter">Erweiterter Filter</a>). Als Filterkategorien bietet der erweiterte Filter f&uuml;r den Dom&auml;nenbaum die Entit&auml;tstypen "Dom&auml;ne" und "Rechner". </p><a name="searchhosts"></a><div class="help-header-3">Suchen</div>
+<p>Wenn Sie auf die Schaltfl&auml;che <b>Suchen</b> im Register <b>Dom&auml;nenbaum</b> klicken, wird die Dom&auml;nensuche eingeblendet. Die Dom&auml;nensuche unterscheidet sich von der Suche im Organisationsbaum (siehe <a href="#">oben</a>) lediglich dadurch, dass der Startpunkt auf "Hardware" eingestellt ist.</p>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="psptab"> </a> <div class="help-header-2">Richtliniensammlungen</div>
+<p>Sowohl unter dem Register <b>Benutzer</b> als auch unter <b>Rechner</B> ist ein Register namens <b>Richtliniensammlung</B> vorhanden.</P>
+<p>Eine Richtliniensammlung ist ein Beh&auml;lter f&uuml;r Benutzer- oder Rechner-Richtliniengruppen. Die Richtliniengruppen sind in einer Liste nach ihrer Priori&auml;t angeordnet. </p><a name="psptable"></a><div class="help-header-3">Richtliniengruppentabelle</div>
+<P>Die Richtliniengruppentabelle befindet sich am oberen Seitenrand und enth&auml;lt eine Auflistung der Richtliniengruppen. Die Tabelle weist drei Spalten auf: eine Auswahlspalte sowie die Spalten "Name" und "Priorit&auml;t". </P>
+<P>Die Auswahlspalte dient zum Markieren der Zeilen, auf welche die im Dropdown-Men&uuml; <b>Aktionen f&uuml;r Richtliniengruppen</b> aufgef&uuml;hrten Aktionen angewendet werden sollen.</P>
+<P>Zum Aufrufen einer Richtliniengruppe klicken Sie auf deren Namen. Dadurch wird:</P>
+<UL>
+   	<li>der Hintergrund der Reihe, auf die Sie geklickt haben, blau angezeigt.</li>
+   	<li>der Inhaltsbereich um die der ausgew&auml;hlten Richtlinie zugeordneten Daten aktualisiert.</li>
+</ul>
+<p>In der Spalte "Priorit&auml;t" sehen Sie die Priorit&auml;t der Richtliniengruppe. Mithilfe der Priorit&auml;t l&auml;sst sich die Reihenfolge bei der Zusammenf&uuml;hrung von Richtliniengruppen bestimmen, wenn einer Entit&auml;t mehrere Richtliniengruppen zugeordnet wurden.</p>
+<P>Eine blau hinterlegte Zeile kennzeichnet die Richtliniengruppe, deren Daten aktuell im Inhaltsbereich angezeigt werden, also die angezeigte Richtliniengruppe. </P><a name="pspactions"></a><div class="help-header-3">Aktionen f&uuml;r Richtliniengruppen</div>
+<P>Das Dropdown-Men&uuml; <b>Aktionen f&uuml;r Richtliniengruppen</B> enth&auml;lt, von oben nach unten, die folgenden Aktionen: </P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>Name</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>Aktion</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Neu</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Es wird ein Dialogfenster f&uuml;r die Eingabe des (einmaligen) Namens der Richtliniengruppe ge&ouml;ffnet. Wenn Sie auf OK klicken, wird die Richtliniengruppe hinzugef&uuml;gt. Der Navigationsbereich wird aktualisiert und zeigt die &Auml;nderungen an.</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>L&ouml;schen</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>Es wird ein Popup-Fenster mit einer Best&auml;tigungsaufforderung f&uuml;r das L&ouml;schen der Richtliniengruppen ge&ouml;ffnet. Wenn Sie auf "OK" klicken, werden die Richtliniengruppen gel&ouml;scht. Der Navigationsbereich wird aktualisiert und zeigt die &Auml;nderungen an.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Umbenennen</p>
+                </td>
+                <td width="89%">
+                    <p>Es wird ein Dialogfenster ge&ouml;ffnet, in das Sie einen neuen (einmaligen) Namen f&uuml;r die Richtliniengruppe eingeben. Die Richtliniengruppe wird umbenannt und der Navigationsbereich um die &Auml;nderungen aktualisiert.</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Priorit&auml;ten bearbeiten</p>
+                </td>
+                <td width="89%">
+                    <p>Es wird ein Dialogfenster ge&ouml;ffnet, das ein Listenfeld zum &Auml;ndern der Priorit&auml;ten enth&auml;lt.</p>
+                </td>
+            </tr>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Exportieren</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Es wird ein Dialogfenster ge&ouml;ffnet. Hier geben Sie mit einem Zielpfad an, wohin die ausgew&auml;hlten Richtliniengruppen exportiert werden sollen.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Importieren</p>
+                </td>
+                <td width="89%">
+                    <p>Es wird ein Dialogfenster ge&ouml;ffnet. Hier w&auml;hlen Sie die zu importierenden Richtliniengruppen aus. Wenn Sie auf "OK" klicken, werden die Richtliniengruppen hinzugef&uuml;gt, und der Navigationsbereich wird um die &Auml;nderungen aktualisiert.</p>
+                </td>
+            </tr>
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">Priorit&auml;ten der Richtliniengruppen</div></p>
+<p>Das Prinzip der Priorit&auml;ten f&uuml;r Richtliniengruppen erm&ouml;glicht es dem Administrator, die Reihenfolge zu bestimmen, in der Ebenen zusammengef&uuml;hrt werden. Die Priorit&auml;t der Richtliniengruppen ist f&uuml;r die Zusammenf&uuml;hrung bedeutend, wenn einer Entit&auml;t mehrere Richtliniengruppen zugeordnet wurden. In diesem Fall reicht die Entit&auml;tenhierarchie nicht aus, um die Reihenfolge zu bestimmen, in der die Richtliniengruppen zusammengef&uuml;hrt werden. Hierzu weisen Sie Richtliniengruppen Priorit&auml;ten zu.</p>
+<p>Zum &Ouml;ffnen des Dialogs "Priorit&auml;ten der Richtliniengruppen" w&auml;hlen Sie <b>Priorit&auml;ten bearbeiten</b> im Dropdown-Man&uuml; <b>Aktionen f&uuml;r Richtliniengruppen</b>. So setzen Sie die Priorit&auml;t einer Richtliniengruppe herauf oder herab:</p>
+<ol>
+    <li>W&auml;hlen Sie die gew&uuml;nschte Richtliniengruppe in der Liste aus.</li>
+    <li>Klicken Sie auf die Schaltfl&auml;che <b>Nach oben</b> bzw. <b>Nach unten</b>, um die Priorit&auml;t zu erh&ouml;hen bzw. zu verringern. </li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="content"> </a> <div class="help-header-1">Inhaltsbereich</div>
+<p>Im Inhaltsbereich werden die zu der im Navigationsbereich ausgew&auml;hlten Entit&auml;t oder Richtliniengruppe geh&ouml;renden Daten angezeigt. Diese Daten sind in Registern organisiert. Von der jeweiligen Auswahl im Navigationsbereich h&auml;ngt es ab, wie viele und welche Register im Inhaltsbereich sichtbar sind. Das Register <b>Richtlinien</b> ist standardm&auml;&szlig;ig aktiv. Wenn die Auswahl im Navigationsbereich ge&auml;ndert wird, bleibt das aktuell aktive Register weiterhin aktiv, sofern dieses Register f&uuml;r die neue Auswahl zur Verf&uuml;gung steht. Anderenfalls wird das Register <b>Richtlinien</b> zum aktiven Register. Wird ein nicht aktives Register aktiviert, weist es wieder seinen vorherigen internen Status (Ursprungspfad, Sortierreihenfolge) auf. </p><a name="policies"> </a> <div class="help-header-2">Richtlinien-Register</div>
+<p>Das Register <b>Richtlinien</B> dient zur Navigation im Konfigurationsrichtlinienbaum, wobei Sie Untergruppen, Konfigurationseinstellungen oder beides anzeigen k&ouml;nnen.</p>
+<p>Auf jeder Richtlinienseite sehen Sie zwei Schaltfl&auml;chen: <ul><li><b>Bericht erstellen</b>: N&auml;heres hierzu finden Sie unter <a href="#reporting">Berichterstellung</a>.</li>
+    <li><b>Einstellungen l&ouml;schen</b>: Durch Bet&auml;tigung dieser Schaltfl&auml;che werden rekursiv alle Konfigurationsdaten unterhalb der f&uuml;r die angezeigte Entit&auml;t aktuell eingeblendeten Untergruppe gel&ouml;scht. </li>
+</ul>
+</P>
+<p>Jeder Root-Eintrag im Konfigurationsrichtlinienbaum entspricht einer Anwendung, beispielsweise "StarOffice 7". Im Baum unterhalb der Anwendung sind die Konfigurationsrichtlinien f&uuml;r diese Anwendung organisiert. Konfigurationsrichtlinien k&ouml;nnen &uuml;berall im Konfigurationsrichtlinienbaum angeordnet sein. Bei Konfigurationsrichtlinien, die nicht an einem Endpunkt des Konfigurationsrichtlinienbaums liegen, m&uuml;ssen sowohl die Richtlinientabelle als auch die Konfigurationsrichtlinie f&uuml;r die jeweilige aktuelle Position im Konfigurationsrichtlinienbaum angezeigt werden.  </p><a name="caparpath"> </a> <div class="help-header-3">Ursprungspfad</div>
+<p>Am oberen Seitenrand, direkt unter den Registertiteln, sehen Sie den Ursprungspfad. Er gibt die aktuelle Position im Konfigurationsrichtlinienbaum an. Seine Funktionsweise unterscheidet sich nicht von der des Ursprungspfads im Navigationsbereich (siehe Abschnitt <a class="help-link" href="#parpath">Ursprungspfad</a> oben). </p><a name="subgroupstable"> </a> <div class="help-header-3">Untergruppentabelle</div>
+<P>Unter dem Ursprungspfad befindet sich die Untergruppentabelle. In dieser Tabelle sind die Untergruppen der aktuellen Position im Konfigurationsrichtlinienbaum aufgef&uuml;hrt. Sie weist zwei Spalten auf: "Name" und "Kommentar".</P>
+<P>Die Spalte "Name" enth&auml;lt die Namen aller Untergruppen der aktuellen Position im Konfigurationsrichtlinienbaum. Die Namen werden in Form von Verkn&uuml;pfungen angezeigt. Zur Navigation innerhalb des Konfigurationsrichtlinienbaums klicken Sie auf die gew&uuml;nschte Namensverkn&uuml;pfung. Dadurch wird:</P>
+<UL>
+    	<li>der Inhaltsbereich aktualisiert, sodass der Pfad der neuen Position im Konfigurationsrichtlinienbaum angezeigt wird.</li>
+   	<li>der Inhaltsbereich aktualisiert, sodass entweder eine Richtlinientabelle oder eine Richtlinie angezeigt wird.</LI>
+</UL>
+<P>Diese Art der Navigation wird als "Drilldown-Navigation" bezeichnet.</P>
+<P>Die Kommentarspalte enth&auml;lt eine Kurzbeschreibung der Untergruppe. </P><A NAME="capolicies"></A> <div class="help-header-3">Richtlinie</div>
+<P>Wenn f&uuml;r die Kombination der aktuellen Entit&auml;t und der aktuellen Konfigurationsrichtlinie g&uuml;ltige Konfigurationsrichtliniendaten vorliegen, werden diese Daten im Register "Richtlinien" im Inhaltsbereich angezeigt.</p>
+<p>Diese Daten sind in Tabellen organisiert. Die Tabellen umfassen vier Spalten. Dabei handelt es sich um eine Auswahlspalte mit Auswahlsymbolen und die Spalten "Status", "Name" und "Wert". Die Aktionsleiste in der Tabelle verf&uuml;gt &uuml;ber ein Dropdown-Men&uuml; mit verschiedenen Aktionen. </p>
+<p>Zum Ausw&auml;hlen eines Elements aktivieren Sie das Markierfeld vor dem gew&uuml;nschten Element. Anschlie&szlig;end kann eine Aktion aus dem Dropdown-Men&uuml; in der Aktionsleiste auf das ausgew&auml;hlte Element angewendet werden. In der folgenden Tabelle sind s&auml;mtliche Aktionen kurz erl&auml;utert:</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>Aktion</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>Wirkung</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Sch&uuml;tzen</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Definiert das ausgew&auml;hlte Element als gesch&uuml;tzt.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Schutz aufheben</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Hebt den Schutz des ausgew&auml;hlten Elements auf.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Anwendungsvorgabe &uuml;bernehmen</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Wendet den in der Richtlinienvorlage festgelegten Vorgabewert an.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Entfernen</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>L&ouml;scht die im Element gespeicherten Daten.</P>
+            </TD>
+        </TR>
+
+</TABLE>
+<p>Links neben einem Elementnamen sehen Sie zwei Symbole, die den Status des Elements anzeigen. Die folgende Tabelle bietet eine Zusammenfassung der Symbole und ihrer Funktionen.</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>Symbol</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>Bedeutung</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>Wirkung</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="Hier definiert" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Dieses Symbol bedeutet, dass der Wert des Elements in dieser Ebene des Organisationsbaums definiert wurde.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered" ALT="Dar&uuml;ber definiert" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Dieses Symbol, das zugleich eine Verkn&uuml;pfung darstellt, bedeutet, dass der Wert des Elements in einer h&ouml;heren Ebene des Organisations- oder Dom&auml;nenbaums definiert wurde. Der f&uuml;r den Benutzer sichtbare Wert ist das Ergebnis der Zusammenf&uuml;hrung mehrerer Ebenen oder Entit&auml;tsstufen innerhalb der Organisation.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Indem Sie auf das Symbol klicken, gelangen Sie zu der Ebene, in welcher der Wert definiert wurde.</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere" ALT="Hier gesch&uuml;tzt" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Dieses Symbol bedeutet, dass der Schutz des Elements in dieser Ebene des Organisationsbaums definiert wurde. Der Schutz wird innerhalb des Organisations- und des Konfigurationsrichtlinienbaums weitervererbt.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered" ALT="Dar&uuml;ber gesch&uuml;tzt" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Dieses Symbol, das zugleich eine Verkn&uuml;pfung darstellt, bedeutet, dass der Schutz des Elements in einer h&ouml;heren Ebene des Organisations- oder Dom&auml;nenbaums definiert wurde. Der Schutz dieses Elements oder Eintrags ist das Ergebnis der Zusammenf&uuml;hrung von Ebenen oder Entit&auml;tsstufen innerhalb der Organisation.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Indem Sie auf dieses Symbol klicken, gelangen Sie zu der Ebene, in welcher der Schutz definiert wurde.</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>Datenwerte lassen sich durch Bearbeitung der Werte in der Spalte "Werte" &auml;ndern. Sowohl Wert- als auch Status&auml;nderungen m&uuml;ssen gespeichert werden. Zum Speichern klicken Sie auf die Schaltfl&auml;che <b>Speichern</b>. </p><a name="casets"> </a> <div class="help-header-3">S&auml;tze</div>
+<p>S&auml;tze sind dynamische Eigenschaftensammlungen. Sie k&ouml;nnen Elemente aus einem Satz l&ouml;schen oder neue hinzuf&uuml;gen.</p>
+<p>So f&uuml;gen Sie einem Satz ein Element hinzu: <ol><li>Klicken Sie auf die Schaltfl&auml;che <b>Neu</b>. </li>
+    <li>Sie erhalten die Gelegenheit, einen Namen f&uuml;r das neue Element in einen Dialog einzugeben. Daraufhin wird das Element hinzugef&uuml;gt und das Hauptfenster aktualisiert.</li>
+    <li>Das neue Element kann im Hauptfenster bearbeitet werden.</li>
+</ol>
+<p>Zum L&ouml;schen von Elementen aus einem Satz w&auml;hlen Sie das Element aus und klicken auf die Schaltfl&auml;che <b>L&ouml;schen</B>.</p>
+<p>Beachten Sie bitte, dass S&auml;tze weitere S&auml;tze enthalten k&ouml;nnen und als Verkn&uuml;pfungen dargestellt sind. Indem Sie auf eine solche Verkn&uuml;pfung klicken, gelangen Sie zu dem Satz, der von dieser Stelle aus bearbeitet werden kann. </p><a name="policysets"> </a> <div class="help-header-2">Richtliniengruppen-Register</div>
+<p>Auf dieser Richtliniengruppen-Seite k&ouml;nnen Sie Richtliniengruppen f&uuml;r die ausgew&auml;hlte Entit&auml;t entfernen oder neue hinzuf&uuml;gen.</p>
+<p>So f&uuml;gen Sie eine in der Liste <b>Verf&uuml;gbar</b> auf der linken Seite aufgef&uuml;hrte Richtliniengruppe hinzu:</p>
+<ol>
+    <li>W&auml;hlen Sie die gew&uuml;nschte Richtliniengruppe in der Liste aus.</li>
+    <li>Klicken Sie auf die Schaltfl&auml;che <b>Hinzuf&uuml;gen</b>, um die ausgew&auml;hlte Richtliniengruppe in die Liste <b>Ausgew&auml;hlt</B> auf der rechten Seite zu &uuml;bertragen.</li>
+    <li>Klicken Sie auf <b>Speichern</b>, um die neue Zuordnung zu speichern.  </LI>
+</ol><a name="caentities"> </a> <div class="help-header-2">Assoziierte Entit&auml;ten</div>
+<p>Ist in der Richtliniensammlung im Navigationsbereich eine Richtliniengruppe ausgew&auml;hlt, weist der Inhaltsbereich eine Registerseite namens <b>Assoziierte Entit&auml;ten</b> auf. Auf dieser Seite sind alle der ausgew&auml;hlten Richtliniengruppe zugeordneten Entit&auml;ten aufgef&uuml;hrt.</p>
+<p>Auf der Registerseite "Assoziierte Entit&auml;ten" k&ouml;nnen die folgenden Aktionen ausgef&uuml;hrt werden: <ul><li><b>Entfernen</B> - hebt die Zuordnung zwischen der ausgew&auml;hlten Entit&auml;t und der im Navigationsbereich ausgew&auml;hlten Richtliniengruppe auf. </li>
+    <li>Durch Klicken auf eine Entit&auml;t in der Spalte "Name" wird der Navigationsbereich aktualisiert, sodass die Entit&auml;t, auf die geklickt wurde, im Navigationsbereich blau hinterlegt wird. </li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="roles"> </a> <div class="help-header-2">Rollen-Register</div>
+<p>Ist im Navigationsbereich eine Entit&auml;t des Typs "Benutzer" ausgew&auml;hlt und dieser Benutzer ist Mitglied mindestens einer Rolle, so weist der Inhaltsbereich eine Registerseite namens <b>Rollen</B> auf. Auf der Seite <b>Rollen</B> sind s&auml;mtliche Rollen aufgef&uuml;hrt, welchen der ausgew&auml;hlte Benutzer angeh&ouml;rt.</p>
+<p>Auf dieser Seite sehen Sie die zwei Spalten "Name" und "Pfad". "Name" enth&auml;lt die Namen der Rollen und "Pfad" den absoluten Pfad der jeweiligen Rolle. </p><a name="users"> </a> <div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a> </div><a name="reporting"> </a> <div class="help-header-1">Berichterstellung</div>
+<p>Bei einem Bericht handelt es sich um eine schreibgesch&uuml;tzte Ansicht s&auml;mtlicher Konfigurationseinstellungen, f&uuml;r die Daten vorliegen. Sie erhalten einen Bericht, indem Sie auf die Schaltfl&auml;che <b>Bericht erstellen</B> klicken. Dadurch wird der Dialog "Berichts-Konfiguration" ge&ouml;ffnet.</p>
+<p>Im Dialog "Berichts-Konfiguration" lassen sich folgende Parameter anpassen: <ul><li>die zu ber&uuml;cksichtigenden B&auml;ume (Organisations- und/oder Dom&auml;nenbaum) (<b>F&uuml;r den Bericht verwenden</B>) </li>
+    <li>die im fertigen Bericht anzuzeigenden Spalten (<b>Statuspfad</b> und <b>Beschreibung</B> sind deaktivierbar). </li>
+</ul>
+<p>Nach der Anpassung klicken Sie auf die Schaltfl&auml;che "Bericht erstellen" und erhalten eine schreibgesch&uuml;tzte Ansicht der ausgew&auml;hlten Daten.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Zum Seitenanfang springen" width="11" height="10" hspace="4" border="0"> Zum Anfang</a></div>
+
+</body>
+</html>

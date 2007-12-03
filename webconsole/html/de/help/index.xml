@@ -1,0 +1,51 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="Zuweisen von Profilen"></indexitem>
+<indexitem target="gbgce" text="Konfigurationsdatensammlungen">
+<indexitem target="gbgcn" text="Neu erstellen"></indexitem>
+<indexitem target="gbzbc" text="Entfernen"></indexitem>
+<indexitem target="gbzci" text="Umbenennen"></indexitem>
+<indexitem target="gbgqm" text="Synchronisieren"></indexitem>
+<indexitem text="Typen">
+<indexitem target="gbgpt" text="Datei"></indexitem>
+<indexitem target="gbgpt" text="Kombiniert"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="Anzeigen von Details"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="Erstellen von Profilen"></indexitem>
+<indexitem target="gbgcn" text="Erstellen von Datensammlungen"></indexitem>
+<indexitem target="gbgpr" text="Löschen von Profilen"></indexitem>
+<indexitem target="gbgce" text="Domänen"></indexitem>
+<indexitem target="gbgoz" text="Anzeigen der geltenden Einstellungen"></indexitem>
+<indexitem target="gbgcm" text="Elementbäume"></indexitem>
+<indexitem target="gbgce" text="Elemente">
+<indexitem target="gbgqt" text="Funktion suchen"></indexitem>
+<indexitem target="gbgoy" text="Informationen über"></indexitem>
+<indexitem target="gbgpa" text="Suchen nach"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="Exportieren von Profilen"></indexitem>
+<indexitem target="gbgps" text="Importieren von Profilen"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+<indexitem target="gbgqa" text="Abmelden"></indexitem>
+<indexitem target="gbgcm" text="Navigation"></indexitem>
+<indexitem target="gbgce" text="Organisationen"></indexitem>
+<indexitem target="gbgcm" text="Profilbäume"></indexitem>
+<indexitem target="gbgce" text="Profile">
+<indexitem target="gbgpn" text="Zuweisen"></indexitem>
+<indexitem target="gbgni" text="Neu erstellen"></indexitem>
+<indexitem target="gbgpr" text="Löschen"></indexitem>
+<indexitem target="gbgqh" text="Exportieren"></indexitem>
+<indexitem target="gbgps" text="Importieren"></indexitem>
+<indexitem target="gbgcm" text="Navigation"></indexitem>
+<indexitem target="gbgqj" text="Zuweisung aufheben"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="Datensammlungen"></indexitem>
+<indexitem target="gbgpa" text="Suchen"></indexitem>
+<indexitem target="gbgqm" text="Synchronisierung"></indexitem>
+<indexitem target="gbgcd" text="Anzeigen aller Profile"></indexitem>
+<indexitem target="gbgdc" text="Anzeigen aller zugewiesenen Profile"></indexitem>
+</index>

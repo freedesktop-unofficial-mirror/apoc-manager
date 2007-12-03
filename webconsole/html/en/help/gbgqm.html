@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- GenHTML@12751-->
+<head>
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+  <!-- ident      "%Z%%M% %I%     %E% SMI" -->
+
+  <title>Synchronizing Configuration Repositories
+  </title>
+  <script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+  <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+  <script type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+  <meta name="Copyright" content="Copyright &copy; 2006 by Sun Microsystems, Inc. All Rights Reserved." />
+</head>
+
+<body class="HlpBdy">
+
+<A NAME="gbgqm"></A><h4>Synchronizing Configuration Repositories</h4>
+<A NAME="indexterm-17"></A><A NAME="indexterm-18"></A><p>With the Desktop Manager you can manage multiple back ends in parallel. This
+allows you to define one back end for testing and one back end for the final production.
+Configuration changes can now be defined and evaluated first in the test back end.
+Thereafter you can <i>synchronize</i> parts or the complete test back
+end with the production back end to apply the required changes quickly and safely
+to the production system. This method can also be used for a simple backup and restore
+mechanism of the production back end. The Synchronization window allows you to perform
+this synchronization.</p>
+<h5>Steps</h5><ol><li><p><b>In the Configuration Repositories window, select the repository that you
+want to synchronize.</b></p><p>The Synchronization window opens.</p>
+</li>
+<li><p><b>Select the source repository from the Source Configuration Repository
+list.</b></p><p>You can change the source repository which serves as source for
+the changes. This repository is <i>not</i> changed. </p>
+</li>
+<li><p>(Optional) <b>You can restrict the source repository by clicking
+the Change button next to Source Starting Point.</b></p><p>This specifies another
+element than the root as the source starting point for the synchronization.</p>
+<p>A dialog opens, which allows you to navigate to the desired organization or
+domain element. Once an element is selected, the new path is reflected in the Source
+Starting Point.</p>
+</li>
+<li><p><b>Select a target repository from the Target Configuration Repository list.</b></p><p>You can change the target repository which serves as target for the changes.
+This repository <i>is</i> changed. </p>
+</li>
+<li><p>(Optional) <b>You can restrict the target repository by clicking
+the Change button next to Target Starting Point. </b></p><p>This specifies another
+element than the root as the target for the synchronization.</p>
+<p>A dialog
+opens, which allows you to navigate to the desired organization or domain element.
+Once an element is selected, the new path is reflected in the Target Starting Point.</p>
+</li>
+<li><p><b>Click the Compare button.</b></p><p>The two trees are compared and all
+differences are listed in a table.  </p>
+</li>
+<li><p><b>Select the check boxes next to the table rows containing the profiles
+you want to synchronize and click the Synchronize button. </b></p><p>When the synchronization
+is finished the target repository matches the source repository regarding the selected
+profiles.</p>
+</li>
+</ol>
+<br />
+
+</body>
+</html>

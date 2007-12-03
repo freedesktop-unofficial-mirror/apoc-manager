@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+<table>
+    <actions>
+        <cc name="AssignButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.profilewnd.assignees.assign"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="onClick" value="javascript:openBrowseTreeWindow();return false;" />
+        </cc>
+        <cc name="UnassignButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.profilewnd.assignees.unassign"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="disabled" value="true"/>
+        </cc>
+    </actions>
+    <column name="NameColumn" sortname="OrganizationName" rowheader="true" extrahtml="width='150px' nowrap='nowrap'">
+        <cc name="OrganizationName" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+    <column name="LocationColumn" sortname="LocationValue" rowheader="true">
+        <cc name="LocationValue" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+</table>

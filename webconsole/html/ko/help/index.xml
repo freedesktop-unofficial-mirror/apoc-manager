@@ -1,0 +1,30 @@
+<!-- ident   "%Z%%M% %I%   %E% SMI" --><?xml version='1.0' encoding='UTF-8'?><!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="프로파일 지정"></indexitem>
+<indexitem target="gbgce" text="구성 리포지토리"><indexitem target="gbgcn" text="새로 만들기"></indexitem><indexitem target="gbzbc" text="제거"></indexitem><indexitem target="gbzci" text="이름 바꾸기"></indexitem><indexitem target="gbgqm" text="동기화"></indexitem><indexitem text="유형"><indexitem target="gbgpt" text="파일"></indexitem><indexitem target="gbgpt" text="하이브리드"></indexitem><indexitem target="gbgpt" text="LDAP(Lightweight Directory Access Protocol)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="세부 정보 보기"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="프로파일 만들기"></indexitem>
+<indexitem target="gbgcn" text="리포지토리 만들기"></indexitem>
+<indexitem target="gbgpr" text="프로파일 삭제"></indexitem>
+<indexitem target="gbgce" text="도메인"></indexitem>
+<indexitem target="gbgoz" text="유효 설정, 보기"></indexitem>
+<indexitem target="gbgcm" text="요소 트리"></indexitem>
+<indexitem target="gbgce" text="요소"><indexitem target="gbgqt" text="찾기 기능"></indexitem><indexitem target="gbgoy" text="정보"></indexitem><indexitem target="gbgpa" text="검색"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="프로파일 내보내기"></indexitem>
+<indexitem target="gbgps" text="프로파일 가져오기"></indexitem>
+<indexitem target="gbgpt" text="LDAP(Lightweight Directory Access Protocol)"></indexitem>
+<indexitem target="gbgqa" text="로그 아웃"></indexitem>
+<indexitem target="gbgcm" text="탐색"></indexitem>
+<indexitem target="gbgce" text="조직"></indexitem>
+<indexitem target="gbgcm" text="프로파일 트리"></indexitem>
+<indexitem target="gbgce" text="프로파일"><indexitem target="gbgpn" text="지정"></indexitem><indexitem target="gbgni" text="새로 만들기"></indexitem><indexitem target="gbgpr" text="삭제"></indexitem><indexitem target="gbgqh" text="내보내기"></indexitem><indexitem target="gbgps" text="가져오기"></indexitem><indexitem target="gbgcm" text="탐색"></indexitem><indexitem target="gbgqj" text="지정 취소"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="리포지토리"></indexitem>
+<indexitem target="gbgpa" text="검색"></indexitem>
+<indexitem target="gbgqm" text="동기화"></indexitem>
+<indexitem target="gbgcd" text="모든 프로파일 보기"></indexitem>
+<indexitem target="gbgdc" text="지정된 프로파일 보기"></indexitem>
+</index>

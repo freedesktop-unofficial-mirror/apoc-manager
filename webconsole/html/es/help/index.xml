@@ -1,0 +1,50 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="asignación de perfiles"></indexitem>
+<indexitem target="gbgce" text="depósitos de configuración">
+<indexitem target="gbgcn" text="crear nuevo"></indexitem>
+<indexitem target="gbzbc" text="eliminar"></indexitem>
+<indexitem target="gbzci" text="cambiar nombre"></indexitem>
+<indexitem target="gbgqm" text="sincronizar"></indexitem>
+<indexitem text="tipos"><indexitem target="gbgpt" text="archivo"></indexitem>
+<indexitem target="gbgpt" text="híbrido"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol, Protocolo ligero de acceso a directorios)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="visualización de detalles"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="creación de perfiles"></indexitem>
+<indexitem target="gbgcn" text="creación de depósitos"></indexitem>
+<indexitem target="gbgpr" text="supresión de perfiles"></indexitem>
+<indexitem target="gbgce" text="dominios"></indexitem>
+<indexitem target="gbgoz" text="configuración efectiva, visualización"></indexitem>
+<indexitem target="gbgcm" text="árboles de elementos"></indexitem>
+<indexitem target="gbgce" text="elementos">
+<indexitem target="gbgqt" text="buscar función"></indexitem>
+<indexitem target="gbgoy" text="información"></indexitem>
+<indexitem target="gbgpa" text="buscar"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="exportación de perfiles"></indexitem>
+<indexitem target="gbgps" text="importación de perfiles"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol, Protocolo ligero de acceso a directorios)"></indexitem>
+<indexitem target="gbgqa" text="finalizar la sesión"></indexitem>
+<indexitem target="gbgcm" text="desplazamientos"></indexitem>
+<indexitem target="gbgce" text="organizaciones"></indexitem>
+<indexitem target="gbgcm" text="árboles de perfiles"></indexitem>
+<indexitem target="gbgce" text="perfiles">
+<indexitem target="gbgpn" text="asignar"></indexitem>
+<indexitem target="gbgni" text="crear nuevo"></indexitem>
+<indexitem target="gbgpr" text="borrar"></indexitem>
+<indexitem target="gbgqh" text="exportar"></indexitem>
+<indexitem target="gbgps" text="importar"></indexitem>
+<indexitem target="gbgcm" text="navegar"></indexitem>
+<indexitem target="gbgqj" text="Anular asignación"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="depósitos"></indexitem>
+<indexitem target="gbgpa" text="búsqueda de"></indexitem>
+<indexitem target="gbgqm" text="sincronización."></indexitem>
+<indexitem target="gbgcd" text="visualización de todos los perfiles"></indexitem>
+<indexitem target="gbgdc" text="visualización de perfiles asignados"></indexitem>
+</index>

@@ -1,0 +1,39 @@
+<html>
+<head>
+<title><!--#include file="version.txt"--></title>
+<meta name="Copyright" content="Copyright &copy; 2004 by Sun Microsystems, Inc.
+All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script	 type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+<script	 type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+<script	 type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+</head>
+<body class="DefBdy">
+    <div class="VrsMgn">
+    	<div class="VrsHdrTxt">
+            <!--#include file="version.txt"--> (July 31 2007 12:59 PM)
+        </div>
+        <p>
+        <div class="VrsTxt">
+            Copyright &copy; 2007 Sun Microsystems, Inc.  All rights reserved.
+            Sun Microsystems, Inc. has intellectual property rights relating to 
+            technology embodied in the product that is described in this document. 
+            In particular, and without limitation, these intellectual property 
+            rights may include one or more of the U.S. patents listed at 
+            http://www.sun.com/patents and one or more additional patents or 
+            pending patent applications in the U.S. and in other countries.
+            SUN PROPRIETARY/CONFIDENTIAL. U.S. Government Rights - Commercial software.  
+            Government users are subject to the Sun Microsystems, Inc. standard 
+            license agreement and applicable provisions of the FAR and its supplements.  
+            Use is subject to license terms.  Sun,  Sun Microsystems,  the Sun logo,  
+            Java,  Solaris,  StarOffice,  Sun Ray and  Sun Desktop Manager are 
+            trademarks or registered trademarks of Sun Microsystems, Inc. in the U.S. 
+            and other countries.  All SPARC trademarks are used under license and 
+            are trademarks or registered trademarks of SPARC International, Inc. 
+            in the U.S. and other countries.  UNIX is a registered trademark in 
+            the U.S. and other countries, exclusively licensed through X/Open 
+            Company, Ltd.            
+        </div>
+    </div>
+</body>
+</html>

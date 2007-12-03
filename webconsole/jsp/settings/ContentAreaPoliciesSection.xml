@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+<table>
+    <actions>
+        <cc name="EnableButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.profilewnd.settings.Enable"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="disabled" value="true"/>
+            <attribute name="onClick" value="setTargetAnchor(this.name);"/>
+        </cc>
+        <cc name="DisableButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.profilewnd.settings.Disable"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="disabled" value="true"/>
+            <attribute name="onClick" value="setTargetAnchor(this.name);"/>
+        </cc>
+        <cc name="ActionMenu" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag">
+            <attribute name="dynamic" value="true"/>
+            <attribute name="commandChild" value="ActionMenuHref"/>
+            <attribute name="escape" value="false"/>
+            <attribute name="onChange" value="setTargetAnchor(this.name);"/>
+            <option label="APOC.profilewnd.settings.more" value="None"/>
+            <option label="APOC.profilewnd.settings.enforce" value="Enforce"/>
+            <option label="APOC.profilewnd.settings.unenforce" value="ResetEnforce"/>
+            <option label="APOC.profilewnd.settings.undo" value="UndoPending"/>
+            <option label="APOC.profilewnd.settings.default" value="RestoreDefault"/>
+        </cc>
+        <cc name="EditButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.profilewnd.settings.Edit"/>
+            <attribute name="onClick" value="addRequestParameter('SelectedPropertyView','EditView');setTargetAnchor(this.name);"/>
+        </cc>
+    </actions>
+    <column name="NameColumn" rowheader="true" extrahtml="width='150px' nowrap='nowrap'">
+        <cc name="PropertyName" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+    <column name="ValueColumn" rowheader="true">
+        <cc name="PropertyValue" tagclass="com.sun.apoc.manager.settings.PropertyTag"/>
+    </column>
+    <column name="EnabledColumn" rowheader="true" extrahtml="width='30px' nowrap='nowrap'">
+        <cc name="EnabledStatus" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+    <column name="EnforcedColumn" rowheader="true" extrahtml="width='30px' nowrap='nowrap'">
+        <cc name="EnforcedStatus" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column>
+    <!-- <column name="PendingColumn" rowheader="true" extrahtml="width='110px' nowrap='nowrap'">
+        <cc name="PendingAlarm" tagclass="com.sun.web.ui.taglib.alarm.CCAlarmTag"/>
+        <cc name="PendingStatus" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag"/>
+    </column> -->
+</table>

@@ -1,0 +1,44 @@
+<!-- ident   "%Z%%M% %I%   %E% SMI" --><?xml version='1.0' encoding='UTF-8'?><!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Sun Desktop Manager 1.0.1 說明"><tocitem target="gbgce" text="簡介"></tocitem>
+<tocitem target="gbgqa" text="配置儲存庫視窗"><tocitem target="gbgpt" text="配置儲存庫表格"><tocitem target="gbgcn" text="建立新的配置儲存庫"></tocitem>
+<tocitem target="gbzbc" text="移除配置儲存庫"></tocitem>
+<tocitem target="gbzci" text="重新命名配置儲存庫"></tocitem>
+<tocitem target="gbgqm" text="同步化配置儲存庫"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="配置檔 &#8212; 樹狀結構檢視"><tocitem target="gbgcm" text="瀏覽區域"><tocitem target="gbgpa" text="搜尋元素"></tocitem>
+<tocitem target="gbgqt" text="使用尋找函數"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="內容區域"><tocitem target="gbgni" text="建立新的設定檔"></tocitem>
+<tocitem target="gbgpr" text="刪除設定檔"></tocitem>
+<tocitem target="gbgpn" text="指定設定檔"></tocitem>
+<tocitem target="gbgqj" text="取消指定設定檔"></tocitem>
+<tocitem target="gbgpw" text="重新命名設定檔"></tocitem>
+<tocitem target="gbgqf" text="複製和移動設定檔"></tocitem>
+<tocitem target="gbgps" text="匯入設定檔"></tocitem>
+<tocitem target="gbgqh" text="匯出設定檔"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="檢視有效設定"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="設定檔 &#8212; 全部"><tocitem target="gbgcr" text="建立新的設定檔"></tocitem>
+<tocitem target="gbgpe" text="刪除設定檔"></tocitem>
+<tocitem target="gbgpu" text="重新命名設定檔"></tocitem>
+<tocitem target="gbgow" text="複製和移動設定檔"></tocitem>
+<tocitem target="gbgpj" text="匯入設定檔"></tocitem>
+<tocitem target="gbgou" text="匯出設定檔"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="設定檔編輯器"><tocitem target="gbgcg" text="一般特性"><tocitem target="gbgpb" text="指定設定檔的一般特性"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="配置設定"><tocitem target="gbgot" text="檢視和編輯設定檔的配置設定"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="指定的元素"><tocitem target="gbgpm" text="將元素指定給設定檔"></tocitem>
+<tocitem target="gbgpp" text="取消指定元素給設定檔"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="設定摘要"></tocitem>
+<tocitem target="gbgdh" text="進階選項"><tocitem target="gbgqu" text="從位置變更應用程式"></tocitem>
+<tocitem target="gbgqe" text="將合併順序指定給設定檔"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+</toc>

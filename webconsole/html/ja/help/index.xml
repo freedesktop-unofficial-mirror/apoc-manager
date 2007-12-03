@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="プロファイルの割り当て"></indexitem>
+<indexitem target="gbgce" text="構成リポジトリ"><indexitem target="gbgcn" text="新規作成"></indexitem><indexitem target="gbzbc" text="削除"></indexitem><indexitem target="gbzci" text="名前の変更"></indexitem><indexitem target="gbgqm" text="同期"></indexitem><indexitem text="タイプ"><indexitem target="gbgpt" text="ファイル"></indexitem><indexitem target="gbgpt" text="ハイブリッド"></indexitem><indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="詳細情報の表示"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="プロファイルの作成"></indexitem>
+<indexitem target="gbgcn" text="リポジトリの作成"></indexitem>
+<indexitem target="gbgpr" text="プロファイルの削除"></indexitem>
+<indexitem target="gbgce" text="ドメイン"></indexitem>
+<indexitem target="gbgoz" text="有効な設定、表示"></indexitem>
+<indexitem target="gbgcm" text="要素ツリー"></indexitem>
+<indexitem target="gbgce" text="要素"><indexitem target="gbgqt" text="検索機能"></indexitem><indexitem target="gbgoy" text="情報"></indexitem><indexitem target="gbgpa" text="検索対象"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="プロファイルのエクスポート"></indexitem>
+<indexitem target="gbgps" text="プロファイルのインポート"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+<indexitem target="gbgqa" text="ログアウト"></indexitem>
+<indexitem target="gbgcm" text="移動"></indexitem>
+<indexitem target="gbgce" text="組織"></indexitem>
+<indexitem target="gbgcm" text="プロファイルツリー"></indexitem>
+<indexitem target="gbgce" text="プロファイル"><indexitem target="gbgpn" text="割り当て"></indexitem><indexitem target="gbgni" text="新規作成"></indexitem><indexitem target="gbgpr" text="削除"></indexitem><indexitem target="gbgqh" text="エクスポート"></indexitem><indexitem target="gbgps" text="インポート"></indexitem><indexitem target="gbgcm" text="移動"></indexitem><indexitem target="gbgqj" text="割り当て解除"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="リポジトリ"></indexitem>
+<indexitem target="gbgpa" text="検索"></indexitem>
+<indexitem target="gbgqm" text="同期化"></indexitem>
+<indexitem target="gbgcd" text="すべてのプロファイルの表示"></indexitem>
+<indexitem target="gbgdc" text="割り当てられているプロファイルの表示"></indexitem>
+</index>

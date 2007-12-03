@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+  <pagebuttons>
+    <cc name="CloseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.navigation.close"/>
+      <attribute name="type" value="secondary"/>
+      <attribute name="onClick" value="javascript:top.window.close(); return false;" />
+    </cc>
+  </pagebuttons>
+</pagetitle>

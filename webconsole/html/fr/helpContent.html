@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager - Aide </title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1"><!-- Empty script so IE5.0 Windows will draw table and button borders --><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"></script>  </head>
+
+<body class="help-body"><a name="top"></a> <p><a name="intro"> </a><div class="help-header-1">Aide de Configuration Manager</div></p>
+<p>Bienvenue dans les pages d'aide de Sun Java[TM] Desktop System Configuration Manager. Pour obtenir de l'aide sur une partie sp&eacute;cifique de Java Desktop System Configuration Manager, cliquez sur l'un des liens situ&eacute;s &agrave; gauche.</p>
+<p>L'aide commence par une pr&eacute;sentation g&eacute;n&eacute;rale du produit Configuration Manager et de ses concepts de base - <a class="help-link" href="#concepts">Concepts</a>. Des informations g&eacute;n&eacute;rales ayant trait &agrave; la structure et au comportement de Configuration Manager sont propos&eacute;es dans <a class="help-link" href="#ui">Disposition et comportement</a>. </p>
+<p>Vous trouverez ensuite une aide sp&eacute;cifique au <a class="help-link" href="#masthead"><b>cadre masthead</b></a>, au <a class="help-link" href="#navigation"><b>volet de navigation</b></a> et au <a class="help-link" href="#content"><b>volet de contenu</b></a>. Des pages sont &eacute;galement consacr&eacute;es &agrave; la <a class="help-link" href="#login">connexion</a> et &agrave; la fonction de <a href="#reporting">cr&eacute;ation de rapports</a>. <p><a name="concepts"> </a> <div class="help-header-1">Concepts</div></p>
+<p>Le produit Configuration Manager offre une gestion centralis&eacute;e des param&egrave;tres de configuration. Il permet d'afficher, de d&eacute;finir et d'appliquer des param&egrave;tres de configuration &agrave; diff&eacute;rents niveaux de la hi&eacute;rarchie d'une organisation. Les param&egrave;tres de configuration s&eacute;mantiquement coh&eacute;rents sont appel&eacute;s "strat&eacute;gies de configuration" dans la suite de ce document.</p>
+<P>Configuration Manager g&egrave;re trois structures hi&eacute;rarchiques diff&eacute;rentes, &eacute;galement appel&eacute;es arborescences. Pour comprendre l'interface utilisateur de Configuration Manager, il est essentiel de faire la distinction entre ces arborescences&nbsp;:</P>
+<p><div class="help-header-2"><a name="dataStructures">Structures de donn&eacute;es</a></div></p>
+<P>L'une des arborescences est constitu&eacute;e des strat&eacute;gies de configuration. Elle est donc appel&eacute;e "arborescence des strat&eacute;gies de configuration" (voir les parties bleues de la figure&nbsp;1 - "Arborescences"). Les utilisateurs de nombreux programmes poss&eacute;dant une configuration &eacute;labor&eacute;e, tels que Mozilla, sont familiaris&eacute;s avec l'organisation hi&eacute;rarchique des param&egrave;tres de configuration. Si l'on garde l'exemple de Mozilla, "/Mozilla/Navigator" fait r&eacute;f&eacute;rence &agrave; une strat&eacute;gie de configuration, et "/Mozilla/Navigator/HomeUrl" &agrave; un param&egrave;tre de configuration.</P>
+<P>Les arborescences de strat&eacute;gies de configuration sont int&eacute;gr&eacute;es dans le deuxi&egrave;me type d'arborescence&nbsp;: l'arborescence de l'organisation (voir les parties grises de la figure&nbsp;1 - "Arborescences"). L'arborescence de l'organisation repr&eacute;sente les relations entre unit&eacute;s organisationnelles. Le r&eacute;sultat est une arborescence d'organisation qui contient les arborescences de strat&eacute;gies de configuration. L'arborescence de l'organisation est repr&eacute;sent&eacute;e &agrave; l'aide d'un serveur LDAP.</P>
+<p>Le troisi&egrave;me type d'arborescence est l'arborescence du domaine. Celle-ci repr&eacute;sente les relations entre unit&eacute;s mat&eacute;rielles. Les arborescences de strat&eacute;gies de configuration sont int&eacute;gr&eacute;es dans l'arborescence du domaine, ce qui aboutit &agrave; une arborescence de domaine contenant les arborescences de strat&eacute;gies de configuration. L'arborescence du domaine est repr&eacute;sent&eacute;e &agrave; l'aide d'un serveur LDAP.</p>
+<p>Les concepts de travail sont les m&ecirc;mes pour l'arborescence de l'organisation et l'arborescence du domaine. La principale diff&eacute;rence r&eacute;side dans le fait que l'arborescence de l'organisation g&egrave;re les utilisateurs tandis que l'arborescence du domaine g&egrave;re les h&ocirc;tes. La s&eacute;paration des utilisateurs et des h&ocirc;tes dans deux arborescences distinctes permet &agrave; Configuration Manager de fournir une configuration orient&eacute;e utilisateurs et orient&eacute;e h&ocirc;tes. En raison des similitudes de ces deux arborescences, cette section met l'accent sur l'arborescence de l'organisation et ne mentionne l'arborescence du domaine qu'en cas de diff&eacute;rence entre les deux.</p>
+<P>Les serveurs LDAP sont fr&eacute;quemment utilis&eacute;s dans les grandes entreprises pour hi&eacute;rarchiser les donn&eacute;es de l'organisation. Chaque emplacement de l'arborescence de l'organisation dans LDAP est appel&eacute; "entit&eacute;".</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="Arborescences" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure&nbsp; 1 &ndash; Arborescences</FONT></FONT></I></FONT></P>
+<p><div class="help-header-2"><a name="SecDataManagement">Gestion de la s&eacute;curit&eacute; et des donn&eacute;es</a></div></p>
+<p>Cette "arborescence d'arborescences" facilite la gestion hi&eacute;rarchique de la s&eacute;curit&eacute; et des donn&eacute;es. Elle est initialement obtenue par l'insertion de l'arborescence des strat&eacute;gies de configuration tout enti&egrave;re &agrave; la racine de l'arborescence de l'organisation&nbsp;; cette op&eacute;ration est effectu&eacute;e une seule fois. Les modifications des param&egrave;tres de configuration d'une entit&eacute; dans cette arborescence de strat&eacute;gies de configuration initiale sont stock&eacute;es au niveau de l'entit&eacute; en question. Pour des raisons de simplicit&eacute;, la figure&nbsp;1 illustre uniquement les arborescences des strat&eacute;gies de configuration associ&eacute;es aux entit&eacute;s "marketing" et "mlegrand".</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">G&eacute;n&eacute;ration des param&egrave;tres de configuration</a></div></p>
+<P>Les param&egrave;tres de configuration d'une entit&eacute; sont obtenus par fusion. Tous les param&egrave;tres de configuration, qui sont associ&eacute;s &agrave; une entit&eacute; de l'arborescence de l'organisation ou du domaine, sont appel&eacute;s "couches". La fusion commence au niveau de la couche racine et descend l'arborescence jusqu'&agrave; l'entit&eacute; voulue. Tout changement apport&eacute; &agrave; un param&egrave;tre de configuration, dans une couche associ&eacute;e &agrave; une entit&eacute;, est h&eacute;rit&eacute; par les couches associ&eacute;es aux entit&eacute;s des niveaux inf&eacute;rieurs dans la hi&eacute;rarchie de l'arborescence (voir la <A class="help-link" HREF="#fig_merging">figure&nbsp;2 - "Fusion des couches"</a>). Les valeurs h&eacute;rit&eacute;es peuvent &ecirc;tre &eacute;cras&eacute;es si une couche donn&eacute;e d&eacute;finit ses propres param&egrave;tres.</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Fusion des couches" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure 2 &ndash;Fusion des couches</FONT></FONT></I></FONT></P>
+<p><FONT COLOR="#000000">Cet h&eacute;ritage vaut pour les param&egrave;tres de configuration, mais aussi pour les caract&eacute;ristiques de s&eacute;curit&eacute;&nbsp;:</FONT> <FONT COLOR="#000000">la sp&eacute;cification de l'attribut de s&eacute;curit&eacute; "protected" (prot&eacute;g&eacute;) d'un param&egrave;tre de configuration de la couche li&eacute;e &agrave; "o=marketing" est r&eacute;percut&eacute;e dans toutes les couches sous-jacentes de l'arborescence en lecture seule (voir la <A class="help-link" HREF="#fig_protection">figure&nbsp;3 - "Protection"</a>).</FONT></P>
+<P><FONT COLOR="#000000"><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Protection" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1> </FONT></FONT><P><FONT COLOR="#000000"><FONT COLOR="#000000"><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">Figure 3 &ndash; Protection</FONT></FONT></I></FONT></FONT></P>
+<p><div class="help-header-2"><a name="BCAssociating">Association d'une arborescence de strat&eacute;gies de configuration &agrave; une arborescence d'organisation ou de domaine</a></div></p> 
+<p>Les arborescences de strat&eacute;gies de configuration sont li&eacute;es de deux mani&egrave;res diff&eacute;rentes aux entit&eacute;s d'une arborescence d'organisation&nbsp;:</P>
+<UL>
+	<li>Elles sont stock&eacute;es au niveau d'une entit&eacute; en tant qu'arborescences de strat&eacute;gies de configuration autonomes.</li>
+	 <li>Elles sont li&eacute;es &agrave; une entit&eacute; &agrave; partir d'un groupe de strat&eacute;gies.</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">Groupes de strat&eacute;gies</a></div></p>
+<P>Les groupes de strat&eacute;gies sont des containers, ayant chacun un nom unique, pour les strat&eacute;gies de configuration. Ils constituent &eacute;galement des containers pour une arborescence de strat&eacute;gies de configuration, car ce type d'arborescence contient les param&egrave;tres de configuration des strat&eacute;gies de configuration (voir la <A class="help-link" HREF="#fig_trees">figure&nbsp;1 &ndash; "Arborescences"</A>). Les groupes de strat&eacute;gies sont stock&eacute;s dans un r&eacute;f&eacute;rentiel des strat&eacute;gies et peuvent &ecirc;tre utilis&eacute;s par tous les types d'entit&eacute;s en cr&eacute;ant un ou plusieurs liens vers un ou plusieurs groupes de strat&eacute;gies. Cela permet une plus grande souplesse, quel que soit le magasin de donn&eacute;es d'arri&egrave;re-plan utilis&eacute;. Les groupes de strat&eacute;gies pr&eacute;sentent aussi l'avantage de pouvoir &ecirc;tre import&eacute;s et export&eacute;s, ce qui facilite la maintenance.</P>
+<P>L'administrateur peut cr&eacute;er des ensembles de strat&eacute;gies de configuration pour des plages s&eacute;mantiques distinctes, par exemple, deux groupes de strat&eacute;gies "Experts" et "Novice" stock&eacute;s dans le r&eacute;f&eacute;rentiel des strat&eacute;gies. Les strat&eacute;gies de configuration peuvent alors &ecirc;tre utilis&eacute;es dans toute l'arborescence de l'organisation.</P>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="ui"> </a> <div class="help-header-1">Disposition et comportement</div>
+<p>Configuration Manager est organis&eacute; en trois zones&nbsp;: un cadre masthead, un volet de navigation et un volet de contenu. Le cadre masthead se situe dans la section sup&eacute;rieure de la page. La zone situ&eacute;e en bas &agrave; gauche contient le volet de navigation. La zone situ&eacute;e en bas &agrave; droite est le volet de contenu. Ce type de disposition est aussi appel&eacute; "jeu de volets droit-gauche". Des fen&ecirc;tres de navigateur distinctes s'ouvrent pour afficher d'autres bo&icirc;tes de dialogue et le contenu de l'aide.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="login"> </a> <div class="help-header-1">Connexion</div>
+<p>Pour utiliser Configuration Manager, vous devez vous connecter &agrave; la console Web de Sun. Cette console est l'endroit d'o&ugrave; sont g&eacute;r&eacute;es les applications, toutes ayant une interface utilisateur coh&eacute;rente. L'un des avantages de la console est qu'un administrateur peut se connecter une fois et utiliser ensuite n'importe quelle application de la console. C'est pourquoi la console Web de Sun fournit une page de connexion standard.</p>
+<p>Dans la page de connexion standard, le serveur auquel vous allez vous connecter s'affiche au-dessus des champs de texte destin&eacute;s au nom d'utilisateur et au mot de passe.</p>
+<p>Une fois que vous &ecirc;tes connect&eacute; &agrave; la console Web, vous parvenez &agrave; la page de lancement des applications de la console. Vous pouvez alors lancer l'application "Configuration Manager" en la s&eacute;lectionnant.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="masthead"> </a> <div class="help-header-1">Cadre masthead</div>
+<p>Le cadre masthead comprend le nom complet du produit (Sun Java[TM] Desktop System Configuration Manager). Il propose &eacute;galement diff&eacute;rents liens d'ordre g&eacute;n&eacute;ral&nbsp;:</p>
+<ul><li>Le lien <b>Console </b> permet de revenir &agrave; la page de lancement des applications de la console Web de Sun.</li>
+    <li>Le lien <b>Version</b> ouvre une fen&ecirc;tre d'informations sur la version.</li>
+    <li>Le lien <b>D&eacute;connecter</b> vous d&eacute;connecte de la console Web de Sun, et par cons&eacute;quent de Configuration Manager, et renvoie &agrave; la page de connexion.</li>
+    <li>Le lien <b>Aide</b> ouvre les pr&eacute;sentes pages d'aide.</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="navigation"> </a> <div class="help-header-1">Volet de navigation</div>
+<p>Le volet de navigation permet de parcourir l'arborescence de l'organisation d'une part, qui contient les organisations, les utilisateurs et les r&ocirc;les, et l'arborescence du domaine d'autre part, qui contient les domaines et les h&ocirc;tes. Il permet aussi de g&eacute;rer les groupes de strat&eacute;gies dans les r&eacute;f&eacute;rentiels de strat&eacute;gies utilisateur et h&ocirc;te correspondants.</p>
+<p>Le volet de navigation comporte deux onglets principaux&nbsp;: <b>Utilisateurs</B> et <b>H&ocirc;tes</B>. </p><a name="entities"> </a> <div class="help-header-2">Onglet Utilisateurs</div>
+<p>Deux sous-onglets sont propos&eacute;s&nbsp;: <b>Arborescence de l'organisation</B> et <b>R&eacute;f&eacute;rentiel des strat&eacute;gies</B>. Utilisez l'onglet <b>Arborescence de l'organisation</B> pour parcourir cette arborescence. </p><a name="parpath"></a><div class="help-header-3">Chemin de parent&eacute;</div>
+<p>Dans la partie sup&eacute;rieure de l'onglet <b>Arborescence de l'organisation</B> figure le chemin de parent&eacute;, qui affiche le chemin d'acc&egrave;s &agrave; l'entit&eacute; active. Chaque segment du chemin d'acc&egrave;s est un lien qui repr&eacute;sente une entit&eacute;, &agrave; l'exception du dernier lien, qui s'affiche en texte normal et fait r&eacute;f&eacute;rence &agrave; l'entit&eacute; active. Pour naviguer &agrave; l'aide du chemin de parent&eacute;, cliquez sur un lien. Cela a pour effet&nbsp;: <ul><li>d'actualiser le volet de navigation de sorte que le chemin de parent&eacute; renvoie vers l'entit&eacute; en question et que la table de navigation contient les sous-entit&eacute;s de cette entit&eacute;&nbsp;;</li>
+    <li>d'actualiser le volet de contenu avec les donn&eacute;es de strat&eacute;gie de configuration associ&eacute;es &agrave; cette entit&eacute;.  </li>
+</ul>Les volets de navigation et de contenu sont synchronis&eacute;s dans toute l'application pour assurer un affichage homog&egrave;ne des donn&eacute;es. </p><a name="navtable"></a><div class="help-header-3">Table de navigation</div>
+<p>La table de navigation se trouve sous le chemin de parent&eacute; et affiche la liste des sous-entit&eacute;s de l'entit&eacute; active. La colonne "Nom" contient le nom de chaque sous-entit&eacute; de l'entit&eacute; active. La colonne "Type" affiche le type de l'entit&eacute;. La colonne "Actions" contient un lien <b>Affichage</B> pour chaque ligne.</p>
+<p>Pour naviguer vers une entit&eacute;, cliquez sur un nom de la liste, ce qui a pour effet&nbsp;: <ul><li>d'activer la sous-entit&eacute; s&eacute;lectionn&eacute;e&nbsp;;</li>
+    <li>d'actualiser le volet de navigation de sorte que le chemin de parent&eacute; renvoie vers la nouvelle entit&eacute; active et que la table de navigation contient les sous-entit&eacute;s de cette entit&eacute;&nbsp;;</li>
+    <li>d'actualiser le volet de contenu avec la strat&eacute;gie de configuration associ&eacute;e &agrave; cette entit&eacute;. </li>
+</ul></p>Une entit&eacute; peut &ecirc;tre du type "Organisation", "Utilisateur" ou "R&ocirc;le".</p>
+<p>Pour afficher les informations relatives &agrave; une entit&eacute; de la liste, cliquez sur le lien <b>Affichage</B> correspondant. Cela a pour effet&nbsp;: <ul><li>d'afficher en bleu l'arri&egrave;re-plan de la ligne s&eacute;lectionn&eacute;e&nbsp;; </li>
+    <li>d'actualiser le volet de contenu avec les donn&eacute;es associ&eacute;es &agrave; l'entit&eacute; s&eacute;lectionn&eacute;e. </li>
+</ul>Une ligne avec un arri&egrave;re-plan bleu met en &eacute;vidence l'entit&eacute; dont les donn&eacute;es sont actuellement visibles dans le volet de contenu.</p>
+<p>La barre d'actions de la table de navigation contient le menu d&eacute;roulant <b>Filtre</B> et l'ic&ocirc;ne <b>Filtre sp&eacute;cial</b>. Lorsque la table contient plus de dix entr&eacute;es, l'ic&ocirc;ne <b>Parcourir toutes les donn&eacute;es</b> s'affiche et vous permet de changer l'affichage des entr&eacute;es de la table.</p> 
+<p>Le menu d&eacute;roulant <b>Filtre</b> vous permet de choisir le type d'entit&eacute; &agrave; afficher dans la table de navigation. Il contient les &eacute;l&eacute;ments suivants&nbsp;: <ul><li>"Tous les &eacute;l&eacute;ments" affiche tous les types d'entit&eacute;s dans la table de navigation.</li>
+    <li>"Organisations" affiche uniquement les entit&eacute;s de type "Organisation" dans la table de navigation.</li>
+    <li>"Utilisateurs" affiche uniquement les entit&eacute;s de type "Utilisateur" dans la table de navigation.</li>
+    <li>"R&ocirc;les" affiche uniquement les entit&eacute;s de type "R&ocirc;le" dans la table de navigation. </li>    
+</ul></p><a name="adfilter"></a><div class="help-header-3">Filtre sp&eacute;cial</div>
+<p>Cliquez sur l'ic&ocirc;ne <b>Filtre sp&eacute;cial</B> de la table de navigation pour ouvrir la bo&icirc;te de dialogue Filtre sp&eacute;cial.</P>
+<p>Dans la section <b>Type</b>, indiquez le type d'entit&eacute; que vous voulez filtrer. Pour utiliser un filtre plus sp&eacute;cifique, saisissez le nom sur lequel vous voulez appliquer le filtre dans le champ de texte <b>Nom</b>. Cliquez ensuite sur le bouton <b>Filtre</B> situ&eacute; en bas de la bo&icirc;te de dialogue pour ex&eacute;cuter le filtre. </p><a name="search"></a><div class="help-header-3">Recherche</div>
+<p>Pour ouvrir la fen&ecirc;tre Rechercher, cliquez sur le bouton <b>Rechercher</b> situ&eacute; au-dessus de la table de navigation. La fen&ecirc;tre Rechercher contient un cadre masthead, une zone de param&egrave;tres &agrave; gauche et une zone de r&eacute;sultats &agrave; droite. La fen&ecirc;tre Rechercher peut &ecirc;tre utilis&eacute;e pour chercher de fa&ccedil;on r&eacute;cursive certains types et noms d'entit&eacute;s dans toute l'arborescence de l'organisation. Si le bouton <b>Rechercher</b> du volet de navigation de la fen&ecirc;tre principale est utilis&eacute; alors que la fen&ecirc;tre Rechercher est ouverte &agrave; l'arri&egrave;re-plan, cette fen&ecirc;tre passe au premier plan. L'entit&eacute; active de la fen&ecirc;tre Rechercher, qui figure dans le chemin de parent&eacute; de la zone de param&egrave;tres de cette fen&ecirc;tre, est actualis&eacute;e. Tous les autres param&egrave;tres et le contenu de la zone de r&eacute;sultats restent inchang&eacute;s.</p>
+<p>La zone de param&egrave;tres indique le chemin de parent&eacute; en haut et affiche le chemin d'acc&egrave;s &agrave; l'entit&eacute; active. L'utilisation de la zone de param&egrave;tres est d&eacute;crite dans la section <a class="help-link" href="#parpath">Chemin de parent&eacute;</a>.</p>
+<p>Pour rechercher un type particulier d'entit&eacute;, s&eacute;lectionnez ce type dans la liste d&eacute;roulante situ&eacute;e sous le chemin de parent&eacute;. Les six choix possibles sont "Rechercher partout", "Rechercher des organisations", "Rechercher des utilisateurs", "Rechercher des r&ocirc;les", "Rechercher des domaines" et "Rechercher des h&ocirc;tes".</p>
+<p>Pour affiner la recherche, vous pouvez utiliser la zone de texte situ&eacute;e &agrave; c&ocirc;t&eacute; de la liste d&eacute;roulante. Cela vous permet de rechercher les noms d'entit&eacute;s qui correspondent &agrave; la cha&icirc;ne de recherche saisie dans ce champ. Vous pouvez sp&eacute;cifier le point de d&eacute;part de la recherche dans l'arborescence en s&eacute;lectionnant l'un des boutons radio <b>Point de d&eacute;part</b>. Vous avez la possibilit&eacute; d'effectuer la recherche &agrave; partir du haut de l'arborescence ou &agrave; partir de l'emplacement actif (il s'agit de la valeur par d&eacute;faut). Les emplacements sont repr&eacute;sent&eacute;s par leur nom. Le fait de cliquer sur un segment du chemin de parent&eacute; change l'emplacement actif pour la recherche vers l'entit&eacute; s&eacute;lectionn&eacute;e, mais pas l'&eacute;tendue de l'affichage du navigateur.</p>
+<p>S&eacute;lectionnez le nombre de r&eacute;sultats &agrave; afficher dans la liste d&eacute;roulante "R&eacute;sultats affich&eacute;s par page".</p>
+<p>Tous les champs de recherche du volet de recherche acceptent l'ast&eacute;risque "*" comme caract&egrave;re g&eacute;n&eacute;rique &agrave; n'importe quelle position dans une cha&icirc;ne de recherche. L'ast&eacute;risque repr&eacute;sente un nombre arbitraire de caract&egrave;res arbitraires. Si plusieurs crit&egrave;res de recherche sont sp&eacute;cifi&eacute;s, tous ces crit&egrave;res doivent &ecirc;tre respect&eacute;s pour qu'une entit&eacute; soit ajout&eacute;e au tableau de r&eacute;sultats. La recherche ne respecte pas la casse.</p>
+<p>Pour effectuer la recherche, cliquez sur le bouton <b>Rechercher</b>. La zone de r&eacute;sultats est alors actualis&eacute;e de fa&ccedil;on &agrave; pr&eacute;senter un tableau contenant les r&eacute;sultats de la recherche.</p>
+<p>Pour r&eacute;initialiser les valeurs de la page, cliquez sur <b>R&eacute;initialiser</b>. La zone de param&egrave;tres est alors actualis&eacute;e de fa&ccedil;on &agrave; pr&eacute;senter les valeurs par d&eacute;faut. Toutes les zones de texte sont vides et la premi&egrave;re valeur est s&eacute;lectionn&eacute;e dans toutes les listes d&eacute;roulantes et tous les groupes de boutons radio.</p>
+<p>La zone de r&eacute;sultats contient une page blanche lorsque la fen&ecirc;tre Rechercher est cr&eacute;&eacute;e. Une fois la recherche effectu&eacute;e, un tableau de r&eacute;sultats s'affiche. Le tableau de r&eacute;sultats comporte trois colonnes&nbsp;: "Nom", "Type" et "Chemin d'acc&egrave;s".</p>
+<p>Pour afficher un r&eacute;sultat, cliquez sur le nom correspondant dans la colonne "Nom". Cela a pour effet&nbsp;: <ul><li>d'afficher la fen&ecirc;tre principale au premier plan&nbsp;;</li>
+        <li>d'actualiser le volet de navigation de la fen&ecirc;tre principale de sorte que l'entit&eacute; repr&eacute;sent&eacute;e par le lien "Nom" constitue une entr&eacute;e de la table de navigation, assortie d'un arri&egrave;re-plan bleu&nbsp;; </li>
+        <li>d'actualiser la zone de contenu de la fen&ecirc;tre principale avec la strat&eacute;gie de configuration associ&eacute;e &agrave; cette entit&eacute;.</li>
+    </UL>
+</p>
+<p>La colonne "Type" affiche le type de l'entit&eacute;. Une entit&eacute; peut &ecirc;tre du type "Organisation", "Utilisateur" ou "R&ocirc;le".</p>
+<p>La colonne "Chemin d'acc&egrave;s" affiche le chemin d'acc&egrave;s &agrave; l'entit&eacute;. Ce chemin est relatif au point de d&eacute;part de la recherche.</p>
+<p>Si le type recherch&eacute; est "Utilisateur", la zone de param&egrave;tres affiche diff&eacute;rentes zones de texte qui concernent les caract&eacute;ristiques d'un utilisateur&nbsp;: "ID d'utilisateur", "Pr&eacute;nom" et "Nom". Dans la zone de r&eacute;sultats, une colonne suppl&eacute;mentaire, "ID d'utilisateur", s'affiche &agrave; droite de la colonne "Nom". Si la zone de texte "ID d'utilisateur" de la zone de param&egrave;tres contient au moins un caract&egrave;re, la colonne "ID d'utilisateur" est la cl&eacute; de tri primaire. Sinon, la cl&eacute; de tri primaire est la colonne "Nom". </p><a name="hoststab"> </a> <div class="help-header-2">Onglet H&ocirc;tes</div>
+<p>L'onglet <b>H&ocirc;tes</B> contient deux sous-onglets, appel&eacute;s respectivement <b>Arborescence du domaine</B> et <b>R&eacute;f&eacute;rentiel des strat&eacute;gies</B>. </p><a name="domtree"></a><div class="help-header-3">Onglet Arborescence du domaine</div>
+<p>L'arborescence du domaine affiche les param&egrave;tres de configuration du mat&eacute;riel sur lequel travaille l'utilisateur.</P>
+<p>La navigation dans l'arborescence du domaine s'effectue de la m&ecirc;me fa&ccedil;on que dans l'arborescence de l'organisation. Pour plus d'informations, reportez-vous &agrave; la section <a href="#entities">Onglet Utilisateurs</A>. <a name="actionbar"></a><div class="help-header-3">Barre d'actions</div>
+<p>Le menu d&eacute;roulant <b>Filtre</B> de la table de navigation contient quatre &eacute;l&eacute;ments&nbsp;: <ul><li>"Tous les &eacute;l&eacute;ments" - affiche tous les types d'entit&eacute;s.</li>
+    <li>"Domaines" - affiche les entit&eacute;s de type Domaine.</li>
+    <li>"H&ocirc;tes" - affiche les entit&eacute;s de type H&ocirc;te. </li>
+</ul>
+</p><a name="adfilterhosts"></a><div class="help-header-3">Filtre sp&eacute;cial</div>
+<p>Le fonctionnement du filtre sp&eacute;cial est identique dans l'arborescence du domaine et dans l'arborescence de l'organisation (reportez-vous &agrave; la pr&eacute;c&eacute;dente section <a href="#adfilter">Filtre sp&eacute;cial</a>). Le filtre sp&eacute;cial de l'arborescence du domaine fournit des entit&eacute;s des types "Domaine" et "H&ocirc;te" sur lesquelles portera le filtre. </p><a name="searchhosts"></a><div class="help-header-3">Recherche</div>
+<p>Lorsque vous cliquez sur le bouton <b>Rechercher</b> dans <b>Arborescence du domaine</b>, la page de recherche relative au domaine s'affiche. La recherche du domaine fonctionne de la m&ecirc;me mani&egrave;re que dans l'arborescence de l'organisation (voir <a href="#">plus haut</a>), &agrave; cette exception que le champ Point de d&eacute;part indique "Mat&eacute;riel".</p>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="psptab"> </a> <div class="help-header-2">R&eacute;f&eacute;rentiels des strat&eacute;gies</div>
+<p>Un onglet <b>R&eacute;f&eacute;rentiel des strat&eacute;gies</b> est propos&eacute; sous les onglets <b>Utilisateurs</B> et <b>H&ocirc;tes</B>.</P>
+<p>Un r&eacute;f&eacute;rentiel des strat&eacute;gies est un container pour les groupes de strat&eacute;gies soit utilisateur, soit h&ocirc;te. Les groupes de strat&eacute;gies sont ordonn&eacute;s en liste. L'ordre de cette liste est fonction de priorit&eacute;s. </p><a name="psptable"></a><div class="help-header-3">Tableau des groupes de strat&eacute;gies</div>
+<P>Le tableau des groupes de strat&eacute;gies se trouve en haut de la page et affiche la liste des groupes de strat&eacute;gies. Ce tableau comporte trois colonnes&nbsp;: les colonnes "Nom" et "Priorit&eacute;" ainsi qu'une troisi&egrave;me qui permet d'op&eacute;rer des s&eacute;lections. </P>
+<P>La colonne de s&eacute;lection permet de s&eacute;lectionner les lignes auxquelles s'appliquent les actions figurant dans la liste d&eacute;roulante <b>Actions de groupe de strat&eacute;gies</b>.</P>
+<P>Pour naviguer vers un groupe de strat&eacute;gies, cliquez sur son nom. Cela a pour effet&nbsp;:</P>
+<UL>
+   	<li>d'afficher en bleu l'arri&egrave;re-plan de la ligne s&eacute;lectionn&eacute;e&nbsp;;</li>
+   	<li>d'actualiser le volet de contenu avec les donn&eacute;es associ&eacute;es &agrave; la strat&eacute;gie s&eacute;lectionn&eacute;e.</li>
+</ul>
+<p>La colonne "Priorit&eacute;" indique le niveau de priorit&eacute; du groupe de strat&eacute;gies. Les priorit&eacute;s permettent de d&eacute;finir l'ordre de fusion des groupes de strat&eacute;gies lorsqu'un administrateur a associ&eacute; plusieurs groupes &agrave; une entit&eacute;.</p>
+<P>Une ligne avec un arri&egrave;re-plan bleu signale le groupe de strat&eacute;gies dont les donn&eacute;es sont actuellement visibles dans le volet de contenu, le groupe de strat&eacute;gies affich&eacute;. </P><a name="pspactions"></a><div class="help-header-3">Barre d'actions de groupe de strat&eacute;gies</div>
+<P>Le menu d&eacute;roulant <b>Actions de groupe de strat&eacute;gies</B> contient les actions suivantes, de haut en bas&nbsp;: </P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>Nom</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>Action</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Nouveau</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Une bo&icirc;te de dialogue s'ouvre pour permettre &agrave; l'utilisateur de saisir le nom (unique) du groupe de strat&eacute;gies. Le groupe de strat&eacute;gies est ajout&eacute; apr&egrave;s que l'utilisateur a cliqu&eacute; sur OK. Le volet de navigation est actualis&eacute; de fa&ccedil;on &agrave; refl&eacute;ter les modifications.</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>Supprimer</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>Une fen&ecirc;tre contextuelle s'ouvre avec un message d'avertissement demandant la confirmation de la suppression du ou des groupes de strat&eacute;gies. Si l'utilisateur clique sur OK, le ou les groupes de strat&eacute;gies sont supprim&eacute;s. Le volet de navigation est actualis&eacute; de fa&ccedil;on &agrave; refl&eacute;ter les modifications.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Renommer</p>
+                </td>
+                <td width="89%">
+                    <p>Une bo&icirc;te de dialogue s'ouvre. L'utilisateur y saisit le nouveau nom (unique) du groupe de strat&eacute;gies. Le groupe de strat&eacute;gies est renomm&eacute; et le volet de navigation actualis&eacute; de fa&ccedil;on &agrave; refl&eacute;ter les modifications.</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>&Eacute;diter les priorit&eacute;s</p>
+                </td>
+                <td width="89%">
+                    <p>Une bo&icirc;te de dialogue s'ouvre avec une zone de liste permettant de changer les priorit&eacute;s.</p>
+                </td>
+            </tr>            
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>Export</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>Une bo&icirc;te de dialogue s'ouvre. L'utilisateur y saisit le chemin de destination vers lequel le ou les groupes de strat&eacute;gies seront export&eacute;s.</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>Import</p>
+                </td>
+                <td width="89%">
+                    <p>Une bo&icirc;te de dialogue s'ouvre. L'utilisateur y s&eacute;lectionne le ou les groupes de strat&eacute;gies &agrave; importer. Apr&egrave;s que l'utilisateur a cliqu&eacute; sur OK, chaque groupe de strat&eacute;gie s&eacute;lectionn&eacute; est ajout&eacute; et le volet de navigation actualis&eacute; de fa&ccedil;on &agrave; refl&eacute;ter les modifications.</p>
+                </td>
+            </tr>            
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">Priorit&eacute;s des groupes de strat&eacute;gies</div></p>
+<p>Le concept de priorit&eacute;s des groupes de strat&eacute;gies permet &agrave; l'administrateur de d&eacute;finir l'ordre dans lequel les couches devront &ecirc;tre fusionn&eacute;es. Les priorit&eacute;s des groupes de strat&eacute;gies servent au cours de la fusion lorsque plusieurs groupes de strat&eacute;gies sont assign&eacute;s &agrave; une m&ecirc;me entit&eacute;. Dans ce cas, la hi&eacute;rarchie des entit&eacute;s ne suffit pas &agrave; d&eacute;terminer l'ordre dans lequel les groupes de strat&eacute;gies doivent &ecirc;tre fusionn&eacute;s. Le probl&egrave;me est r&eacute;solu en assignant des priorit&eacute;s aux groupes de strat&eacute;gies.</p>
+<p>Pour ouvrir la bo&icirc;te de dialogue d'assignation des priorit&eacute;s, s&eacute;lectionnez <b>&Eacute;diter les priorit&eacute;s</b> dans le menu d&eacute;roulant <b>Actions de groupe de strat&eacute;gies</b>. Pour augmenter ou baisser la priorit&eacute; d'un groupe de strat&eacute;gies, proc&eacute;dez comme suit&nbsp;:</p>
+<ol>
+    <li>S&eacute;lectionnez dans la liste le groupe de strat&eacute;gies qui vous int&eacute;resse.</li>
+    <li>Cliquez sur le bouton <b>Monter</b> ou <b>Descendre</b> pour augmenter ou baisser la priorit&eacute;. </li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="content"> </a> <div class="help-header-1">Volet de contenu</div>
+<p>Le volet de contenu affiche les donn&eacute;es associ&eacute;es &agrave; l'entit&eacute; ou au groupe de strat&eacute;gies s&eacute;lectionn&eacute;s dans le volet de navigation. Les donn&eacute;es sont regroup&eacute;es dans des onglets. Les s&eacute;lections op&eacute;r&eacute;es dans le volet de navigation d&eacute;terminent le nombre et le type des onglets qui s'affichent dans le volet de contenu. L'onglet <b>Strat&eacute;gies</b> est l'onglet actif par d&eacute;faut. En cas de changement des s&eacute;lections dans le volet de navigation, l'onglet qui &eacute;tait actif le reste si la nouvelle s&eacute;lection propose le m&ecirc;me onglet. Sinon, l'onglet <b>Strat&eacute;gies</b> devient l'onglet actif. L'&eacute;tat interne d'un onglet (chemin de parent&eacute;, ordre de tri) est rappel&eacute; lorsque l'onglet redevient actif. </p><a name="policies"> </a> <div class="help-header-2">Onglet Strat&eacute;gies</div>
+<p>Utilisez l'onglet <b>Strat&eacute;gies</B> pour naviguer dans l'arborescence des strat&eacute;gies de configuration en affichant les sous-groupes, les param&egrave;tres de configuration ou les deux.</p>
+<p>Chaque onglet Strat&eacute;gies comporte deux boutons&nbsp;: <ul><li><b>Cr&eacute;er un rapport</b>&nbsp;: pour plus d'informations, reportez-vous &agrave; la section <a href="#reporting">Cr&eacute;ation de rapports</a>.</li>
+    <li><b>Effacer les param&egrave;tres</b>&nbsp;: ce bouton supprime de fa&ccedil;on r&eacute;cursive toutes les donn&eacute;es de configuration situ&eacute;es sous le sous-groupe affich&eacute; pour l'entit&eacute; visualis&eacute;e. </li>
+</ul>
+</P>
+<p>Chaque entr&eacute;e racine de l'arborescence des strat&eacute;gies de configuration fait r&eacute;f&eacute;rence &agrave; une application, par exemple, "StarOffice&nbsp;7". L'arborescence sous-jacente &agrave; l'application organise les strat&eacute;gies de configuration de l'application. Les strat&eacute;gies de configuration peuvent se trouver n'importe o&ugrave; dans l'arborescence des strat&eacute;gies de configuration. Si une strat&eacute;gie de configuration n'est pas un noeud terminal de l'arborescence des strat&eacute;gies de configuration, le tableau des strat&eacute;gies et la strat&eacute;gie de configuration doivent &ecirc;tre affich&eacute;s pour un emplacement actif de l'arborescence.  </p><a name="caparpath"> </a> <div class="help-header-3">Chemin de parent&eacute;</div>
+<p>Le chemin de parent&eacute; s'affiche en haut de la page, sous les onglets. Il indique l'emplacement actif dans l'arborescence des strat&eacute;gies de configuration. Il fonctionne de la m&ecirc;me mani&egrave;re que le chemin de parent&eacute; du volet de navigation (reportez-vous &agrave; la pr&eacute;c&eacute;dente section <a class="help-link" href="#parpath">Chemin de parent&eacute;</a>). </p><a name="subgroupstable"> </a> <div class="help-header-3">Tableau des sous-groupes</div>
+<P>Le tableau des sous-groupes se trouve sous le chemin de parent&eacute;. Il affiche la liste des sous-groupes de l'emplacement actif dans l'arborescence des strat&eacute;gies de configuration. Il contient deux colonnes&nbsp;: "Nom" et "Commentaire".</P>
+<P>La colonne "Nom" contient le nom de chaque sous-groupe de l'emplacement actif dans l'arborescence des strat&eacute;gies de configuration. Le nom s'affiche sous forme de lien. Pour naviguer dans l'arborescence des strat&eacute;gies de configuration, cliquez sur un lien de nom. Cela a pour effet&nbsp;:</P>
+<UL>
+    	<li>d'actualiser le volet de contenu de sorte que le chemin de parent&eacute; pointe vers le nouvel emplacement dans l'arborescence des strat&eacute;gies de configuration&nbsp;;</li>
+   	<li>d'actualiser le volet de contenu de sorte qu'un tableau des strat&eacute;gies ou qu'une strat&eacute;gie s'affiche.</LI>
+</UL>
+<P>Ce type de navigation est qualifi&eacute; de "navigation descendante" de l'arborescence.</P>
+<P>La colonne "Commentaire" contient une br&egrave;ve description du sous-groupe. </P><A NAME="capolicies"></A> <div class="help-header-3">Strat&eacute;gie</div>
+<P>L'onglet "Strat&eacute;gies" du volet de contenu affiche les donn&eacute;es de strat&eacute;gie de configuration valides si elles sont disponibles pour la combinaison entit&eacute; active/strat&eacute;gie de configuration active.</p>
+<p>Ces donn&eacute;es sont pr&eacute;sent&eacute;es dans des tableaux. Chaque tableau comporte quatre colonnes&nbsp;: une colonne avec des ic&ocirc;nes de s&eacute;lection, et les colonnes "&Eacute;tat", "Nom" et "Valeur". La barre d'actions du tableau poss&egrave;de un menu d'actions d&eacute;roulant. </p>
+<p>Cochez la case en regard d'un &eacute;l&eacute;ment pour le s&eacute;lectionner. Une action du menu d&eacute;roulant de la barre d'actions peut alors &ecirc;tre ex&eacute;cut&eacute;e sur l'&eacute;l&eacute;ment s&eacute;lectionn&eacute;. Le tableau suivant d&eacute;crit toutes les actions&nbsp;:</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>Action</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>Op&eacute;ration</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Prot&eacute;ger</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Prot&egrave;ge l'&eacute;l&eacute;ment s&eacute;lectionn&eacute; contre toute modification.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Annuler la protection</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Supprime la protection de l'&eacute;l&eacute;ment s&eacute;lectionn&eacute;.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Appliquer la valeur par d&eacute;faut</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Utilise les donn&eacute;es par d&eacute;faut &agrave; code permanent du mod&egrave;le de strat&eacute;gie.</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>Effacer</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>Supprime les donn&eacute;es stock&eacute;es dans l'&eacute;l&eacute;ment.</P>
+            </TD>
+        </TR>
+        
+</TABLE>
+<p>Deux ic&ocirc;nes situ&eacute;es &agrave; gauche du nom d'un &eacute;l&eacute;ment en indiquent l'&eacute;tat. Le tableau suivant pr&eacute;sente les ic&ocirc;nes et leur fonction&nbsp;:</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>Ic&ocirc;ne</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>Signification</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>Op&eacute;ration</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="D&eacute;fini ici" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Cette ic&ocirc;ne indique que la valeur de l'&eacute;l&eacute;ment a &eacute;t&eacute; d&eacute;finie &agrave; ce niveau de l'arborescence de l'organisation.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered" ALT="D&eacute;fini fusionn&eacute;" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Cette ic&ocirc;ne, qui constitue aussi un lien, indique que la valeur de l'&eacute;l&eacute;ment a &eacute;t&eacute; d&eacute;finie &agrave; un niveau sup&eacute;rieur de l'arborescence de l'organisation (ou du domaine). La valeur que voit l'utilisateur est le r&eacute;sultat de la fusion de couches, ou de niveaux d'entit&eacute;s, au sein de l'organisation.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>En cliquant sur cette ic&ocirc;ne, vous acc&eacute;dez &agrave; l'emplacement o&ugrave; la valeur a &eacute;t&eacute; d&eacute;finie.</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere" ALT="Prot&eacute;g&eacute; ici" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Cette ic&ocirc;ne indique que la protection de l'&eacute;l&eacute;ment a &eacute;t&eacute; d&eacute;finie &agrave; ce niveau de l'arborescence de l'organisation (ou du domaine). La protection est h&eacute;rit&eacute;e par l'interm&eacute;diaire des arborescences de l'organisation et des strat&eacute;gies de configuration.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered" ALT="Prot&eacute;g&eacute; fusionn&eacute;" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>Cette ic&ocirc;ne, qui constitue aussi un lien, indique que la protection de l'&eacute;l&eacute;ment a &eacute;t&eacute; d&eacute;finie &agrave; un niveau sup&eacute;rieur de l'arborescence de l'organisation (ou du domaine). La protection de cet &eacute;l&eacute;ment est le r&eacute;sultat de la fusion de couches, ou de niveaux d'entit&eacute;s, au sein de l'organisation.</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>Le lien associ&eacute; &agrave; cette ic&ocirc;ne, lorsque vous cliquez dessus, m&egrave;ne &agrave; l'endroit o&ugrave; la protection a &eacute;t&eacute; d&eacute;finie.</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>Les valeurs des donn&eacute;es peuvent &ecirc;tre modifi&eacute;es dans la colonne "Valeur". Les changements de valeur comme les changements d'&eacute;tat doivent &ecirc;tre enregistr&eacute;s. Il suffit pour ce faire de cliquer sur le bouton <b>Enregistrer</b>. </p><a name="casets"> </a> <div class="help-header-3">Ensembles</div>
+<p>Les ensembles sont des collections dynamiques de propri&eacute;t&eacute;s. Vous pouvez ajouter des &eacute;l&eacute;ments &agrave; l'ensemble ou en supprimer.</p>
+<p>Pour ajouter un &eacute;l&eacute;ment &agrave; un ensemble&nbsp;: <ol><li>Cliquez sur le bouton <b>Nouveau</b>. </li>
+    <li>Une bo&icirc;te de dialogue s'affiche pour vous permettre de saisir le nom du nouvel &eacute;l&eacute;ment. L'&eacute;l&eacute;ment est alors ajout&eacute; &agrave; la fen&ecirc;tre principale, laquelle est actualis&eacute;e.</li>
+    <li>Le nouvel &eacute;l&eacute;ment peut &ecirc;tre modifi&eacute; dans la fen&ecirc;tre principale.</li>
+</ol>
+<p>Pour supprimer un &eacute;l&eacute;ment d'un ensemble, s&eacute;lectionnez l'&eacute;l&eacute;ment en question, puis cliquez sur le bouton <b>Supprimer</B>.</p>
+<p>Notez que les ensembles peuvent eux-m&ecirc;mes contenir des ensembles et qu'ils sont repr&eacute;sent&eacute;s par des liens. En cliquant sur le lien, vous acc&eacute;dez &agrave; l'ensemble correspondant, que vous pouvez alors modifier. </p><a name="policysets"> </a> <div class="help-header-2">Onglet Groupes de strat&eacute;gies</div>
+<p>L'onglet Groupes de strat&eacute;gies permet d'ajouter des groupes de strat&eacute;gies &agrave; l'entit&eacute; s&eacute;lectionn&eacute;e ou d'en supprimer.</p>
+<p>Pour ajouter un groupe de strat&eacute;gies figurant dans la liste <b>Disponible(s)</b> situ&eacute;e &agrave; gauche, proc&eacute;dez comme suit&nbsp;:</p>
+<ol>
+    <li>S&eacute;lectionnez dans la liste le groupe de strat&eacute;gies qui vous int&eacute;resse.</li>
+    <li>Cliquez sur le bouton <b>Ajouter</b> pour ajouter le groupe de strat&eacute;gies s&eacute;lectionn&eacute; &agrave; la liste <b>S&eacute;lectionn&eacute;(s)</B> situ&eacute;e &agrave; droite.</li>
+    <li>Cliquez sur <b>Enregistrer</b> pour sauvegarder la nouvelle assignation.  </LI>
+</ol><a name="caentities"> </a> <div class="help-header-2">Onglet Entit&eacute;s assign&eacute;es</div>
+<p>Si un groupe de strat&eacute;gies est s&eacute;lectionn&eacute; dans le r&eacute;f&eacute;rentiel des strat&eacute;gies du volet de navigation, le volet de contenu comprend l'onglet <b>Entit&eacute;s assign&eacute;es</b>. L'onglet Entit&eacute;s assign&eacute;es affiche la liste de toutes les entit&eacute;s auxquelles le groupe de strat&eacute;gies s&eacute;lectionn&eacute; est assign&eacute;.</p>
+<p>L'onglet Entit&eacute;s assign&eacute;es permet d'effectuer les actions suivantes&nbsp;: <ul><li><b>Supprimer</B> rompt l'association entre la ou les entit&eacute;s s&eacute;lectionn&eacute;es et le groupe de strat&eacute;gies s&eacute;lectionn&eacute; dans le volet de navigation. </li>
+    <li>Le fait de cliquer sur une entit&eacute; dans la colonne "Nom" actualise le volet de navigation et la met en &eacute;vidence avec un arri&egrave;re-plan bleu. </li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="roles"> </a> <div class="help-header-2">Onglet R&ocirc;les</div>
+<p>Si une entit&eacute; de type "Utilisateur" est s&eacute;lectionn&eacute;e dans le volet de navigation et que cet utilisateur est membre d'au moins un r&ocirc;le, le volet de contenu comprend l'onglet <b>R&ocirc;les</B>. L'onglet <b>R&ocirc;les</B> affiche la liste des r&ocirc;les dont l'utilisateur s&eacute;lectionn&eacute; est membre.</p>
+<p>Cet onglet comprend deux colonnes&nbsp;: "Nom" et "Chemin d'acc&egrave;s". "Nom" contient le nom de chaque r&ocirc;le, et "Chemin d'acc&egrave;s" le chemin d'acc&egrave;s absolu au r&ocirc;le. </p><a name="users"> </a> <div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a> </div><a name="reporting"> </a> <div class="help-header-1">Cr&eacute;ation de rapports</div>
+<p>Un rapport est un affichage en lecture seule de tous les param&egrave;tres de configuration qui contiennent des donn&eacute;es. Pour cr&eacute;er un rapport, il suffit de cliquer sur un bouton <b>Cr&eacute;er un rapport</B>. La bo&icirc;te de dialogue Configurer un rapport s'affiche alors.</p>
+<p>Dans la bo&icirc;te de dialogue "Configurer un rapport", vous pouvez&nbsp;: <ul><li>choisir l'arborescence (de l'organisation et/ou du domaine) &agrave; prendre en compte (<b>Utiliser pour le rapport</B>)&nbsp;; </li>
+    <li>choisir les colonnes &agrave; afficher dans le rapport g&eacute;n&eacute;r&eacute; (les options <b>Chemin d'acc&egrave;s de l'&eacute;tat</b> et <b>Description</B> peuvent &ecirc;tre d&eacute;sactiv&eacute;es). </li>
+</ul>
+<p>Lorsque vous avez d&eacute;fini les diff&eacute;rentes options, vous pouvez cliquer sur le rapport pour ouvrir un affichage en lecture seule des donn&eacute;es s&eacute;lectionn&eacute;es.</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Aller au d&eacute;but de la page" width="11" height="10" hspace="4" border="0"> Retour au d&eacute;but</a></div>
+
+</body>
+</html>

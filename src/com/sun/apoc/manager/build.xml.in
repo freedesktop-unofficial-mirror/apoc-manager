@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project name="apoc_desktop_manager" default="main" basedir="../../../../../">
+    
+    <property name="jarname" value="apoc_manager.jar"/>
+    <property name="package" value="com/sun/apoc/manager"/>
+
+    <property name="inpath" value="build"/>
+    <property name="build.dir" value="${inpath}"/>
+    <property name="build.class" value="${build.dir}/class"/>
+
+    <path id="classpath">
+	<pathelement location="@JATOJDK@"/>
+	<pathelement location="@LDAPJDK@"/>
+	<fileset dir="@WC_LIBPATH@" includes="*.jar"/>
+        <fileset dir="@WC_PRIVLIBS@" includes="*.jar"/>
+	<pathelement location="@SPIJDK@"/>
+    </path>
+
+    <target name="prepare">
+        <mkdir dir="${build.dir}"/>
+        <mkdir dir="${build.class}"/>
+    </target>
+
+    <target name="compile" depends="prepare">
+      <javac  srcdir="src"
+              destdir="${build.class}"
+              classpathref="classpath"
+              debug="${debug}">
+       <include name="${package}/**/*.java"/>
+      </javac> 
+    </target>
+
+    <target name="jar" depends="compile">
+      <jar jarfile="${build.class}/${jarname}"
+           basedir="${build.class}"
+           includes="${package}/**">
+        <manifest>
+          <attribute name="Class-Path" value="@SPIJDK@"/>
+        </manifest>
+      </jar>
+    </target>
+    
+    <target name="main" depends="jar"/>  	
+    
+    <target name="clean">
+        <delete file="${build.class}/${jarname}"/>
+        <delete dir="${build.class}/${package}"/>
+    </target>
+</project>

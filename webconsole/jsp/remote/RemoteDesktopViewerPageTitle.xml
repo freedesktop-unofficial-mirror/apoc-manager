@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+    
+<pagetitle>
+    <pagebuttons>
+       <cc name="BackButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="defaultValue" value="Back to host selection"/>
+         <attribute name="Title" value="Confirm the selection and close the window."/>
+         <attribute name="onClick" value="javascript:top.location='../manager/RemoteDesktopFrameset'; return false;"/>
+         <attribute name="type" value="default"/>
+       </cc>
+    </pagebuttons>
+</pagetitle>

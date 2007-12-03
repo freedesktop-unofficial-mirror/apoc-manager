@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager - 說明內容</title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=Big5"><!-- Empty script so IE5.0 Windows will draw table and button borders --><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"></script></head>
+
+<body class="help-body"><a name="top"></a><p><a name="intro"> </a><div class="help-header-1">Configuration Manager 說明</div></p>
+<p>歡迎使用 Sun Java[TM] Desktop System Configuration Manager 說明頁面。若要取得 Java Desktop System Configuration Manager 之特定部分的說明，請按一下左側的連結之一。</p>
+<p>本說明以概述 Configuration Manager 一般產品背景和概念開始 - <a class="help-link" href="#concepts">背景與概念</a>。關於 Configuration Manager 之一般佈局和行為的資訊可在<a class="help-link" href="#ui">佈局與行為</a>中找到。</p>
+<p>一般頁面後面的內容是有關<a class="help-link" href="#masthead"><b>標頭</b></a>、<a class="help-link" href="#navigation"><b>導航窗格</b></a>和<a class="help-link" href="#content"><b>內容窗格</b></a>的更加具體的說明。也有一些關於<a class="help-link" href="#login">登入</a>和<a href="#reporting">報告</a>功能的頁面。<p><a name="concepts"> </a><div class="help-header-1">背景與概念</div></p>
+<p>Configuration Manager 可讓您集中管理配置設定。您可以於組織的階層結構之不同層次上檢視、定義和執行配置設定。語義一致的配置設定在本文件其餘部分亦稱為「配置策略」。</p>
+<P>Configuration Manager 可處理三種不同的階層式結構，亦稱為樹。若要瞭解 Configuration Manager 使用者介面，識別兩種樹非常重要：</P>
+<p><div class="help-header-2"><a name="dataStructures">資料結構</a></div></p>
+<P>一種樹經由配置策略形成，因此稱為配置策略樹 (參見圖 1 -「樹」的藍色部分)。在許多具有更複雜配置的程式中 (如 Mozilla)，使用者已熟悉配置設定的階層式組織。典型的配置策略包含「/Mozilla/Navigator」，其配置設定包含「/Mozilla/Navigator/HomeUrl」。</P>
+<P>配置策略樹包含在第二種類型的樹中，即組織樹 (參見圖 1 -「樹」的灰色部分)。組織樹表示組織單元之間的關係。所以「組織樹包含配置策略樹」。組織樹可使用 LDAP 伺服器表示。</P>
+<p>第三種類型的樹是網域樹。網域樹表示硬體單元之間的關係。配置策略樹包含在網域樹中，從而產生包含配置策略樹的網域樹。網域樹可使用 LDAP 伺服器表示。</p>
+<p>使用組織樹的概念與使用網域樹的概念相同。這兩者之間的主要區別在於，組織樹維護使用者而網域樹維護主機。使用者和主機位於這兩個獨立的樹中，這使得 Configuration Manager 可以提供基於使用者的配置和基於主機的配置。由於這兩種樹相似，因此本節重點介紹組織樹，僅在組織樹與網域樹之間存在差異時才提及網域樹。</p>
+<P>大型企業中普遍使用 LDAP 伺服器，以透過階層式方法對映組織資料。在 LDAP 中，組織樹內的每一個位置即為一個實體。</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="Trees" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">圖 1 &ndash; 樹</FONT></FONT></I></FONT></P>
+<p><div class="help-header-2"><a name="SecDataManagement">安全性與資料管理</a></div></p>
+<p>這種「樹中樹」使階層式安全性和資料管理變得容易。這可透過在一隆l時將整個配置策略樹一次插入組織樹的根部來實現。對該初始配置策略樹的配置設定所做的特定實體變更儲存在相應的實體中。簡言之，圖 1 僅說明與名為「marketing」和「jclarke」的組織實體關聯的配置策略樹。</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">配置設定的產生</a></div></p>
+<P>可透過合併取得實體的配置設定。與組織樹或網域樹中的實體關聯的所有配置設定均稱為層。合併會先從根層開始，然後合併樹，直到達到所需實體。在與實體關聯的層中，配置設定中的變更由與樹階層結構中較底端的實體關聯的層來繼承 (參見<A class="help-link" HREF="#fig_merging">圖 2 -「層合併」</a>)。如果特定的層定義它自己的設定，則所繼承的值可被覆寫。</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Layer Merging" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">圖 2 &ndash; 層合併</FONT></FONT></I></FONT></P>
+<p><FONT COLOR="#000000">此繼承性適用於配置設定，也適用於安全性特徵：</FONT><FONT COLOR="#000000">在附屬於「o=marketing」的層中為某一配置設定指定安全性屬性「受保護」，會使此配置設定在樹的所有後續層中均為唯讀 (參見<A class="help-link" HREF="#fig_protection">圖 3 -「保護」</a>)。</FONT></P>
+<P><FONT COLOR="#000000"><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Protection" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1> </FONT></FONT><P><FONT COLOR="#000000"><FONT COLOR="#000000"><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">圖 3 &ndash; 保護</FONT></FONT></I></FONT></FONT></P>
+<p><div class="help-header-2"><a name="BCAssociating">使配置策略樹與組織樹或網域樹關聯</a></div></p> 
+<p>配置策略樹可透過兩種不同的方式與組織樹的實體連結：</P>
+<UL>
+	<li>作為自我包含的配置策略樹儲存在實體中</li>
+	 <li>從策略群組連結至實體</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">策略群組</a></div></p>
+<P>策略群組是配置策略的容器，每個策略群組都具有與配置策略關聯的 (唯一) 名稱。策略群組也是配置策略樹的容器，因為配置策略將其配置設定儲存在配置策略樹中 (參見<A class="help-link" HREF="#fig_trees">圖 1 &ndash;「樹」</A>)。策略群組儲存在策略系統訊息庫中，透過建立與策略群組的連結，所有類型的實體均可使用策略群組。這樣可獲得更多靈活性，並且不依賴於所使用的後端。策略群組的另一個優點是可以匯入和匯出，易於維護。</P>
+<P>管理員可建立單獨語義範圍之配置策略的集合，例如儲存在策略系統訊息庫中的「Experts」和「Novice」策略群組。然後便可在整個組織樹中使用配置策略。</P>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="ui"> </a><div class="help-header-1">佈局和行為</div>
+<p>Configuration Manager 的佈局由三個區域組成：標頭、導航窗格和內容窗格。標頭位於頁面的頂端。左下區域包含導航窗格。右下區域為內容窗格。這種類型的佈局亦稱為左右窗格設定。系統會開啟單獨的瀏覽器視窗顯示其他對話方塊和說明內容。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="login"> </a><div class="help-header-1">登入</div>
+<p>若要使用 Configuration Manager，您必須登入至 Sun Web Console。Sun Web Console 用於放置管理應用程式，所有這些應用程式具有一致的使用者介面。該主控台的優點是管理員一次性登入即可使用主控台中的任何應用程式。出於此目的，Sun Web Console 提供了標準的登入頁面。</p>
+<p>在標準登入頁面中，您要登入的伺服器顯示在用於輸入使用者名稱和密碼之文字欄位的上面。</p>
+<p>成功登入 Web Console 後，您會到達 Web Console 應用程式啟動頁面。您可從該頁面選取「Configuration Manager」應用程式，從而啟動 Configuration Manager。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="masthead"> </a><div class="help-header-1">標頭</div>
+<p>標頭中包含完整的產品名稱 (Sun Java[TM] Desktop System Configuration Manager)。標頭還提供一些一般連結：</p>
+<ul><li><b>[主控台]</b> 連結可讓您返回 Sun Web Console 應用程式啟動頁面。</li>
+    <li><b>[版本]</b> 連結可開啟版本視窗。</li>
+    <li><b>[登出]</b> 連結可讓您依次登出 Sun Web Console 和 Configuration Manager，從而返回 [登入] 頁面。</li>
+    <li><b>[說明]</b> 連結可開啟這些說明頁面。</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="navigation"> </a><div class="help-header-1">導航窗格</div>
+<p>導航窗格可讓您瀏覽包含組織、使用者和角色的組織樹，以及包含網域和主機的網域樹。它還可讓您管理相應的使用者和主機策略系統訊息庫中的策略群組。</p>
+<p>導航窗格中包含兩個頂層標籤：<b>[使用者]</B> 和 <b>[主機]</B>。</p><a name="entities"> </a><div class="help-header-2">[使用者] 標籤</div>
+<p>提供了兩個子標籤，<b>[組織樹]</B> 和 <b>[策略系統訊息庫]</B>。使用 <b>[組織樹]</B> 標籤可瀏覽 [組織樹]。</p><a name="parpath"></a><div class="help-header-3">來源路徑</div>
+<p>在 <b>[組織樹]</B> 標籤的頂端是來源路徑，它可顯示目前實體的路徑。除了最後一個連結 (顯示為一般文字並指定目前實體)，每個路徑質點均為表示實體的連結。若要使用來源路徑導航，請按一下連結。這將：<ul><li>更新導航窗格，以便來源路徑指向被按一下的實體，進而使導航表格包含該實體的子實體。</li>
+    <li>使用與該實體關聯的配置策略資料更新內容窗格。</li>
+</ul>導航窗格與內容窗格在應用程式中同步，以提供資料的同質檢視。</p><a name="navtable"></a><div class="help-header-3">導航表格</div>
+<p>該導航表格位於來源路徑之下並列出目前實體的子實體。[名稱] 欄包含目前實體之所有子實體的名稱。[類型] 欄顯示實體的類型。[動作] 欄包含每列的 <b>[檢視]</B> 連結。</p>
+<p>若要導航至實體，請按一下列出的名稱，這將：<ul><li>使所選子實體成為目前實體。</li>
+    <li>更新導航窗格，以便來源路徑指向新的目前實體，進而使導航表格包含該實體的子實體。</li>
+    <li>使用與該實體關聯的配置策略更新內容窗格。</li>
+</ul></p>實體類型可為「組織」、「使用者」或「角色」。</p>
+<p>若要檢視列出的實體的詳細資訊，請按一下 <b>[檢視]</B> 連結。這將：<ul><li>使所選列的背景色彩變更為藍色。</li>
+    <li>使用與所選實體關聯的資料更新內容窗格。</li>
+</ul>具有藍色背景的列標示資料目前顯示在內容窗格中的實體。</p>
+<p>導航表格的動作列包含 <b>[篩選]</B> 下拉式功能表和 <b>[進階篩選]</b> 圖示。當表格包含的項目多於十個時，會顯示 <b>[分頁/捲動查看所有資料]</b> 圖示，該圖示可讓您變更表格項目的檢視。</p> 
+<p><b>[篩選]</b> 下拉式功能表可讓您選擇要在導航表格中顯示的實體的類型。它包含以下項目：<ul><li>[所有項目] 在導航表格中顯示所有類型的實體。</li>
+    <li>[組織] 在導航表格中僅顯示「組織」類型的實體。</li>
+    <li>[使用者] 在導航表格中僅顯示「使用者」類型的實體。</li>
+    <li>[角色] 在導航表格中僅顯示「角色」類型的實體。</li>    
+</ul></p><a name="adfilter"></a><div class="help-header-3">進階篩選</div>
+<p>按一下導航表格中的 <b>[進階篩選]</B> 圖示開啟 [進階過濾器] 對話方塊。</P>
+<p>在 <b>[類型]</b> 區段中標示您要過濾的實體類型。若要進行更具體的過濾，請在 <b>[名稱]</b> 文字欄位中輸入您要對其執行過濾的名稱。然後按一下該對話方塊底部的 <b>[過濾器]</B> 按鈕執行過濾。</p><a name="search"></a><div class="help-header-3">搜尋</div>
+<p>若要開啟 [搜尋] 視窗，請按一下導航表格上面的 <b>[搜尋]</b> 按鈕。[搜尋] 視窗包含標頭、左側的參數區域和右側的結果區域。[搜尋] 視窗可用於在組織樹中遞迴地搜尋某些實體類型和實體名稱。當 [搜尋] 視窗在背景處於開啟狀態時，如果按一下主視窗之導航窗格中的 <b>[搜尋]</b> 按鈕，則 [搜尋] 視窗會成為最上面的視窗。系統會更新 [搜尋] 視窗的目前實體，[搜尋] 視窗參數區域中的來源路徑顯示該實體。所有其他參數和結果區域的內容則沒有變更。</p>
+<p>參數區域在頂端顯示來源路徑，來源路徑顯示目前實體的路徑。「<a class="help-link" href="#parpath">來源路徑</a>」一節中描述參數區域的使用。</p>
+<p>若要搜尋特定實體類型，請從來源路徑下面的下拉式清單中選取該類型。六個選項為 [搜尋全部]、[搜尋組織]、[搜尋使用者]、[搜尋角色]、[搜尋網域] 和 [搜尋主機]。</p>
+<p>若要進一步限制搜尋，您可以使用下拉式清單旁邊的文字方塊。這可讓您搜尋與此欄位中輸入的搜尋字串相符的實體名稱。選取 <b>[起始點]</b> 單選按鈕之一可指定從樹中搜尋的起始點。您可選取從目前位置搜尋或從樹的頂端搜尋。預設值為從目前位置搜尋。位置由它們的名稱表示。按一下來源路徑中的任何路徑質點均會將搜尋的目前位置變更為所選實體，但不會變更導航器的檢視範圍。</p>
+<p>請從 [每頁顯示結果數目] 下拉式清單中選取要顯示的結果數目。</p>
+<p>搜尋窗格中的所有搜尋欄位均接受星號「*」在搜尋字串中的任何位置作為萬用字元。星號表示任意數量的任意字元。如果指定多個搜尋條件，僅當實體滿足所有搜尋條件時才可被加入結果表格。搜尋不區分大小寫。</p>
+<p>若要執行搜尋，請按一下 <b>[搜尋]</b> 按鈕，使用包含搜尋結果的表格更新結果區域。</p>
+<p>若要重設頁面值，請按一下 <b>[重設]</b> 按鈕，這會使用預設值更新參數區域。所有文字方塊均為空，所有下拉式清單和單選按鈕群組中的第一個值被選取。</p>
+<p>建立 [搜尋] 視窗時，結果區域為空白頁面。執行搜尋後，會顯示結果表格。結果表格包含三欄：[名稱]、[類型] 和 [路徑]。</p>
+<p>若要檢視結果，請按一下 [名稱] 欄中相應的名稱。這將：<ul><li>使主視窗成為最上面的視窗。</li>
+        <li>更新主視窗的導航窗格，從而使「名稱」連結表示的實體在導航表格中成為具有藍色背景的項目。</li>
+        <li>使用與該實體關聯的配置策略更新主視窗的內容區域。</li>
+    </UL>
+</p>
+<p>[類型] 欄顯示實體的類型。實體類型可為「組織」、「使用者」或「角色」。</p>
+<p>[路徑] 欄包含實體的路徑。路徑為相對於搜尋起始點的路徑。</p>
+<p>如果搜尋的類型為「使用者」，參數區域會顯示不同的文字方塊以包含使用者的特徵：[使用者 ID]、[名字] 和 [姓氏]。在結果區域中，包含使用者 ID 的附加 [使用者 ID] 欄會顯示在 [名稱] 欄的右側。如果參數區域中的 [使用者 ID] 文字方塊包含至少一個字元，則主排序欄是 [使用者 ID] 欄。否則，主排序欄是 [名稱] 欄。</p><a name="hoststab"> </a><div class="help-header-2">[主機] 標籤</div>
+<p><b>[主機]</B> 標籤包含兩個分別名為 <b>[網域樹]</B> 和 <b>[策略系統訊息庫]</B> 的子標籤。</p><a name="domtree"></a><div class="help-header-3">[網域樹] 標籤</div>
+<p>[網域樹] 顯示使用者正在使用之硬體的配置設定。</P>
+<p>在 [網域樹] 中導航的方式與在 [組織樹] 中導航的方式相同，請參閱「<a href="#entities">[使用者] 標籤</A>」一節以取得更多詳細資訊。<a name="actionbar"></a><div class="help-header-3">動作列</div>
+<p>導航表格中的 <b>[篩選]</B> 下拉式功能表包含四個項目：<ul><li>[所有項目] - 顯示所有類型的實體</li>
+    <li>[網域] - 顯示網域類型的實體</li>
+    <li>[主機] - 顯示主機類型的實體</li>
+</ul>
+</p><a name="adfilterhosts"></a><div class="help-header-3">進階篩選</div>
+<p>[網域樹] 的進階過濾器與 [組織樹] 的進階過濾器工作方式相同 (請參閱上一小節「<a href="#adfilter">進階篩選</a>」)。網域樹的進階篩選提供要從其中篩選的「網域」和「主機」實體類型。</p><a name="searchhosts"></a><div class="help-header-3">搜尋</div>
+<p>如果您按一下 <b>[網域樹]</b> 標籤中的 <b>[搜尋]</b> 按鈕，會顯示網域搜尋。網域搜尋與 [組織樹] 中的搜尋方式相同 (請參閱<a href="#">以上</a>)，但 [起始點] 欄位設定為「硬體」。</p>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="psptab"> </a><div class="help-header-2">策略系統訊息庫</div>
+<p><b>[策略系統訊息庫]</b> 標籤位於 <b>[使用者]</B> 標籤和 <b>[主機]</B> 標籤之下。</P>
+<p>策略系統訊息庫既是使用者策略群組的容器，也是主機策略群組的容器。策略群組在有次序的清單中組織。順序由優先順序定義。</p><a name="psptable"></a><div class="help-header-3">策略群組表格</div>
+<P>策略群組表格位於頁面頂端並列出策略群組。該表格包含三欄：選取欄、[名稱] 欄和 [優先順序] 欄。</P>
+<P>選取欄用於標示 <b>[策略群組動作]</b> 下拉式功能表中列出的動作所適用的列。</P>
+<P>若要導航至策略群組，請按一下它的名稱。這將：</P>
+<UL>
+   	<li>使所按列的背景顏色變更為藍色。</li>
+   	<li>使用與所選策略關聯的資料更新內容窗格。</li>
+</ul>
+<p>[優先順序] 欄包含策略群組的優先順序。如果管理員將多個策略群組與實體關聯，則優先順序用於定義策略群組的合併次序。</p>
+<P>具有藍色背景的列標示目前在內容窗格中檢視其資料的策略群組，即所檢視的策略群組。</P><a name="pspactions"></a><div class="help-header-3">策略群組動作列</div>
+<P><b>[策略群組動作]</B> 下拉式功能表包含以下動作，這些動作從上到下顯示：</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>名稱</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>動作</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>新建</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>開啟對話方塊視窗，使用者可在其中輸入策略群組的 (唯一) 名稱。按一下 [確定] 後，策略群組被新增。導航窗格將更新，以反映變更。</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>刪除</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>開啟即現式視窗，並顯示要求確認策略群組刪除的警告訊息。如果使用者按一下 [確定]，則刪除策略群組。導航窗格將更新，以反映變更。</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>重新命名</p>
+                </td>
+                <td width="89%">
+                    <p>開啟對話方塊視窗，使用者輸入策略群組的新的 (唯一) 名稱，則重新命名策略群組，並且導航窗格將更新，以反映變更。</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>編輯優先順序</p>
+                </td>
+                <td width="89%">
+                    <p>開啟包含變更優先順序之清單方塊的對話方塊視窗。</p>
+                </td>
+            </tr>            
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>匯出</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>開啟對話方塊視窗。使用者輸入要將所選策略群組匯出至的目標路徑。</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>匯入</p>
+                </td>
+                <td width="89%">
+                    <p>開啟對話方塊視窗。使用者選取要匯入的策略群組。按一下 [確定] 後，將新增該策略群組，並且導航窗格將更新，以反映變更。</p>
+                </td>
+            </tr>            
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">策略群組優先順序</div></p>
+<p>策略群組優先順序的概念可讓管理員定義合併層的次序。如果實體被指定了多個策略群組，則合併過程中會使用策略群組優先順序。這種情況下，實體的階層結構不足以確定合併策略群組的順序。透過指定策略群組的優先順序可解決此問題。</p>
+<p>若要開啟 [策略群組優先順序] 對話方塊，請從 <b>[策略群組動作]</b> 下拉式功能表中選取 <b>[編輯優先順序]</b>。若要提高或降低策略群組的優先順序：</p>
+<ol>
+    <li>請從清單中選取策略群組</li>
+    <li>按一下 <b>[上移]</b> 或 <b>[下移]</b> 按鈕來提高/降低優先順序</li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="content"> </a><div class="help-header-1">內容窗格</div>
+<p>內容窗格會顯示與所選實體或導航窗格中的策略群組關聯的資料。資料以標籤進行分組。導航窗格中的選取確定內容窗格中所顯示標籤的數量和類型。<b>[策略]</b> 標籤為預設作用中標籤。如果導航窗格中的選取變更，則只要選取的是目前作用中標籤，該標籤會保持為作用中。否則，<b>[策略]</b> 標籤會變為作用中標籤。當標籤再次變為作用中時，標籤的內部狀態 (來源路徑和排序次序) 會被恢復。</p><a name="policies"> </a><div class="help-header-2">[策略] 標籤</div>
+<p>使用 <b>[策略]</B> 標籤導航配置策略樹，配置策略樹可分別顯示子群組和配置設定，或同時顯示子群組和配置設定。</p>
+<p>每個策略頁面均有兩個按鈕：<ul><li><b>[建立報告]</b>：請參閱「<a href="#reporting">報告</a>」一節以取得詳細資訊。</li>
+    <li><b>[清除設定]</b>：此按鈕可遞歸刪除目前為所檢視實體顯示的子群組下面的所有配置資料。</li>
+</ul>
+</P>
+<p>配置策略樹中的每個根項目均表示一個應用程式，例如「StarSuite 7」。應用程式下面的樹組織從屬於該應用程式的配置策略。配置策略可位於配置策略樹中的任何位置。如果配置策略不是配置策略樹的葉，則需要為配置策略樹中的某一目前位置顯示策略表格以及配置策略。</p><a name="caparpath"> </a><div class="help-header-3">來源路徑</div>
+<p>來源路徑顯示在標籤下面頁面的頂端。它顯示目前在配置策略樹中的位置。它的運作方式與導航窗格中的來源路徑相同 (請參閱上一小節<a class="help-link" href="#parpath">「來源路徑」</a>)。</p><a name="subgroupstable"> </a><div class="help-header-3">子群組表格</div>
+<P>子群組表格位於來源路徑的下面。該表格列出配置策略樹中目前位置的子群組。它包含兩欄：[名稱] 和 [註釋]。</P>
+<P>[名稱] 欄包含配置策略樹中目前位置的所有子群組的名稱。名稱顯示為連結。若要在配置策略樹中導航，請按一下名稱連結。這將：</P>
+<UL>
+    	<li>更新內容窗格，以便來源路徑指向配置策略樹中的新位置。</li>
+   	<li>更新內容窗格，以便顯示策略表格或策略。</LI>
+</UL>
+<P>這種導航稱為「逐層顯示」類型的導航。</P>
+<P>[註釋] 欄包含子群組的簡短描述。</P><A NAME="capolicies"></A><div class="help-header-3">策略</div>
+<P>如果有效的配置策略資料可用於目前實體與目前配置策略的組合，則內容窗格中的 [策略] 標籤顯示這些資料。</p>
+<p>資料以表格表示。該表格有四欄。包含選取圖示的選取欄、[狀態] 欄、[名稱] 欄和 [值] 欄。表格上的動作列具有下拉式動作功能表</p>
+<p>若要選取元素，請勾選它前面的核取方塊。現在可對所選元素執行動作列中下拉式動作功能表中的動作。以下表格描述所有動作：</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>動作</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>作業</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>保護</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>設定所選元素受保護。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>解除保護</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>移除所選元素的保護。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>套用預設</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>使用策略範本中的程序內定預設資料。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>清除</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>刪除儲存在元素中的資料。</P>
+            </TD>
+        </TR>
+        
+</TABLE>
+<p>在元素名稱的左側，兩個圖示顯示該元素的狀態。以下表格概述圖示及其功能：</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>圖示</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>含義</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>作業</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="Defined Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此圖示說明在組織樹的本層次上設定元素的值。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered" ALT="Defined Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此圖示也是連結，它說明在組織 (或網域) 樹的較高層次上設定之元素的值。使用者看到的值是在組織內部層合併或實體層次合併的結果。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>如果按一下此圖示，它可讓您導航至設定值的位置。</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere" ALT="Protected Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此圖示說明在組織 (或網域) 樹的本層次上設定元素的保護。保護可在組織樹和配置策略樹中繼承。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered" ALT="Protected Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此圖示也是連結，它說明在組織 (或網域) 樹的較高層次上設定元素的保護。此元素或項目的保護是在組織內部層合併或實體層次合併的結果。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>按一下此圖示可讓使用者導航至設定保護的位置。</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>透過變更 [值] 欄中的值可變更資料值。系統必須儲存值的變更以及狀態的變更。按一下 <b>[儲存]</b> 按鈕可完成儲存。</p><a name="casets"> </a><div class="help-header-3">設定</div>
+<p>設定為屬性的動態集合。您可以在設定中新增和移除元素。</p>
+<p>若要向設定新增元素：<ol><li>請按一下 <b>[新增]</b> 按鈕。</li>
+    <li>系統顯示對話方塊，可讓您輸入新元素的名稱。然後新增該元素，並且主視窗將更新。</li>
+    <li>可在主視窗中編輯新元素</li>
+</ol>
+<p>若要刪除設定中的元素，請選取元素並按一下 <b>[刪除]</B> 按鈕。</p>
+<p>請注意，設定可包含設定，它們表示為連結。按一下連結讓您導航至設定，且可在該處編輯設定</p><a name="policysets"> </a><div class="help-header-2">[策略群組] 標籤</div>
+<p>此 [策略群組] 頁面可讓您在所選實體中新增和移除策略群組。</p>
+<p>若要新增左側 <b>[可用]</b> 清單中列出的策略群組：</p>
+<ol>
+    <li>請從清單中選取策略群組</li>
+    <li>按一下 <b>[新增]</b> 按鈕將所選策略群組新增至右側的 <b>[已選取]</B> 清單中。</li>
+    <li>按一下 <b>[儲存]</b> 以儲存新的指定。</LI>
+</ol><a name="caentities"> </a><div class="help-header-2">[被指定實體] 標籤</div>
+<p>如果在導航窗格的 [策略系統訊息庫] 中選取了策略群組，內容窗格會包含 <b>[被指定實體]</b> 標籤頁面。[被指定實體] 頁面列出了所選策略群組被指定至的所有實體。</p>
+<p>[被指定實體] 標籤頁面上可執行的動作如下：<ul><li><b>[移除]</B> 中斷所選實體與導航窗格中所選策略群組之間的關聯。</li>
+    <li>按一下 [名稱] 欄中的實體會更新導航窗格，從而讓被按一下的實體成為導航窗格中具有藍色背景的實體。</li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="roles"> </a><div class="help-header-2">[角色] 標籤</div>
+<p>如果在導航窗格中選取了「使用者」類型的實體，且該使用者至少從屬於一個角色，則內容窗格包含 <b>[角色]</B> 標籤頁面。<b>[角色]</B> 頁面列出所選使用者從屬於的所有角色。</p>
+<p>此頁面有 [名稱] 和 [路徑] 兩欄。[名稱] 包含角色的名稱，[路徑] 包含角色的絕對路徑。</p><a name="users"> </a><div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div><a name="reporting"> </a><div class="help-header-1">報告</div>
+<p>報告為包含資料之所有配置設定的唯讀檢視。透過按一下 <b>[建立報告]</B> 按鈕可啟動報告。然後顯示 [配置報告] 對話方塊。</p>
+<p>此 [配置報告] 對話方塊可讓您自訂：<ul><li>要考量哪個樹 (組織樹和/或網域樹) (<b>[用於報告]</B>)</li>
+    <li>要在產生的報告中顯示哪些欄 (<b>[狀態路徑]</b> 和 <b>[描述]</B> 可被停用)。</li>
+</ul>
+<p>自訂後，按一下報告會開啟所選資料的唯讀檢視。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0"> 返回頂部</a></div>
+
+</body>
+</html>

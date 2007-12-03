@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <actions>
+        <cc name="wizardWindow" tagclass="com.sun.web.ui.taglib.wizard.CCWizardWindowTag">
+            <attribute name="defaultValue" value="APOC.contexts.menu.create"/>
+            <attribute name="dynamic" value="true"/>
+        </cc>
+        <cc name="EditButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.policies.edit.button"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="onClick" value="javascript:handleEditButtonRequest();" />
+        </cc>
+        <cc name="RemoveButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.contexts.menu.remove"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="onClick" value="javascript:return handleSelection(this);" />
+        </cc>
+        <cc name="RenameButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.contexts.menu.rename"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="onClick" value="javascript:return handleSelection(this);" />
+        </cc>
+        <cc name="SyncButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="defaultValue" value="APOC.contexts.menu.synchronize"/>
+            <attribute name="dynamic" value="true"/>
+            <attribute name="onClick" value="javascript:return handleSelection(this);" />
+        </cc>
+    </actions>
+    <column name="NameColumn" sortname="NameText" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="submitFormData" value="true" />
+            <cc name="NameText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+    <column name="TypeColumn" sortname="TypeText" extrahtml="nowrap='nowrap'">
+        <cc name="TypeText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+    <column name="OrgLocationColumn" sortname="OrgLocationText" extrahtml="nowrap='nowrap'">
+        <cc name="OrgLocationText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+    <column name="ProfileLocationColumn" sortname="ProfileLocationText" extrahtml="nowrap='nowrap'">
+        <cc name="ProfileLocationText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+</table>

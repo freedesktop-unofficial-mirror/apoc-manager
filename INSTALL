@@ -1,0 +1,49 @@
+-----------------------
+--- Desktop Manager ---
+-----------------------
+
+
+
+- Step 1: Generating the configure script -
+-------------------------------------------
+
+NOTE: Tarball releases already include a configure script so this step is unnecessary in that case.
+
+Type this in the root path of the source code to generate the configure script:
+
+$ ./autogen.sh --help
+
+- Step 2: Calling the configure script -
+----------------------------------------
+
+In the root path of the source code, you should execute the configure script. For more information on changing the default paths, execute configure with the --help option.
+
+$ ./configure --prefix=/usr \
+              --with-webconsole-prefix=/opt/sun/webconsole \
+              --with-jato-path=/opt/sun/share/lib/jato.jar \
+              --with-ns-ldap-path=/usr/share/lib/java/ldapjdk.jar
+
+NOTE: You should use the same prefix than the SPI, otherwise you need to set the --with-apoc-dir option.
+
+- Step 3: Building the sources -
+--------------------------------
+
+If the configuration ends successfully, then you should build and install the sources:
+
+$ make
+$ make install
+
+- Step 4: Post installation -
+-----------------------------
+
+After installation, you should copy or make symbolic link from some files of the Java Web Console repository, the following example assumes that the webconsole is installed under /opt/sun/webconsole:
+
+$ cd /opt/sun/webconsole/apoc
+$ ln -s /opt/sun/webconsole/private/import/tld WEB-INF/
+$ ln -s /opt/sun/webconsole/private/import/lib/registrationservlet.jar WEB-INF/lib/
+$ ln -s /opt/sun/webconsole/private/import/help com_sun_web_ui/
+$ ln -s /opt/sun/webconsole/private/import/jsp com_sun_web_ui/
+
+Finally, you need to install the APOC Template Packages on the apoc/packages directory, if you have them installed already somewhere else, a symbolink link will work here as well:
+
+$ ln -s /usr/share/apoc/packages /opt/sun/webconsole/apoc/packages

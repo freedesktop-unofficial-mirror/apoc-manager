@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+  <pagebuttons>
+    <cc name="LoginButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.button.OK"/>
+      <attribute name="type" value="default"/>
+    </cc>
+    <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.button.cancel"/>
+      <attribute name="type" value="secondary"/>
+    </cc>
+  </pagebuttons>
+</pagetitle>

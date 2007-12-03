@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+  <pagebuttons>
+    <cc name="OkButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="bundleID" value="apocBundle"/>
+      <attribute name="defaultValue" value="APOC.policysets.save"/>
+      <attribute name="type" value="primary"/>
+      <attribute name="onClick" value="javascript:setNewPrios(document.PrioForm['NavigationAreaPoolPriorities.PrioritiesList'], document.PrioForm['NavigationAreaPoolPriorities.NewPrios']); return true"/>
+    </cc>
+    <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="bundleID" value="apocBundle"/>
+      <attribute name="defaultValue" value="APOC.button.cancel"/>
+      <attribute name="type" value="secondary"/>
+      <attribute name="onClick" value="javascript:self.opener.parent.navigation.document.NavigationAreaForm['NavigationArea.PageletView.NavigationAreaPool.PoolTableView.ActionMenu'].options.selectedIndex=0; javascript:self.opener.parent.navigation.focus(); javascript:top.window.close(); return false;" />
+    </cc>
+  </pagebuttons>
+</pagetitle>

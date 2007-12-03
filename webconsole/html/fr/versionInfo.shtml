@@ -1,0 +1,38 @@
+<html>
+<head>
+<title><!--#include file="version.txt"--></title>
+<meta name="Copyright" content="Copyright &copy; 2004 by Sun Microsystems, Inc.
+All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script	 type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+<script	 type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+<script	 type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+</head>
+<body class="DefBdy">
+    <div class="VrsMgn">
+    	<div class="VrsHdrTxt">
+            <!--#include file="version.txt"--> (July 31 2007 12:59 PM)
+        </div>
+        <p>
+        <div class="VrsTxt">
+            Copyright &copy; 2007 Sun Microsystems, Inc. Tous droits r&eacute;serv&eacute;s.
+            Sun Microsystems, Inc. d&eacute;tient les droits de propri&eacute;t&eacute; intellectuels 
+            relatifs &agrave; la technologie incorpor&eacute;e dans le produit qui est d&eacute;crit 
+            dans ce document. En particulier, et ce sans limitation, ces droits 
+            de propri&eacute;t&eacute; intellectuelle peuvent inclure un ou plus des brevets 
+            am&eacute;ricains list&eacute;s &agrave; l'adresse http://www.sun.com/patents et un ou 
+            les brevets suppl&eacute;mentaires ou les applications de brevet en attente 
+            aux Etats - Unis et dans les autres pays. Propri&eacute;t&eacute; de SUN/CONFIDENTIEL.
+            L'utilisation est soumise aux termes du contrat de licence.Sun,  
+            Sun Microsystems,  le logo Sun,  Java,  Solaris,  StarOffice,  
+            Sun Ray et  Sun Desktop Manager sont des marques de fabrique ou des 
+            marques d&eacute;pos&eacute;es de Sun Microsystems, Inc. aux Etats-Unis et dans 
+            d'autres pays.Toutes les marques SPARC sont utilis&eacute;es sous licence 
+            et sont des marques de fabrique ou des marques d&eacute;pos&eacute;e de SPARC 
+            International, Inc. aux Etats-Unis et dans d'autres pays.UNIX est 
+            une marque d&eacute;pos&eacute;e aux Etats-Unis et dans d'autres pays et licenci&eacute;e 
+            exlusivement par X/Open Company, Ltd.            
+        </div>
+    </div>
+</body>
+</html>

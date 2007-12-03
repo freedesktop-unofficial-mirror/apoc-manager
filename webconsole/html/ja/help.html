@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <title>Help - StarOffice Configuration Manager</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+    </head>
+<script language="JavaScript">
+<!--
+
+var sPkgName = " "
+var sAnchorName = " "
+var sAnchorCon = " "
+var sAnchorNav = " "
+var sHelpLocale = " "
+if (window.anchor != null) {
+    sAnchorName = anchor;
+}
+if (window.top.opener.top.content.document.ContentAreaForm!=null) {
+    sAnchorName =
+window.top.opener.top.content.document.ContentAreaForm['ContentArea.Anchor'].value;
+    sPkgName = 
+window.top.opener.top.content.document.ContentAreaForm['ContentArea.PkgName'].value;
+    sHelpLocale =
+window.top.opener.top.content.document.ContentAreaForm['ContentArea.HelpLocale'].value;
+    if (sHelpLocale=="nolocalizedhelp")
+        sHelpLocale="_en_US";
+}
+if (sAnchorName=="hoststab" || sAnchorName=="psptab" || sAnchorName=="entities" ||
+sAnchorName=="policies" || sAnchorName=="policysets" || sAnchorName=="caentities" ||
+sAnchorName=="roles" || sAnchorName=="")
+{
+    document.write('<frameset cols="30%, 70%" border="1" framespacing="0"> ');
+
+    document.write('        <frame  name="navFrame"');
+    document.write('                title="Help Navigation Area"');
+    document.write('                id="nav"');
+    document.write('                src="helpNav.html">');
+
+    document.write('        <frameset rows="10%, 90%" border="1" framespacing="0">');
+    document.write('            <frame  name="toolbarFrame"');
+    document.write('                title="Help Content Area Toolbar"');
+    document.write('                id="toolbar"');
+    document.write('                scrolling="no"');
+    document.write('                src="helpToolbar.html">');
+    document.write('            <frame  name="contentFrame"');
+    document.write('                title="Help Content Area"');
+    document.write('                id="content"');
+    document.write('                src="helpContent.html#'+sAnchorName+'">');
+    document.write('        <\/frameset>');
+    document.write('<\/frameset>');
+
+} else {
+    // The correct package name is not available yet 
+    document.write('<frameset  rows="10%, 90%" border="0" framespacing="0"> ');
+    document.write('            <frame  name="toolbarFrame"');
+    document.write('                title="Help Content Area Toolbar"');
+    document.write('                id="toolbar"');
+    document.write('                scrolling="no"');
+    document.write('                src="helpToolbar.html">');
+    document.write('            <frame  name="templateContent"');
+    document.write('                title="Help Template"');
+    document.write('                id="temphelp"');
+    document.write('                src="../../packages/'+sPkgName+'/web/'+sAnchorName+sHelpLocale+'.html">');
+    document.write('<\/frameset>');
+}
+
+
+//-->
+
+</script>
+    <noframes> 
+        <body bgcolor="#FFFFFF" text="#000000">
+        </body>
+    </noframes> 
+</html>

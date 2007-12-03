@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Sun Desktop Manager 1.0.1 Hilfe">
+<tocitem target="gbgce" text="Einführung"></tocitem>
+<tocitem target="gbgqa" text="Fenster „Konfigurationsdatensammlungen“">
+<tocitem target="gbgpt" text="Tabelle „Konfigurationsdatensammlungen“">
+<tocitem target="gbgcn" text="Erstellen einer neuen Konfigurationsdatensammlung"></tocitem>
+<tocitem target="gbzbc" text="Entfernen einer Konfigurationsdatensammlung"></tocitem>
+<tocitem target="gbzci" text="Umbenennen einer Konfigurationsdatensammlung"></tocitem>
+<tocitem target="gbgqm" text="Synchronisieren von Konfigurationsdatensammlungen"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="Profile &#8212; Baumansicht">
+<tocitem target="gbgcm" text="Navigationsbereich">
+<tocitem target="gbgpa" text="Suchen nach einem Element"></tocitem>
+<tocitem target="gbgqt" text="Verwenden der Funktion „Suchen“"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="Inhaltsbereich">
+<tocitem target="gbgni" text="Erstellen von neuen Profilen"></tocitem>
+<tocitem target="gbgpr" text="Löschen von Profilen"></tocitem>
+<tocitem target="gbgpn" text="Zuweisen von Profilen"></tocitem>
+<tocitem target="gbgqj" text="Aufheben der Zuweisung von Profilen"></tocitem>
+<tocitem target="gbgpw" text="Umbenennen von Profilen"></tocitem>
+<tocitem target="gbgqf" text="Kopieren und Verschieben von Profilen"></tocitem>
+<tocitem target="gbgps" text="Importieren von Profilen"></tocitem>
+<tocitem target="gbgqh" text="Exportieren von Profilen"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="Anzeigen der geltenden Einstellungen"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="Profile &#8212; Alle">
+<tocitem target="gbgcr" text="Erstellen von neuen Profilen"></tocitem>
+<tocitem target="gbgpe" text="Löschen von Profilen"></tocitem>
+<tocitem target="gbgpu" text="Umbenennen von Profilen"></tocitem>
+<tocitem target="gbgow" text="Kopieren und Verschieben von Profilen"></tocitem>
+<tocitem target="gbgpj" text="Importieren von Profilen"></tocitem>
+<tocitem target="gbgou" text="Exportieren von Profilen"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="Profileditor">
+<tocitem target="gbgcg" text="Allgemeine Eigenschaften">
+<tocitem target="gbgpb" text="Angeben von allgemeinen Eigenschaften für ein Profil"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="Konfigurationseinstellungen">
+<tocitem target="gbgot" text="Anzeigen und Bearbeiten der Konfigurationseinstellungen von Profilen"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="Zugewiesene Elemente">
+<tocitem target="gbgpm" text="Zuweisung von Elementen zu Profilen"></tocitem>
+<tocitem target="gbgpp" text="Aufheben der Zuweisung von Elementen zu Profilen"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="Einstellungsübersicht"></tocitem>
+<tocitem target="gbgdh" text="Erweiterte Optionen">
+<tocitem target="gbgqu" text="Ändern der Anwendung vom Speicherort aus"></tocitem>
+<tocitem target="gbgqe" text="Zuweisen von Zusammenführungsreihenfolgen zu Profilen"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+</toc>

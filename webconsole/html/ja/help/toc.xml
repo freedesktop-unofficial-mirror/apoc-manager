@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Sun Desktop Manager 1.0.1 ヘルプ"><tocitem target="gbgce" text="概要"></tocitem>
+<tocitem target="gbgqa" text="「構成リポジトリ」ウィンドウ"><tocitem target="gbgpt" text="構成リポジトリテーブル"><tocitem target="gbgcn" text="構成リポジトリの新規作成"></tocitem>
+<tocitem target="gbzbc" text="構成リポジトリの削除"></tocitem>
+<tocitem target="gbzci" text="構成リポジトリ名の変更"></tocitem>
+<tocitem target="gbgqm" text="構成リポジトリの同期"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="プロファイル &#8212; ツリー表示"><tocitem target="gbgcm" text="ナビゲーション領域"><tocitem target="gbgpa" text="要素の検索"></tocitem>
+<tocitem target="gbgqt" text="検索機能の使用"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="コンテンツ領域"><tocitem target="gbgni" text="プロファイルの新規作成"></tocitem>
+<tocitem target="gbgpr" text="プロファイルの削除"></tocitem>
+<tocitem target="gbgpn" text="プロファイルの割り当て"></tocitem>
+<tocitem target="gbgqj" text="プロファイルの割り当て解除"></tocitem>
+<tocitem target="gbgpw" text="プロファイルの名前変更"></tocitem>
+<tocitem target="gbgqf" text="プロファイルのコピーと移動"></tocitem>
+<tocitem target="gbgps" text="プロファイルのインポート"></tocitem>
+<tocitem target="gbgqh" text="プロファイルのエクスポート"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="有効な設定の表示"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="プロファイル &#8212; すべて"><tocitem target="gbgcr" text="プロファイルの新規作成"></tocitem>
+<tocitem target="gbgpe" text="プロファイルの削除"></tocitem>
+<tocitem target="gbgpu" text="プロファイルの名前変更"></tocitem>
+<tocitem target="gbgow" text="プロファイルのコピーと移動"></tocitem>
+<tocitem target="gbgpj" text="プロファイルのインポート"></tocitem>
+<tocitem target="gbgou" text="プロファイルのエクスポート"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="プロファイルエディタ"><tocitem target="gbgcg" text="一般プロパティー"><tocitem target="gbgpb" text="プロファイルの一般プロパティーの指定"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="構成設定"><tocitem target="gbgot" text="プロファイルの構成設定の表示と編集"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="割り当てられている要素"><tocitem target="gbgpm" text="プロファイルへの要素の割り当て"></tocitem>
+<tocitem target="gbgpp" text="プロファイルの要素の割り当て解除"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="設定概要"></tocitem>
+<tocitem target="gbgdh" text="詳細オプション"><tocitem target="gbgqu" text="アプリケーションの場所からの変更"></tocitem>
+<tocitem target="gbgqe" text="プロファイルへのマージ順序の割り当て"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+</toc>

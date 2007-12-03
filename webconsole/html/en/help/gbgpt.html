@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- GenHTML@12751-->
+<head>
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+  <!-- ident      "%Z%%M% %I%     %E% SMI" -->
+
+  <title>Configuration Repositories Table
+  </title>
+  <script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+  <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+  <script type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+  <meta name="Copyright" content="Copyright &copy; 2006 by Sun Microsystems, Inc. All Rights Reserved." />
+</head>
+
+<body class="HlpBdy">
+
+<A NAME="gbgpt"></A><h3>Configuration Repositories Table</h3>
+<p><A NAME="indexterm-8"></A>The Configuration Repositories table consists of five columns:</p>
+<ul><li><p>The Selection column, which contains check boxes to select repositories</p>
+<p>By selecting one or more repositories, the Remove, Rename, and Synchronize
+functions are enabled.</p>
+<p><hr size="1" noshade><p><b>Note &#8211; </b>Selecting a repository disables the New button.</p>
+<hr size="1" noshade></p></li>
+<li><p>Name: contains the name of the repositories</p>
+<p>The contents
+of the Name column are links. If you click on one of these links, the Configuration
+Repositories view is replaced by the Profile Editor page for the selected repository.</p>
+</li>
+<li><p>Type: can be one of three types, LDAP, file, or hybrid</p>
+<ul><li><p><A NAME="indexterm-9"></A><A NAME="indexterm-10"></A>LDAP: an LDAP repository reads the organizational structure (users, organization,
+hosts, domains, and so on) of the company from an LDAP server and reads/writes the
+configuration settings using that same LDAP server. </p>
+</li>
+<li><p><A NAME="indexterm-11"></A>File: a file repository reads the organizational structure of the company
+from the file system, and reads/writes the configuration settings using that same
+file system. </p>
+</li>
+<li><p><A NAME="indexterm-12"></A>Hybrid: a hybrid repository reads the organizational structure of the
+company from an LDAP server, and then read/writes the configuration settings into
+a file system.</p>
+</li>
+</ul>
+</li>
+<li><p>Location of Organization Data: either a file, if a file repository,
+or LDAP URL, if an LDAP or hybrid repository. Designates the storage location of the
+organizational data.</p>
+</li>
+<li><p>Location of Profile Data: either a file, if a file repository, or
+LDAP URL, if an LDAP or hybrid repository. Designates the storage location of the
+ configuration settings. A profile is a named collection of configuration settings
+that is assigned to users, organizations, hosts, and domains.</p>
+</li>
+</ul>
+<p>You can perform the following actions within the Configuration Repositories
+table:</p>
+<ul><li><p><A HREF="gbgcn.html#gbgcn">New</A>: creates a
+new configuration repository </p>
+</li>
+<li><p>Remove: removes an existing configuration repository</p>
+</li>
+<li><p>Rename: renames a configuration repository</p>
+</li>
+<li><p><A HREF="gbgqm.html#gbgqm">Synchronize</A>: synchronizes
+configuration repositories</p>
+<p>This function is only enabled when one or two
+repositories are selected</p>
+</li>
+</ul>
+
+<br />
+
+</body>
+</html>

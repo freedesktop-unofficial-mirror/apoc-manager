@@ -1,0 +1,4 @@
+## webapp registration notification
+context=apoc
+type=webapp
+location=/usr/share/webconsole/apoc

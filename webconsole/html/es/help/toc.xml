@@ -1,0 +1,59 @@
+﻿<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Ayuda de Sun Desktop Manager 1.0.1">
+<tocitem target="gbgce" text="Introducción"></tocitem>
+<tocitem target="gbgqa" text="Ventana Configuración de depósitos">
+<tocitem target="gbgpt" text="Tabla de depósitos de configuración">
+<tocitem target="gbgcn" text="Creación de un depósito de configuración"></tocitem>
+<tocitem target="gbzbc" text="Eliminación de un depósito de configuración"></tocitem>
+<tocitem target="gbzci" text="Modificación del nombre de un depósito de configuración"></tocitem>
+<tocitem target="gbgqm" text="Sincronización de depósitos de configuración"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="Perfiles &#8212; Vista de árbol">
+<tocitem target="gbgcm" text="Área de navegación">
+<tocitem target="gbgpa" text="Búsqueda de un elemento"></tocitem>
+<tocitem target="gbgqt" text="Uso de la función Buscar"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="Área de contenidos">
+<tocitem target="gbgni" text="Creación de un perfil"></tocitem>
+<tocitem target="gbgpr" text="Supresión de perfiles"></tocitem>
+<tocitem target="gbgpn" text="Asignación de perfiles"></tocitem>
+<tocitem target="gbgqj" text="Anulación de la asignación de perfiles"></tocitem>
+<tocitem target="gbgpw" text="Cambio de nombre de perfiles"></tocitem>
+<tocitem target="gbgqf" text="Copia y cambio de ubicación de perfiles"></tocitem>
+<tocitem target="gbgps" text="Importando perfiles"></tocitem>
+<tocitem target="gbgqh" text="Exportación de perfiles"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="Visualización de Configuración vigente"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="Perfiles &#8212; Todos">
+<tocitem target="gbgcr" text="Creación de un perfil"></tocitem>
+<tocitem target="gbgpe" text="Supresión de perfiles"></tocitem>
+<tocitem target="gbgpu" text="Cambio de nombre de perfiles"></tocitem>
+<tocitem target="gbgow" text="Copia y cambio de ubicación de perfiles"></tocitem>
+<tocitem target="gbgpj" text="Importando perfiles"></tocitem>
+<tocitem target="gbgou" text="Exportación de perfiles"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="Editor de perfiles">
+<tocitem target="gbgcg" text="Propiedades generales">
+<tocitem target="gbgpb" text="Especificación de propiedades generales de un perfil"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="Valores de configuración">
+<tocitem target="gbgot" text="Visualización y edición de la configuración de un perfil"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="Elementos asignados">
+<tocitem target="gbgpm" text="Asignación de un elemento a un perfil"></tocitem>
+<tocitem target="gbgpp" text="Anulación de la asignación de elementos de perfiles"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="Resumen de configuración"></tocitem>
+<tocitem target="gbgdh" text="Opciones avanzadas">
+<tocitem target="gbgqu" text="Cambio de la ubicación de una aplicación"></tocitem>
+<tocitem target="gbgqe" text="Asignación de un orden de combinación a un perfil"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+</toc>

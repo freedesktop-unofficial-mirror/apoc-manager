@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="Assignation des profils"></indexitem>
+<indexitem target="gbgce" text="Référentiels de configuration"><indexitem target="gbgcn" text="Création"></indexitem><indexitem target="gbzbc" text="Suppression"></indexitem><indexitem target="gbzci" text="Modification du nom"></indexitem><indexitem target="gbgqm" text="Synchronisation"></indexitem><indexitem text="Types"><indexitem target="gbgpt" text="Fichier"></indexitem><indexitem target="gbgpt" text="Hybride"></indexitem><indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="Affichage des détails"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="Création de profils"></indexitem>
+<indexitem target="gbgcn" text="Création de référentiels"></indexitem>
+<indexitem target="gbgpr" text="Suppression de profils"></indexitem>
+<indexitem target="gbgce" text="Domaines"></indexitem>
+<indexitem target="gbgoz" text="Paramètres effectifs, affichage"></indexitem>
+<indexitem target="gbgcm" text="Arborescences d'éléments"></indexitem>
+<indexitem target="gbgce" text="Éléments"><indexitem target="gbgqt" text="Fonction de recherche"></indexitem><indexitem target="gbgoy" text="Informations"></indexitem><indexitem target="gbgpa" text="Recherche"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="Exportation de profils"></indexitem>
+<indexitem target="gbgps" text="Importation de profils"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+<indexitem target="gbgqa" text="Déconnexion"></indexitem>
+<indexitem target="gbgcm" text="Navigation"></indexitem>
+<indexitem target="gbgce" text="Organisations"></indexitem>
+<indexitem target="gbgcm" text="Arborescences de profils"></indexitem>
+<indexitem target="gbgce" text="Profils"><indexitem target="gbgpn" text="Assignation"></indexitem><indexitem target="gbgni" text="Création"></indexitem><indexitem target="gbgpr" text="Suppression"></indexitem><indexitem target="gbgqh" text="Exportation"></indexitem><indexitem target="gbgps" text="Importation"></indexitem><indexitem target="gbgcm" text="Navigation"></indexitem><indexitem target="gbgqj" text="Annulation de l'assignation"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="Référentiels"></indexitem>
+<indexitem target="gbgpa" text="Recherche"></indexitem>
+<indexitem target="gbgqm" text="Synchronisation"></indexitem>
+<indexitem target="gbgcd" text="Affichage de tous les profils"></indexitem>
+<indexitem target="gbgdc" text="Affichage des profils assignés"></indexitem>
+</index>

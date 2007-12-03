@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <actions>
+        <cc name="NewButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+            <attribute name="disabled" value="false" />
+            <attribute name="defaultValue" value="APOC.pool.new" />
+            <attribute name="title" value="APOC.pool.new_button.help" />
+        </cc>
+        <cc name="DeleteButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+            <attribute name="disabled" value="true" />
+            <attribute name="defaultValue" value="APOC.profilemgr.delete" />
+            <attribute name="title" value="APOC.pool.delete_button.help" />
+        </cc>
+        <cc name="ActionMenu" tagclass="com.sun.web.ui.taglib.html.CCDropDownMenuTag">
+            <attribute name="dynamic" value="true" />
+            <attribute name="commandChild" value="ActionMenuHref" />
+            <attribute name="escape" value="false" />
+            <attribute name="onChange" value="javascript:handleSelection(this); return true;"/>
+            <option label="APOC.profilemgr.moreActions" value="0" />
+            <option label="APOC.pool.rename"       value="1" title="APOC.pool.rename.tooltip" titleDisabled="APOC.pool.rename.disabled.tooltip"/>
+            <option label="APOC.wiz.copy.copymove" value="2" title="APOC.wiz.copy.copymove.tooltip" titleDisabled="APOC.wiz.copy.copymove.disabled.tooltip"/>
+            <option label="APOC.pool.import"       value="5" title="APOC.pool.import.tooltip" titleDisabled="APOC.pool.import.disabled.tooltip"/>
+            <option label="APOC.pool.export"       value="6" title="APOC.pool.export.tooltip" titleDisabled="APOC.pool.export.disabled.tooltip"/>
+        </cc>
+    </actions>
+    <column name="NameColumn" sortname="NameText" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="javascript:openProfileEditorWindow(this); return false;" />
+            <cc name="NameText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+        <cc name="AccessHidden" tagclass="com.sun.web.ui.taglib.html.CCHiddenTag" />
+    </column>
+    <column name="AuthorColumn" sortname="AuthorText" extrahtml="nowrap='nowrap'">
+        <cc name="AuthorText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+    <column name="LastModifiedColumn" sortname="LastModifiedText" extrahtml="nowrap='nowrap'">
+        <cc name="LastModifiedText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+</table>

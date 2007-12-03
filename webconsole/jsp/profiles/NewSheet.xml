@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE propertysheet SYSTEM "tags/dtd/propertysheet.dtd">
+
+<propertysheet>
+    <section name="new" defaultValue=" ">
+        <property>
+            <label name="ProfileLabel" defaultValue="APOC.profilewnd.general.namecol"/>
+            <cc name="ProfileText" tagclass="com.sun.web.ui.taglib.html.CCTextFieldTag">
+                <attribute name="defaultValue" value="NewProfile"/>
+                <attribute name="size" value="80"/>
+            </cc>
+        </property>
+        <property>
+            <label name="CommentLabel" defaultValue="APOC.profilewnd.general.commentcol"/>
+            <cc name="CommentText" tagclass="com.sun.web.ui.taglib.html.CCTextAreaTag">
+                <attribute name="cols" value="100"/>
+                <attribute name="rows" value="12"/>
+            </cc>
+        </property>
+    </section>
+</propertysheet>

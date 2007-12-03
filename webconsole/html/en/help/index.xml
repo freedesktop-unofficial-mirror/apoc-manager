@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+<!DOCTYPE index PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp Index Version 1.0//EN" "index_1_0.dtd">
+<index version="1.0">
+<indexitem target="gbgpn" text="assigning profiles"></indexitem>
+<indexitem target="gbgce" text="configuration repositories"><indexitem target="gbgcn" text="creating new"></indexitem><indexitem target="gbzbc" text="removing"></indexitem><indexitem target="gbzci" text="renaming"></indexitem><indexitem target="gbgqm" text="synchronizing"></indexitem><indexitem text="types"><indexitem target="gbgpt" text="file"></indexitem><indexitem target="gbgpt" text="hybrid"></indexitem><indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+</indexitem>
+<indexitem target="gbgpt" text="viewing details"></indexitem>
+</indexitem>
+<indexitem target="gbgni" text="creating profiles"></indexitem>
+<indexitem target="gbgcn" text="creating repositories"></indexitem>
+<indexitem target="gbgpr" text="deleting profiles"></indexitem>
+<indexitem target="gbgce" text="domains"></indexitem>
+<indexitem target="gbgoz" text="effective settings, viewing"></indexitem>
+<indexitem target="gbgcm" text="element trees"></indexitem>
+<indexitem target="gbgce" text="elements"><indexitem target="gbgqt" text="find function"></indexitem><indexitem target="gbgoy" text="information about"></indexitem><indexitem target="gbgpa" text="searching for"></indexitem>
+</indexitem>
+<indexitem target="gbgqh" text="exporting profiles"></indexitem>
+<indexitem target="gbgps" text="importing profiles"></indexitem>
+<indexitem target="gbgpt" text="LDAP (Lightweight Directory Access Protocol)"></indexitem>
+<indexitem target="gbgqa" text="logging out"></indexitem>
+<indexitem target="gbgcm" text="navigating"></indexitem>
+<indexitem target="gbgce" text="organizations"></indexitem>
+<indexitem target="gbgcm" text="profile trees"></indexitem>
+<indexitem target="gbgce" text="profiles"><indexitem target="gbgpn" text="assigning"></indexitem><indexitem target="gbgni" text="creating new"></indexitem><indexitem target="gbgpr" text="deleting"></indexitem><indexitem target="gbgqh" text="exporting"></indexitem><indexitem target="gbgps" text="importing"></indexitem><indexitem target="gbgcm" text="navigating"></indexitem><indexitem target="gbgqj" text="unassigning"></indexitem>
+</indexitem>
+<indexitem target="gbgqa" text="repositories"></indexitem>
+<indexitem target="gbgpa" text="searching"></indexitem>
+<indexitem target="gbgqm" text="synchronization"></indexitem>
+<indexitem target="gbgcd" text="viewing all profiles"></indexitem>
+<indexitem target="gbgdc" text="viewing assigned profiles"></indexitem>
+</index>

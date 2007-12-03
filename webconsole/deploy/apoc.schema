@@ -1,0 +1,48 @@
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.83 
+        NAME 'sunkeyvalue' 
+        DESC 'Attribute to store the encoded key values of the services' 
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 
+        EQUALITY caseIgnoreIA5Match
+        )
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.84 
+        NAME 'sunxmlkeyvalue' 
+        DESC 'Attribute to store the key values in xml format' 
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.26 
+    )
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.81 
+        NAME 'sunsmspriority' 
+        DESC 'To store the priority of the service with respect to its siblings'
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.27 SINGLE-VALUE 
+    )
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.78 
+        NAME ( 'sunserviceschema' ) 
+        DESC 'SMS Attribute to Store xml schema of a particular service' 
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15  SINGLE-VALUE 
+    )
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.82 
+        NAME ( 'sunpluginschema' ) 
+        DESC 'To store the plugin schema information' 
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15 
+    )
+attributetype ( 1.3.6.1.4.1.42.2.27.9.1.79 
+        NAME ( 'sunserviceid' ) 
+        DESC 'Attribute to store the reference to the inherited object' 
+        SYNTAX 1.3.6.1.4.1.1466.115.121.1.15  SINGLE-VALUE 
+        EQUALITY caseIgnoreMatch
+    )
+objectclass ( 1.3.6.1.4.1.42.2.27.9.2.25 
+        NAME 'sunservice' 
+        DESC 'object containing service information' 
+        SUP top 
+        STRUCTURAL 
+        MUST ou 
+        MAY ( labeledUri $ sunserviceschema $ sunkeyvalue $ sunxmlkeyvalue $ sunpluginschema $ description ) 
+    )
+objectclass ( 1.3.6.1.4.1.42.2.27.9.2.27 
+        NAME 'sunservicecomponent' 
+        DESC 'Sub-components of the service' 
+        SUP top 
+        STRUCTURAL 
+        MUST ou 
+        MAY ( sunserviceid $ sunsmspriority $ sunkeyvalue $ sunxmlkeyvalue $ description ) 
+    )

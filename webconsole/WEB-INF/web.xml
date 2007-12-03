@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE web-app PUBLIC
+  "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+  "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+  <!-- Add one context param like this per module -->
+  <context-param>
+   <param-name>jato:com.sun.apoc.manager.*:moduleURL</param-name>
+   <param-value>../manager</param-value>
+  </context-param>
+
+  <!-- Filter Configuration -->
+  <!-- CONSOLE FILTER CONFIGURATION -->
+  <!-- All management web applications must define this filter. -->
+  <!-- Add ignore path parameter values for URI's for which the -->
+  <!-- filter should pass through without making security checks. -->
+  <!-- Paths can end with the "*" wildcard indicator. -->
+  <filter>
+    <filter-name>AppSessionManagerFilter</filter-name>
+    <filter-class>
+      com.sun.management.services.session.AppSessionManagerFilter
+    </filter-class>
+
+    <!-- ADD URI PATHS TO IGNORE WHEN USING THE SECURE PORT -->
+    <init-param>
+      <param-name>ignore-paths-https</param-name>
+      <param-value>
+        /help/*
+        /html/*
+        /version/*
+      </param-value>
+    </init-param>
+
+    <!-- ADD URI PATHS TO IGNORE WHEN USING THE NON-SECURE PORT -->
+    <init-param>
+      <param-name>ignore-paths-http</param-name>
+      <param-value>
+        /help2/*
+        /html/*
+        /images/*
+      </param-value>
+    </init-param>
+
+  </filter>
+
+  <filter-mapping>
+    <filter-name>AppSessionManagerFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- listener -->
+  <listener>
+    <listener-class>com.sun.apoc.manager.ManagerServlet</listener-class>
+  </listener>
+
+  <!-- Add one servlet entry like this per module -->
+  <servlet>
+    <servlet-name>Registrar</servlet-name>
+    <servlet-class>com.sun.management.services.registration.servlet.WebConsoleRegistrarServlet
+    </servlet-class>
+    <load-on-startup>3</load-on-startup>
+  </servlet>
+  <servlet>
+    <servlet-name>ManagerServlet</servlet-name>
+    <servlet-class>com.sun.apoc.manager.ManagerServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>HelpServlet</servlet-name>
+    <servlet-class>com.sun.web.ui.servlet.help.HelpServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Help2Servlet</servlet-name>
+    <servlet-class>com.sun.web.ui.servlet.help2.Help2Servlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>VersionServlet</servlet-name>
+    <servlet-class>com.sun.web.ui.servlet.version.VersionServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>wizardWindowServlet</servlet-name>
+    <servlet-class>
+      com.sun.apoc.manager.contexts.AddContextWizardServlet
+    </servlet-class>
+  </servlet>
+
+  <!-- The mapping for the registration servlet  -->
+  <servlet-mapping>
+    <servlet-name>Registrar</servlet-name>
+    <url-pattern>/Registrar</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ManagerServlet</servlet-name>
+    <url-pattern>/manager/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>HelpServlet</servlet-name>
+    <url-pattern>/cchelp/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Help2Servlet</servlet-name>
+    <url-pattern>/cchelp2/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VersionServlet</servlet-name>
+    <url-pattern>/ccversion/*</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>wizardWindowServlet</servlet-name>
+    <url-pattern>/wizard/*</url-pattern>
+  </servlet-mapping>
+
+  <!-- The taglibs are only specified once -->
+  <taglib>
+    <taglib-uri>/cc.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tld/com_sun_web_ui/cc.tld</taglib-location>
+  </taglib>
+  <taglib>
+    <taglib-uri>/jato.tld</taglib-uri>
+    <taglib-location>/WEB-INF/tld/com_iplanet_jato/jato.tld</taglib-location>
+  </taglib>
+</web-app>

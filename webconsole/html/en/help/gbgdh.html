@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+ "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><!-- GenHTML@12751-->
+<head>
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8">
+  <!-- ident      "%Z%%M% %I%     %E% SMI" -->
+
+  <title>Advanced Options
+  </title>
+  <script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script>
+  <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script>
+  <script type="text/javascript"><!-- Empty script so IE5.0 Windows will draw table and button borders --></script>
+  <meta name="Copyright" content="Copyright &copy; 2006 by Sun Microsystems, Inc. All Rights Reserved." />
+</head>
+
+<body class="HlpBdy">
+
+<A NAME="gbgdh"></A><h3>Advanced Options</h3>
+<p>The Advanced Options page allows you to specify advanced options for the current
+profile. There are two main options available on this page:</p>
+<ul><li><p>Applicable from: allows you to move the profile to a different storage
+location in the organization or domain tree. By moving the storage location, you are
+also changing the set of elements that the profile can be assigned or applied to.
+This is because a profile can only be assigned to the element it is stored at, or
+assigned to the elements that are in the subtree below the element at which it is
+stored.</p>
+<hr size="1" noshade><p><IMG ALT="Caution" src="graphics/caution.gif">  <b>Caution &#8211; </b>You can not change the &#8220;Application from&#8221; parameter in
+a way that the resulting layout would violate the rule mentioned above. For example,
+this would happen if you move a profile down the tree hierarchy, and an existing assignment
+connecting the profile to an element below the profile's storage location would, after
+the movement of the profile, connect the profile to the same element. But now, the
+element is above the storage location of the profile. If the you try this, the action
+is cancelled, and a warning message is displayed.</p><hr size="1" noshade></li>
+<li><p>Merge Order: specifies the order in which all profiles stored at the
+same element are merged. </p>
+<p>Because more than one profile can be assigned
+to a single element and more than one profile can define the same setting, the order
+in which the profiles are merged for a single element must be defined. This resolves
+the conflicts of one setting being defined in two or more profiles assigned to the
+same element.</p>
+<p>The storage location is used first to determine the merge
+order. The profile stored at an element that is located closer to the root of the
+tree is merged first. As a consequence, the profile that is stored deeper in the tree
+hierarchy is merged secondly. The settings of a profile merged later overwrite the
+settings of a profile merged earlier.</p>
+</li>
+</ul>
+<p>See <A HREF="gbgqu.html#gbgqu">Changing the Application from Location</A>, <A HREF="gbgqe.html#gbgqe">Assigning a Merge Order to a Profile</A></p>
+
+<br />
+
+</body>
+</html>

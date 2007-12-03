@@ -1,0 +1,336 @@
+<html>
+<head>
+<title>Sun Java[TM] Desktop System Configuration Manager - 帮助内容</title>
+<meta name="Copyright" content="Copyright &copy; 2003 by Sun Microsystems, Inc. All Rights Reserved.">
+<meta http-equiv="Content-Type" content="text/html; charset=GB2312"><!-- Empty script so IE5.0 Windows will draw table and button borders --><script type="text/javascript" src="/com_sun_web_ui/js/browserVersion.js"></script> <script type="text/javascript" src="/com_sun_web_ui/js/stylesheet.js"></script> <script type="text/javascript"></script></head>
+
+<body class="help-body"><a name="top"></a><p><a name="intro"> </a><div class="help-header-1">Configuration Manager 帮助</div></p>
+<p>欢迎使用 Sun Java[TM] Desktop System Configuration Manager 帮助页面。要获得 Java Desktop System Configuration Manager 特定部分的帮助，请单击左侧相应的链接。</p>
+<p>本帮助先介绍了 Configuration Manager 的常规产品背景和概念 - <a class="help-link" href="#concepts">背景和概念</a>。有关 Configuration Manager 的某些常规版式和行为方面的内容可以在<a class="help-link" href="#ui">版式和行为</a>中找到。</p>
+<p>常规页面之后是更加详细的帮助，分别针对<a class="help-link" href="#masthead"><b>报头</b></a>、<a class="help-link" href="#navigation"><b>[浏览] 窗格</b></a>和 <a class="help-link" href="#content"><b>[内容] 窗格</b></a>。还有一些页面介绍<a class="help-link" href="#login">登录</a>和<a href="#reporting">报表</a>功能。<p><a name="concepts"> </a><div class="help-header-1">背景和概念</div></p>
+<p>Configuration Manager 允许对配置设置进行集中式管理。可以在组织层次结构的不同级别上查看、定义和实施配置设置。在本文档的余下部分，将语义上紧密相关的&ldquo;配置设置&rdquo;称为&ldquo;配置策略&rdquo;。</p>
+<P>Configuration Manager 可以处理三个不同的层次结构（或称之为树）。为了了解 Configuration Manager 用户界面，区分以下这两个树是很重要的：</P>
+<p><div class="help-header-2"><a name="dataStructures">数据结构</a></div></p>
+<P>一个树是由配置策略构成，因此被称为配置策略树（请参阅图 1 -&ldquo;树&rdquo;中的蓝色部分）。有许多程序（例如 Mozilla）具有更为复杂的配置，对于用过这些程序的用户而言，他们并不会对配置设置的层次结构组织方式感到陌生。典型的配置策略（具有&ldquo;/Mozilla/Navigator/HomeUrl&rdquo;的配置设置）可以通过&ldquo;/Mozilla/Navigator&rdquo;进行引用。</P>
+<P>配置策略树嵌入到第二种类型的树（组织树）中（请参阅图 1 -&ldquo;树&rdquo;中的灰色部分）。组织树用于表示组织单元之间的关系。结果是&ldquo;组织树含有配置策略树&rdquo;。组织树用 LDAP 服务器表示。</P>
+<p>第三种类型的树是域树。域树表示硬件单元之间的关系。配置策略树嵌入到域树中，因此域树含有配置策略树。域树用 LDAP 服务器表示。</p>
+<p>使用组织树和使用域树的概念是相同的。两者之间的主要区别在于组织树用于维护用户，而域树用于维护主机。用户和主机位于这两个独立的树中，这使得 Configuration Manager 可以提供基于用户和基于主机的配置。由于两个树非常相似，因此本节将主要介绍组织树，当组织树和域树之间存在差别时再提及域树。</p>
+<P>通常，大型企业使用 LDAP 服务器以层次结构的方式映射组织数据。在 LDAP 中，组织树中的一个位置称为一个实体。</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_ldap_v4.png" NAME="Trees" ALT="Trees" ALIGN=LEFT WIDTH=550 HEIGHT=369 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_trees"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">图 1 &ndash; 树</FONT></FONT></I></FONT></P>
+<p><div class="help-header-2"><a name="SecDataManagement">安全和数据管理</a></div></p>
+<p>这种&ldquo;树中树&rdquo;使层次结构的安全和数据管理变得更加容易。该树结构是通过最初在组织树的根部一次性插入整个配置策略树而实现的。对初始配置策略树的配置设置所作的特定于实体的更改存储在相应的实体中。为了简便起见，图 1 仅显示了与名为&ldquo;marketing&rdquo;和&ldquo;jclarke&rdquo;的组织实体相关联的配置策略树。</P>
+<p><div class="help-header-2"><a name="GenConfigSettings">配置设置的生成</a></div></p>
+<P>实体的配置设置通过合并获得。与组织树或域树中的某个实体相关联的所有配置设置称为分层。合并从根分层开始，沿着树直到到达所需的实体为止。在与某实体相关联的某个分层中对配置设置所作的更改会被与树层次结构中更下层的实体相关联的分层继承（请参阅<A class="help-link" HREF="#fig_merging">图 2 -&ldquo;分层合并&rdquo;</a>）。继承的值可以被特定分层为自己定义的设置所覆盖。</p>
+<P><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_merge.gif" NAME="LayerMerging" ALT="Layer Merging" ALIGN=LEFT WIDTH=550 HEIGHT=520 BORDER=1> </FONT><P><FONT COLOR="#000000"><A NAME="fig_merging"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">图 2 &ndash; 分层合并</FONT></FONT></I></FONT></P>
+<p><FONT COLOR="#000000">该继承规则适用于配置设置，也适用于安全特性：</FONT><FONT COLOR="#000000">如果将附加到&ldquo;o=marketing&rdquo;的分层中的某个配置设置的安全属性指定为&ldquo;受保护&rdquo;，则此树该分层后的所有分层中，此配置设置为只读（请参阅<A class="help-link" HREF="#fig_protection">图 3 -&ldquo; 保护&rdquo;</a>）。</FONT></P>
+<P><FONT COLOR="#000000"><FONT COLOR="#000000"><IMG SRC="/apoc/html/images/help_protected_v3.png" NAME="Protection" ALT="Protection" ALIGN=LEFT WIDTH=550 HEIGHT=524 BORDER=1> </FONT></FONT><P><FONT COLOR="#000000"><FONT COLOR="#000000"><A NAME="fig_protection"></A>&nbsp;<I><FONT SIZE=2><FONT COLOR="#000000">图 3 &ndash; 保护</FONT></FONT></I></FONT></FONT></P>
+<p><div class="help-header-2"><a name="BCAssociating">将配置策略树与组织树或域树相关联</a></div></p> 
+<p>配置策略树通过以下两种方式绑定到组织树的实体：</P>
+<UL>
+	<li>作为自含配置策略树存储在实体处</li>
+	 <li>链接到策略组中的实体</li>
+</UL>
+<p><p><div class="help-header-2"><a name="BCPolicyGroups">策略组</a></div></p>
+<P>策略组是配置策略的容器，每个策略组都有与其相关的唯一名称。它们也是配置策略树的容器，因为配置策略将其配置设置存储在配置策略树中（请参阅<A class="help-link" HREF="#fig_trees">图 1 &ndash;&ldquo;树&rdquo;</A>）。策略组存储在策略系统信息库中。通过建立至策略组的链接，所有类型的实体均可使用这些策略组。这使得使用的后端更加灵活和独立。策略组的另一个优点是可以输入和输出，从而更加便于维护。</P>
+<P>管理员可以建立单独语义范围的配置策略集合，例如存储在策略系统信息库中的&ldquo;Experts&rdquo;和&ldquo;Novice&rdquo;策略组。然后可将这些配置策略用于整个组织树。</P>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="ui"> </a><div class="help-header-1">版式和行为</div>
+<p>Configuration Manager 的版式由三个区域组成：报头、[浏览] 窗格和 [内容] 窗格。报头位于页面的顶端。左下方区域是 [浏览] 窗格。右下方区域是 [内容] 窗格。此类型的版式也称为&ldquo;左右面板集&rdquo;。显示其他对话框和帮助内容时会打开单独的浏览器窗口。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="login"> </a><div class="help-header-1">登录</div>
+<p>要使用 Configuration Manager，必须登录到 Sun Web 控制台。Sun Web 控制台中包含管理应用程序，这些应用程序都具有一致的用户界面。该控制台的优点之一是管理员只需要登录一次即可使用控制台中的所有应用程序。为此，Sun Web 控制台提供标准的登录页面。</p>
+<p>在标准登录页面上，要登录到的服务器显示在&ldquo;用户名&rdquo;和&ldquo;口令&rdquo;文字字段的上方。</p>
+<p>成功登录到 Web 控制台后，将显示 Web 控制台应用程序启动页面。在该页面中，可以选择&ldquo;Configuration Manager&rdquo;应用程序，以启动 Configuration Manager。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="masthead"> </a><div class="help-header-1">报头</div>
+<p>报头中包含完整的产品名称 (Sun Java[TM] Desktop System Configuration Manager)。报头也提供很多常规链接：</p>
+<ul><li>&ldquo;<b>控制台</b>&rdquo;链接使您返回到 Sun Web 控制台应用程序启动页面。</li>
+    <li>&ldquo;<b>版本</b>&rdquo;链接将打开版本窗口。</li>
+    <li>&ldquo;<b>注销</b>&rdquo;链接用于注销 Sun Web 控制台，继而注销 Configuration Manager，并返回到登录页面。</li>
+    <li>&ldquo;<b>帮助</b>&rdquo;链接将打开这些帮助页面。</li>
+</ul>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="navigation"> </a><div class="help-header-1">[浏览] 窗格</div>
+<p>[浏览] 窗格使您可以浏览含有组织、用户和角色的组织树，以及含有域和主机的域树。它还可以用于管理相应用户和主机策略系统信息库中的策略组。</p>
+<p>[浏览] 窗格中包含两个顶层选项卡：&ldquo;<b>用户</B>&rdquo;和&ldquo;<b>主机</B>&rdquo;。</p><a name="entities"> </a><div class="help-header-2">&ldquo;用户&rdquo;选项卡</div>
+<p>提供&ldquo;<b>组织树</B>&rdquo;和&ldquo;<b>策略系统信息库</B>&rdquo;两个子选项卡。使用&ldquo;<b>组织树</B>&rdquo;选项卡浏览组织树。</p><a name="parpath"></a><div class="help-header-3">起源路径</div>
+<p>&ldquo;<b>组织树</B>&rdquo;选项卡的顶部是起源路径，该控件显示当前实体的路径。每个路径点都是一个链接，一个链接代表一个实体；最后一个链接除外，该链接显示为普通文字，表示当前实体。要使用起源路径进行浏览，请单击链接。此操作将：<ul><li>更新 [浏览] 窗格，以使起源路径指向被单击的实体，并且使浏览表格含有该实体的子实体。</li>
+    <li>使用与该实体相关联的配置策略数据更新 [内容] 窗格。</li>
+</ul>[浏览] 窗格和 [内容] 窗格在整个应用程序的操作中都是同步的，以提供相同的数据视图。</p><a name="navtable"></a><div class="help-header-3">浏览表格</div>
+<p>浏览表格位于起源路径的下方，其中列出了当前实体的子实体。&ldquo;名称&rdquo;列含有当前实体的所有子实体的名称。&ldquo;类型&rdquo;列显示实体的类型。&ldquo;操作&rdquo;列含有每行的&ldquo;<b>查看</B>&rdquo;链接。</p>
+<p>要定位到某个实体，请单击列出的相应名称，此操作将：<ul><li>使选定子实体成为当前实体。</li>
+    <li>更新 [浏览] 窗格，以使起源路径指向新的当前实体，并且使浏览表格含有该实体的子实体。</li>
+    <li>使用与该实体相关联的配置策略更新 [内容] 窗格。</li>
+</ul></p>实体的类型可以是&ldquo;组织&rdquo;、&ldquo;用户&rdquo;或&ldquo;角色&rdquo;。</p>
+<p>要查看列出的实体的细节，请单击&ldquo;<b>查看</B>&rdquo;链接。此操作将：<ul><li>选定行的背景颜色改为蓝色。</li>
+    <li>使用与选定实体相关联的数据更新 [内容] 窗格。</li>
+</ul>蓝色背景的行标记的是其数据当前显示在 [内容] 窗格中的实体。</p>
+<p>浏览表格的操作栏中含有&ldquo;<b>过滤器</B>&rdquo;下拉式菜单和&ldquo;<b>高级过滤器</b>&rdquo;图标。当表格包含的项超过十个时，将显示&ldquo;<b>分页/滚动显示所有数据</b>&rdquo;图标，该图标用于更改表格项的视图。</p> 
+<p>&ldquo;<b>过滤器</b>&rdquo;下拉式菜单用于选择要显示在浏览表格中的实体类型。它含有以下项：<ul><li>&ldquo;所有项&rdquo;将在浏览表格中显示所有类型的实体。</li>
+    <li>&ldquo;组织&rdquo;仅在浏览表格中显示类型为&ldquo;组织&rdquo;的实体。</li>
+    <li>&ldquo;用户&rdquo;仅在浏览表格中显示类型为&ldquo;用户&rdquo;的实体。</li>
+    <li>&ldquo;角色&rdquo;仅在浏览表格中显示类型为&ldquo;角色&rdquo;的实体。</li>    
+</ul></p><a name="adfilter"></a><div class="help-header-3">高级过滤</div>
+<p>单击浏览表格中的&ldquo;<b>高级过滤器</B>&rdquo;图标以打开 [高级过滤器] 对话框。</P>
+<p>在&ldquo;<b>类型</b>&rdquo;区域中，标记要过滤的实体类型。要进行更具体的过滤，请在&ldquo;<b>名称</b>&rdquo;文字字段中输入要过滤的名称。然后单击对话框底部的&ldquo;<b>过滤</B>&rdquo;按钮以执行过滤。</p><a name="search"></a><div class="help-header-3">搜索</div>
+<p>要打开&ldquo;搜寻&rdquo;窗口，请单击浏览表格上方的&ldquo;<b>搜寻</b>&rdquo;按钮。&ldquo;搜寻&rdquo;窗口中含有报头、左侧的参数区域以及右侧的结果区域。&ldquo;搜寻&rdquo;窗口可用于在组织树中递归搜索特定实体类型和实体名称。如果在主窗口的 [浏览] 窗格中单击&ldquo;<b>搜寻</b>&rdquo;按钮时，&ldquo;搜寻&rdquo;窗口已暗中打开，则&ldquo;搜寻&rdquo;窗口将成为最前端的窗口。&ldquo;搜寻&rdquo;窗口的当前实体（&ldquo;搜寻&rdquo;窗口的参数区域中的起源路径显示的实体）将更新。其他所有参数和结果区域的内容不变。</p>
+<p>参数区域的顶端显示有起源路径，起源路径显示当前实体的路径。参数区域的使用在<a class="help-link" href="#parpath">起源路径</a>一节进行介绍。</p>
+<p>要搜索特定实体类型，请在起源路径下方的下拉式列表中选择该类型。六个选项分别是&ldquo;全部搜寻&rdquo;、&ldquo;搜寻组织&rdquo;、&ldquo;搜寻用户&rdquo;、&ldquo;搜寻角色&rdquo;、&ldquo;搜寻域&rdquo;和&ldquo;搜寻主机&rdquo;。</p>
+<p>要进一步缩小搜索范围，请使用下拉式列表旁边的文本框。它可以使您搜索到与此字段中输入的搜索字符串匹配的实体名称。通过选择某个<b>起始点</b>单选按钮，可以指定从树中的哪个点开始搜索。可以选择从当前位置开始搜索或从树的顶端开始搜索。默认值是从当前位置开始搜索。位置由它们的名称表示。单击起源路径中的任何路径点都会将搜索的当前位置改到选定实体，但不会更改&ldquo;浏览窗格&rdquo;的视图范围。</p>
+<p>从&ldquo;每个页面上显示的结果数&rdquo;下拉式列表中选择要显示的结果数。</p>
+<p>搜索窗格中的所有搜索字段都会将搜索字符串中任意位置的星号&ldquo;*&rdquo;识别为通配符。星号表示任意个任意字符。如果指定了多个搜索条件，则要新增到结果表格中的实体必须满足所有搜索条件。搜索不区分大小写。</p>
+<p>要执行搜索，请单击&ldquo;<b>搜寻</b>&rdquo;按钮。该操作将使用含有搜索结果的表格更新结果区域。</p>
+<p>要重设页面值，请单击&ldquo;<b>重设</b>&rdquo;按钮。该操作将使用默认值更新参数区域。所有文本框将被清空，所有下拉式列表和单选按钮组中的第一个值将被选中。</p>
+<p>当建立&ldquo;搜寻&rdquo;窗口时，结果区域含有一个空白页面。执行搜索后，将显示结果表格。结果表格含有三列：&ldquo;名称&rdquo;、&ldquo;类型&rdquo;和&ldquo;路径&rdquo;。</p>
+<p>要查看结果，请单击&ldquo;名称&rdquo;列中相应的名称。此操作将：<ul><li>使主窗口成为前端窗口。</li>
+        <li>更新主窗口的 [浏览] 窗格，以使由&ldquo;名称&rdquo;链接所表示的实体成为浏览表格中具有蓝色背景的项。</li>
+        <li>使用与该实体相关联的配置策略更新主窗口的内容区域。</li>
+    </UL>
+</p>
+<p>&ldquo;类型&rdquo;列显示实体的类型。实体的类型可以是&ldquo;组织&rdquo;、&ldquo;用户&rdquo;或&ldquo;角色&rdquo;。</p>
+<p>&ldquo;路径&rdquo;列含有到实体的路径。该路径是相对于搜索起始点的路径。</p>
+<p>如果搜索类型是&ldquo;用户&rdquo;，参数区域会显示不同的文本框来容纳用户的特征：&ldquo;用户 ID&rdquo;、&ldquo;名字&rdquo;和&ldquo;姓氏&rdquo;。在结果区域中，&ldquo;名称&rdquo;列的右侧将显示附加的&ldquo;用户 ID&rdquo;列，其中含有用户 ID。如果参数区域中的&ldquo;用户 ID&rdquo;文本框含有一个或多个字符，则主排序列为&ldquo;用户 ID&rdquo;列。否则，主排序列为&ldquo;名称&rdquo;列。</p><a name="hoststab"> </a><div class="help-header-2">&ldquo;主机&rdquo;选项卡</div>
+<p>&ldquo;<b>主机</B>&rdquo;选项卡含有两个子选项卡，分别为&ldquo;<b>域树</B>&rdquo;和&ldquo;<b>策略系统信息库</B>&rdquo;。</p><a name="domtree"></a><div class="help-header-3">&ldquo;域树&rdquo;选项卡</div>
+<p>&ldquo;域树&rdquo;显示用户使用的硬件的配置设置。</P>
+<p>浏览&ldquo;域树&rdquo;与浏览&ldquo;组织树&rdquo;的方式相同。如果需要更多信息，请参阅<a href="#entities">&ldquo;用户&rdquo;选项卡</A>一节。<a name="actionbar"></a><div class="help-header-3">操作栏</div>
+<p>浏览表格中的&ldquo;<b>过滤器</B>&rdquo;下拉式菜单含有四项：<ul><li>&ldquo;所有项&rdquo;- 显示所有类型的实体</li>
+    <li>&ldquo;域&rdquo;- 显示类型为&ldquo;域&rdquo;的实体</li>
+    <li>&ldquo;主机&rdquo;- 显示类型为&ldquo;主机&rdquo;的实体</li>
+</ul>
+</p><a name="adfilterhosts"></a><div class="help-header-3">高级过滤</div>
+<p>&ldquo;域树&rdquo;的&ldquo;高级过滤器&rdquo;与&ldquo;组织树&rdquo;的&ldquo;高级过滤器&rdquo;的工作方式相同（请参阅前面的<a href="#adfilter">高级过滤</a>一节）。&ldquo;域树&rdquo;的&ldquo;高级过滤器&rdquo;提供了&ldquo;域&rdquo;和&ldquo;主机&rdquo;实体类型用于从中进行过滤。</p><a name="searchhosts"></a><div class="help-header-3">搜索</div>
+<p>当单击&ldquo;<b>域树</b>&rdquo;选项卡中的&ldquo;<b>搜寻</b>&rdquo;按钮时，将显示&ldquo;域搜寻&rdquo;。&ldquo;域搜寻&rdquo;的工作方式与在&ldquo;组织树&rdquo;中进行搜索的方式相同（请参阅<a href="#">上文</a>），但&ldquo;起始点&rdquo;字段设置为&ldquo;硬件&rdquo;。</p>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="psptab"> </a><div class="help-header-2">策略系统信息库</div>
+<p>&ldquo;<b>用户</B>&rdquo;选项卡和&ldquo;<b>主机</B>&rdquo;选项卡中均包含&ldquo;<b>策略系统信息库</b>&rdquo;选项卡。</P>
+<p>策略系统信息库是用户策略组或主机策略组的容器。策略组被组织成一个经过排序的列表。顺序由优先级定义。</p><a name="psptable"></a><div class="help-header-3">策略组表格</div>
+<P>策略组表格位于页面顶端，其中列出了各个策略组。该表格含有三列：选择列、&ldquo;名称&rdquo;列和&ldquo;优先级&rdquo;列。</P>
+<P>选择列用于标记要采用&ldquo;<b>策略组操作</b>&rdquo;下拉式菜单中列出的操作的行。</P>
+<P>要定位到某个策略组，请单击其名称。此操作将：</P>
+<UL>
+   	<li>被单击的行的背景颜色改为蓝色。</li>
+   	<li>使用与选定策略相关联的数据更新 [内容] 窗格。</li>
+</ul>
+<p>&ldquo;优先级&rdquo;列含有策略组的优先级。当管理员将多个策略组与实体相关联时，将根据此优先级定义策略组的合并顺序。</p>
+<P>蓝色背景的行标记的是其数据当前显示在 [内容] 窗格中的策略组，即被查看的策略组。</P><a name="pspactions"></a><div class="help-header-3">策略组操作栏</div>
+<P>&ldquo;<b>策略组操作</B>&rdquo;下拉式菜单含有以下操作，从上到下依次显示为：</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<THEAD>
+            <TR VALIGN=TOP>
+                <TH WIDTH="11%">
+                    <P>名称</P>
+                </TH>
+                <TH WIDTH="89%">
+                    <P>操作</P>
+                </TH>
+		</TR>
+	</THEAD>
+	<TBODY>
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>新增</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>将打开对话框窗口，用户在此处输入策略组的唯一名称。单击&ldquo;确定&rdquo;后，将添加该策略组，并更新 [浏览] 窗格以反映此更改。</P>
+                </TD>
+            </TR>
+            <TR VALIGN="TOP">
+                <TD WIDTH="11%">
+                    <P>删除</P>
+                </td>
+                <TD WIDTH="89%">
+                    <P>将打开弹出式窗口，其中显示用于确认策略组删除操作的警告消息。如果用户单击&ldquo;确定&rdquo;，将删除策略组，并更新 [浏览] 窗格以反映此更改。</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>重命名</p>
+                </td>
+                <td width="89%">
+                    <p>将打开对话框窗口，用户输入策略组新的唯一的名称，将重命名该策略组并更新 [浏览] 窗格以反映此更改。</p>
+                </td>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>编辑优先级</p>
+                </td>
+                <td width="89%">
+                    <p>将打开对话框窗口，其中含有用于更改优先级的列表框。</p>
+                </td>
+            </tr>            
+            <TR VALIGN=TOP>
+                <TD WIDTH="11%">
+                    <P>导出</P>
+                </TD>
+                <TD WIDTH="89%">
+                    <P>将打开对话框窗口。用户输入选定策略组将要输出到的目标路径。</P>
+                </TD>
+            </tr>
+            <tr valign=TOP>
+                <td width="11%">
+                    <p>导入</p>
+                </td>
+                <td width="89%">
+                    <p>将打开对话框窗口。用户选择要输入的策略组。单击&ldquo;确定&rdquo;，将加入该策略组并更新 [浏览] 窗格以反映此更改。</p>
+                </td>
+            </tr>            
+        </TBODY>
+</TABLE>
+
+<p><a name="psppriorities"></a><div class="help-header-3">策略组优先级</div></p>
+<p>有了策略组优先级的概念，管理员就可以定义合并分层的顺序。如果为实体指定了多个策略组，在合并过程中会使用策略组优先级。在此例中，实体的层次结构不足以确定合并策略组的顺序。而通过为策略组指定优先级则可以解决此问题。</p>
+<p>要打开策略组优先级对话框，请从&ldquo;<b>策略组操作</b>&rdquo;下拉式菜单中选择&ldquo;<b>编辑优先级</b>&rdquo;。要提高或降低某个策略组的优先级：</p>
+<ol>
+    <li>从列表中选择策略组</li>
+    <li>单击&ldquo;<b>向上移动</b>&rdquo;或&ldquo;<b>向下移动</b>&rdquo;按钮以提高/降低优先级</li>
+</ol>
+
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="content"> </a><div class="help-header-1">[内容] 窗格</div>
+<p>[内容] 窗格显示与 [浏览] 面板中选定的实体或策略组相关联的数据。数据以选项卡的形式进行分组。[浏览] 面板中的选择将决定 [内容] 面板中显示的选项卡的编号和类型。&ldquo;<b>策略</b>&rdquo;选项卡是默认的活动状态的选项卡。如果在 [浏览] 面板中更改了选择，则当前使用的选项卡将继续保持活动状态（前提是所作的选择提供该选项卡）。否则，&ldquo;<b>策略</b>&rdquo;选项卡将成为活动状态的选项卡。当选项卡再次成为活动状态的选项卡时，将恢复其内部状态（起源路径和排序顺序）。</p><a name="policies"> </a><div class="help-header-2">&ldquo;策略&rdquo;选项卡</div>
+<p>使用&ldquo;<b>策略</B>&rdquo;选项卡浏览显示有子组或配置设置（或两者同时显示） 的配置策略树。</p>
+<p>每个策略页面都有两个按钮：<ul><li><b>建立报表</b>：如果需要更多信息，请参阅<a href="#reporting">报表</a>一节。</li>
+    <li><b>清除设定</b>：此按钮用于递归删除当前为被查看实体显示的子组下的所有配置数据。</li>
+</ul>
+</P>
+<p>配置策略树中的每个根条目均表示一个应用程序，例如&ldquo;StarSuite 7&rdquo;。应用程序下的树用于组织属于该应用程序的配置策略。配置策略可以位于配置策略树中的任何位置。如果配置策略不是配置策略树中的树叶，则需要在配置策略树中的一个当前位置显示策略表格和该配置策略。</p><a name="caparpath"> </a><div class="help-header-3">起源路径</div>
+<p>起源路径显示在选项卡下页面的顶部。它显示配置策略树中的当前位置。它的工作方式与 [浏览] 面板中的起源路径相同（请参阅前面的<a class="help-link" href="#parpath">起源路径</a>一节）。</p><a name="subgroupstable"> </a><div class="help-header-3">子组表格</div>
+<P>子组表格位于起源路径的下方。该表格列出配置策略树中当前位置的子组。它包含两列：&ldquo;名称&rdquo;和&ldquo;注解&rdquo;。</P>
+<P>&ldquo;名称&rdquo;列含有配置策略树中当前位置的所有子组的名称。名称以链接形式显示。要浏览配置策略树，请单击名称链接。此操作将：</P>
+<UL>
+    	<li>更新 [内容] 面板，以使起源路径指向配置策略树中的新位置。</li>
+   	<li>更新 [内容] 面板，以显示策略表格或策略。</LI>
+</UL>
+<P>这种浏览被称为&ldquo;逐层&rdquo;型浏览。</P>
+<P>&ldquo;注解&rdquo;列含有子组的简要说明。</P><A NAME="capolicies"></A><div class="help-header-3">策略</div>
+<P>如果有效配置策略数据对当前实体和当前配置策略的组合可用，则 [内容] 面板中的&ldquo;策略&rdquo;选项卡将显示该数据。</p>
+<p>数据显示在表格中。表格包含四列：含有选择图标的选择列、&ldquo;状态&rdquo;列、&ldquo;名称&rdquo;列和&ldquo;值&rdquo;列。表格上的操作栏有一个下拉式操作菜单。</p>
+<p>要选择元素，请选中它前面的复选框。现在即可对选定元素执行操作栏中下拉式操作菜单中的操作。下表说明了所有操作：</p>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+	<TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P><B>操作</B></P>
+            </TD>
+            <TD WIDTH="83%">
+                <P><B>说明</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>保护</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>将选定的元素设置为受保护。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>未受保护</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>删除对选定元素的保护。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>采用默认值</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>使用策略文档样式中的硬编码默认数据。</P>
+            </TD>
+        </TR>
+        <TR VALIGN="TOP">
+            <TD WIDTH="17%">
+                <P>清除</P>
+            </TD>
+            <TD WIDTH="83%">
+                <P>删除存储在元素中的数据。</P>
+            </TD>
+        </TR>
+        
+</TABLE>
+<p>元素名称的左侧有两个图标，用于显示该元素的状态。下表概括了这些图标及其功能：</P>
+<TABLE WIDTH="100%" BORDER=1 CELLPADDING=4 CELLSPACING=0>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><B>图标</B></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P><B>含义</B></P>
+            </TD>
+            <TD WIDTH="32%">
+                <P><B>说明</B></P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_here.png" NAME="DefinedHere" ALT="Defined Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此图标说明在组织树的此层设置了元素的值。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_set_above.png" NAME="DefinedLayered" ALT="Defined Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此链接形式的图标说明在组织（或域）树的更高层设置了元素的值。用户看到的值是组织中分层合并或实体层合并的结果。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>当单击该图标时，将定位到设置值的位置。</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_here.png" NAME="ProtectedHere" ALT="Protected Here" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此图标说明在组织（或域）树的此层设置了元素的保护。保护在组织和配置策略树中会被继承。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>-</P>
+            </TD>
+        </TR>
+        <TR VALIGN=TOP>
+            <TD WIDTH="4%">
+                <P><IMG SRC="/apoc/images/icon_protected_above.png" NAME="ProtectedLayered" ALT="Protected Layered" ALIGN=BOTTOM WIDTH=22 HEIGHT=22 BORDER=0></P>
+            </TD>
+            <TD WIDTH="64%">
+                <P>此链接形式的图标说明在组织（或域）树的更高层设置了元素的保护。此元素或项的保护是组织中分层合并或实体层合并的结果。</P>
+            </TD>
+            <TD WIDTH="32%">
+                <P>单击此图标会将用户定位到设置保护的位置。</P>
+            </TD>
+        </TR>
+</TABLE>
+<p>通过更改&ldquo;值&rdquo;列中的值可以更改数据值。值和状态的更改都必须进行存盘。存盘操作通过单击&ldquo;<b>存盘</b>&rdquo;按钮来完成。</p><a name="casets"> </a><div class="help-header-3">集合</div>
+<p>集合是属性的动态集。可以在集合中新增和删除元素。</p>
+<p>要向集合添加元素：<ol><li>单击&ldquo;<b>新建</b>&rdquo;按钮。</li>
+    <li>将打开一个对话框，供您在其中输入新元素的名称。将在集合中添加该元素，并更新主窗口。</li>
+    <li>在主窗口中可以编辑该新元素。</li>
+</ol>
+<p>要从集合中删除元素，请选择该元素，然后单击&ldquo;<b>删除</B>&rdquo;按钮。</p>
+<p>请注意，集合中可以含有集合，后者以链接形式表示。单击链接将定位到该集合，然后可以在定位到的位置对其进行编辑。</p><a name="policysets"> </a><div class="help-header-2">&ldquo;策略组&rdquo;选项卡</div>
+<p>&ldquo;策略组&rdquo;页面使您可以为选定实体新增或删除策略组。</p>
+<p>新增左侧&ldquo;<b>可用</b>&rdquo;列表中列出的策略组：</p>
+<ol>
+    <li>从列表中选择策略组</li>
+    <li>单击&ldquo;<b>添加</b>按钮&rdquo;将选定策略组新增到右侧的&ldquo;<b>选中</B>&rdquo;列表中。</li>
+    <li>单击&ldquo;<b>存盘</b>&rdquo;存储该新指定。</LI>
+</ol><a name="caentities"> </a><div class="help-header-2">&ldquo;受托者&rdquo;选项卡</div>
+<p>如果在 [浏览] 面板的&ldquo;策略系统信息库&rdquo;中选择了策略组，[内容] 面板将含有&ldquo;<b>受托者</b>&rdquo;选项卡页面。&ldquo;受托者&rdquo;页面列出了选定策略组被指定到的所有实体。</p>
+<p>&ldquo;受托者&rdquo;选项卡页面中可执行的操作有：<ul><li>&ldquo;<b>删除</B>&rdquo;将中断选定实体与 [浏览] 面板中选定的策略组之间的关联。</li>
+    <li>单击&ldquo;名称&rdquo;列中的实体将刷新 [浏览] 面板，从而使被单击的实体成为 [浏览] 面板中具有蓝色背景的实体。</li>
+</ul>
+</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="roles"> </a><div class="help-header-2">&ldquo;角色&rdquo;选项卡</div>
+<p>如果在 [浏览] 面板中选择了&ldquo;用户&rdquo;类型的实体，并且该用户至少是一个角色的成员，则 [内容] 面板将含有&ldquo;<b>角色</B>&rdquo;选项卡页面。&ldquo;<b>角色</B>&rdquo;页面列出了选定用户所属的所有角色。</p>
+<p>此页面含有&ldquo;名称&rdquo;和&ldquo;路径&rdquo;两列。&ldquo;名称&rdquo;含有角色的名称；&ldquo;路径&rdquo;含有角色的绝对路径。</p><a name="users"> </a><div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div><a name="reporting"> </a><div class="help-header-1">报表</div>
+<p>报表是所有含有数据的配置设置的只读视图。通过单击&ldquo;<b>建立报表</B>&rdquo;按钮触发报表。将显示 [配置报表] 对话框。</p>
+<p>[配置报表] 对话框用于编辑：<ul><li>要涉及的树（组织和/或域树）（<b>用于报表</B>）</li>
+    <li>生成报表中显示的列（可以禁用&ldquo;<b>状态路径</b>&rdquo;和&ldquo;<b>说明</B>&rdquo;）。</li>
+</ul>
+<p>进行编辑后，单击报表将打开选定数据的只读视图。</p>
+<div align="right"><a href="#top" class="help-return-link"> <img src="/com_sun_web_ui/images/href/to_top.gif" alt="Jump to Top of Page" width="11" height="10" hspace="4" border="0">返回页首</a></div>
+
+</body>
+</html>

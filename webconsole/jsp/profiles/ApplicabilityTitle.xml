@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+    
+<pagetitle>
+   <pagebuttons>
+       <cc name="OkButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="type" value="default"/>
+         <attribute name="defaultValue" value="APOC.button.OK"/>
+         <attribute name="onClick" value="javascript:callApplicabilityCallback(); top.close(); return false;"/>
+       </cc>
+       <cc name="CancelButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+         <attribute name="type" value="secondary"/>
+         <attribute name="defaultValue" value="APOC.button.cancel"/>
+         <attribute name="onClick" value="javascript:top.close(); return false;"/>
+       </cc>
+     </pagebuttons>
+</pagetitle>

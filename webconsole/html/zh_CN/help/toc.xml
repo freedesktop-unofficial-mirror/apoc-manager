@@ -1,0 +1,44 @@
+<!-- ident   "%Z%%M% %I%   %E% SMI" --><?xml version='1.0' encoding='UTF-8'?><!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Sun Desktop Manager 1.0.1 帮助"><tocitem target="gbgce" text="简介"></tocitem>
+<tocitem target="gbgqa" text="配置系统信息库窗口"><tocitem target="gbgpt" text="配置系统信息库表格"><tocitem target="gbgcn" text="新建配置系统信息库"></tocitem>
+<tocitem target="gbzbc" text="删除配置系统信息库"></tocitem>
+<tocitem target="gbzci" text="重命名配置系统信息库"></tocitem>
+<tocitem target="gbgqm" text="同步配置系统信息库"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="配置文件 &#8212; 树视图"><tocitem target="gbgcm" text="导航区域"><tocitem target="gbgpa" text="搜索元素"></tocitem>
+<tocitem target="gbgqt" text="使用查找功能"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="内容区域"><tocitem target="gbgni" text="新建配置文件"></tocitem>
+<tocitem target="gbgpr" text="删除配置文件"></tocitem>
+<tocitem target="gbgpn" text="指定配置文件"></tocitem>
+<tocitem target="gbgqj" text="取消指定配置文件"></tocitem>
+<tocitem target="gbgpw" text="重命名配置文件"></tocitem>
+<tocitem target="gbgqf" text="复制和移动配置文件"></tocitem>
+<tocitem target="gbgps" text="导入配置文件"></tocitem>
+<tocitem target="gbgqh" text="导出配置文件"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="查看有效设置"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="配置文件 &#8212; 全部"><tocitem target="gbgcr" text="新建配置文件"></tocitem>
+<tocitem target="gbgpe" text="删除配置文件"></tocitem>
+<tocitem target="gbgpu" text="重命名配置文件"></tocitem>
+<tocitem target="gbgow" text="复制和移动配置文件"></tocitem>
+<tocitem target="gbgpj" text="导入配置文件"></tocitem>
+<tocitem target="gbgou" text="导出配置文件"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="配置文件编辑器"><tocitem target="gbgcg" text="常规属性"><tocitem target="gbgpb" text="指定配置文件的常规属性"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="配置设置"><tocitem target="gbgot" text="查看和编辑配置文件的配置设置"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="指定的元素"><tocitem target="gbgpm" text="将元素指定给配置文件"></tocitem>
+<tocitem target="gbgpp" text="从配置文件中取消指定元素"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="设置摘要"></tocitem>
+<tocitem target="gbgdh" text="高级选项"><tocitem target="gbgqu" text="更改应用位置"></tocitem>
+<tocitem target="gbgqe" text="指定配置文件的合并顺序"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+</toc>

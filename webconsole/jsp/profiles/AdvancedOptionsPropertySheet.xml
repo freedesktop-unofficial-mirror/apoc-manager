@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<!DOCTYPE propertysheet SYSTEM "tags/dtd/propertysheet.dtd">
+
+<propertysheet>
+    <section name="entire" defaultValue=" ">
+        <property>
+            <label name="ApplicableLabel" defaultValue="APOC.profilewnd.general.applicable"/>
+            <cc name="Applicable" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag">
+                <attribute name="defaultValue" value="N.N."/>
+            </cc>
+            <cc name="ChangeButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+                <attribute name="bundleID" value="apocBundle"/>
+                <attribute name="defaultValue" value="APOC.button.browse"/>
+                <attribute name="type" value="secondaryMini"/> 
+                <attribute name="onClick" value="javascript:openBrowseTreeWindow(); return false"/>
+            </cc>
+        </property>
+    </section>
+</propertysheet>

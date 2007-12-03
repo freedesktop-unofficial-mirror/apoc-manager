@@ -1,0 +1,129 @@
+dn: CN=sunkeyvalue,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.83
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+lDAPDisplayName: sunkeyvalue
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn: CN=sunxmlkeyvalue,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.84
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+lDAPDisplayName: sunxmlkeyvalue
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn: CN=sunsmspriority,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.81
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+lDAPDisplayName: sunsmspriority
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn: CN=sunserviceschema,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.78
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+lDAPDisplayName: sunserviceschema
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn: CN=sunpluginschema,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.82
+attributeSyntax: 2.5.5.12
+isSingleValued: FALSE
+lDAPDisplayName: sunpluginschema
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn: CN=sunserviceid,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+attributeID: 1.3.6.1.4.1.42.2.27.9.1.79
+attributeSyntax: 2.5.5.12
+isSingleValued: TRUE
+lDAPDisplayName: sunserviceid
+objectClass: attributeSchema
+oMSyntax: 64
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=sunservice,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+governsID: 1.3.6.1.4.1.42.2.27.9.2.25
+lDAPDisplayName: sunservice
+mustcontain: ou
+maycontain: sunserviceschema
+maycontain: sunkeyvalue
+maycontain: sunxmlkeyvalue
+maycontain: sunpluginschema
+maycontain: description
+objectClass: classSchema
+objectClassCategory: 1
+possSuperiors: organizationalUnit
+subClassOf: top
+rDNAttID: 2.5.4.11
+defaultHidingValue: FALSE
+showInAdvancedViewOnly: FALSE
+
+dn: CN=sunservicecomponent,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: add
+governsID: 1.3.6.1.4.1.42.2.27.9.2.27
+lDAPDisplayName: sunservicecomponent
+mustcontain: ou
+maycontain: sunserviceid
+maycontain: sunsmspriority
+maycontain: sunkeyvalue
+maycontain: sunxmlkeyvalue
+maycontain: description
+objectClass: classSchema
+objectClassCategory: 1
+possSuperiors: organizationalUnit
+subClassOf: top
+rDNAttID: 2.5.4.11
+defaultHidingValue: FALSE
+showInAdvancedViewOnly: FALSE
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+-
+
+dn: CN=sunservice,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: modify
+add: possSuperiors
+possSuperiors: sunservice
+- 
+
+dn: CN=sunservicecomponent,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: modify
+add: possSuperiors
+possSuperiors: sunservicecomponent
+- 
+
+dn: CN=Organizational-Unit,CN=Schema,CN=Configuration,DC=soqa,DC=de
+changetype: modify
+add: possSuperiors
+possSuperiors: sunservice
+possSuperiors: user
+possSuperiors: computer
+-
+
+dn:
+changetype: modify
+add: schemaUpdateNow
+schemaUpdateNow: 1
+- 
+
+

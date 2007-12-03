@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <column name="NameColumn1" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref1" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="parent.opener.focus(); parent.opener.entitySearchCallback(this.href); top.window.close(); return false;"/>
+            <cc name="NameText1" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+    <column name="NameColumn2" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref2" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="parent.opener.focus(); parent.opener.entitySearchCallback(this.href); top.window.close(); return false;"/>
+            <cc name="NameText2" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+    <column name="NameColumn3" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref3" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="parent.opener.focus(); parent.opener.entitySearchCallback(this.href); top.window.close(); return false;"/>
+            <cc name="NameText3" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+</table>

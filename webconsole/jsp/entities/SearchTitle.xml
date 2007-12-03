@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+  <pagebuttons>
+    <cc name="SearchButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.navigation.search"/>
+      <attribute name="type" value="default"/>
+      <attribute name="title" value="APOC.search.search.help"/>
+    </cc>
+    <cc name="ResetButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.navigation.reset"/>
+      <attribute name="type" value="secondary"/>
+      <attribute name="title" value="APOC.search.reset.help"/>
+      <attribute name="onClick" value="handleReset(); return false;" />
+    </cc>
+    <cc name="CloseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+      <attribute name="defaultValue" value="APOC.profilewnd.buttons.close"/>
+      <attribute name="type" value="secondary"/>
+      <attribute name="title" value="APOC.search.cancel.help"/>
+      <attribute name="onClick" value="top.window.close(); return false"/>
+    </cc>
+  </pagebuttons>
+</pagetitle>

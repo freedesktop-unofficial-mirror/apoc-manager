@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE table SYSTEM "tags/dtd/table.dtd">
+
+<table>
+    <actions>
+        <cc name="UpButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+            <attribute name="disabled" value="false" />
+            <attribute name="defaultValue" value="Increase Priority" />
+            <attribute name="title" value="Increases Priority." />
+        </cc>
+        <cc name="DownButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="dynamic" value="true" />
+            <attribute name="disabled" value="false" />
+            <attribute name="defaultValue" value="Decrease Priority" />
+            <attribute name="title" value="Decreases Priority." />
+        </cc>
+    </actions>
+    <column name="NameColumn" extrahtml="nowrap='nowrap'" rowheader="true">
+        <cc name="NameHref" tagclass="com.sun.web.ui.taglib.html.CCHrefTag">
+            <attribute name="SubmitFormData" value="true" />
+            <attribute name="onClick" value="javascript:openProfileEditorWindow(this); return false;" />
+            <cc name="NameText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+        </cc>
+    </column>
+    <column name="AuthorColumn" extrahtml="nowrap='nowrap'">
+        <cc name="AuthorText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+    <column name="LastModifiedColumn" extrahtml="nowrap='nowrap'">
+        <cc name="LastModifiedText" tagclass="com.sun.web.ui.taglib.html.CCStaticTextFieldTag" />
+    </column>
+</table>

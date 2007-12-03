@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!-- ident   "%Z%%M% %I%   %E% SMI" -->
+<!DOCTYPE toc PUBLIC "-//Sun Microsystems Inc.//DTD JavaHelp TOC Version 1.0//EN" "toc_1_0.dtd">
+<toc version="1.0">
+<tocitem target="gbgca" text="Sun Desktop Manager 1.0.1 Help"><tocitem target="gbgce" text="Introduction"></tocitem>
+<tocitem target="gbgqa" text="Configuration Repositories Window"><tocitem target="gbgpt" text="Configuration Repositories Table"><tocitem target="gbgcn" text="Creating a New Configuration Repository"></tocitem>
+<tocitem target="gbzbc" text="Removing a Configuration Repository"></tocitem>
+<tocitem target="gbzci" text="Renaming a Configuration Repository"></tocitem>
+<tocitem target="gbgqm" text="Synchronizing Configuration Repositories"></tocitem>
+</tocitem>
+</tocitem>
+<tocitem target="gbgdc" text="Profiles &#8212; Tree View"><tocitem target="gbgcm" text="Navigation Area"><tocitem target="gbgpa" text="Searching for an Element"></tocitem>
+<tocitem target="gbgqt" text="Using the Find Function"></tocitem>
+</tocitem>
+<tocitem target="gbgoy" text="Content Area"><tocitem target="gbgni" text="Creating a new Profile"></tocitem>
+<tocitem target="gbgpr" text="Deleting a Profile"></tocitem>
+<tocitem target="gbgpn" text="Assigning a Profile"></tocitem>
+<tocitem target="gbgqj" text="Unassigning a Profile"></tocitem>
+<tocitem target="gbgpw" text="Renaming a Profile"></tocitem>
+<tocitem target="gbgqf" text="Copying and Moving a Profile"></tocitem>
+<tocitem target="gbgps" text="Importing Profiles"></tocitem>
+<tocitem target="gbgqh" text="Exporting Profiles"></tocitem>
+</tocitem>
+<tocitem target="gbgoz" text="Viewing Effective Settings"></tocitem>
+</tocitem>
+<tocitem target="gbgcd" text="Profiles &#8212; All"><tocitem target="gbgcr" text="Creating a new Profile"></tocitem>
+<tocitem target="gbgpe" text="Deleting a Profile"></tocitem>
+<tocitem target="gbgpu" text="Renaming a Profile"></tocitem>
+<tocitem target="gbgow" text="Copying and Moving a Profile"></tocitem>
+<tocitem target="gbgpj" text="Importing Profiles"></tocitem>
+<tocitem target="gbgou" text="Exporting Profiles"></tocitem>
+</tocitem>
+<tocitem target="gbgec" text="Profile Editor"><tocitem target="gbgcg" text="General Properties"><tocitem target="gbgpb" text="Specifying General Properties for a Profile"></tocitem>
+</tocitem>
+<tocitem target="gbgeb" text="Configuration Settings"><tocitem target="gbgot" text="Viewing and Editing a Profile's Configuration Settings"></tocitem>
+</tocitem>
+<tocitem target="gbgkr" text="Assigned Elements"><tocitem target="gbgpm" text="Assigning an Element to a Profile"></tocitem>
+<tocitem target="gbgpp" text="Unassigning an Element from a Profile"></tocitem>
+</tocitem>
+<tocitem target="gbgda" text="Settings Summary"></tocitem>
+<tocitem target="gbgdh" text="Advanced Options"><tocitem target="gbgqu" text="Changing the Application from Location"></tocitem>
+<tocitem target="gbgqe" text="Assigning a Merge Order to a Profile"></tocitem>
+</tocitem>
+</tocitem>
+</tocitem>
+
+</toc>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!DOCTYPE pagetitle SYSTEM "tags/dtd/pagetitle.dtd">
+
+<pagetitle>
+    <pagebuttons>
+	<cc name="SetColorButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="type" value="default"/>
+            <attribute name="onClick" value="javascript: applyColorChange();return true;"/>
+	</cc>
+	<cc name="CloseButton" tagclass="com.sun.web.ui.taglib.html.CCButtonTag">
+            <attribute name="type" value="primary"/>
+	</cc>
+    </pagebuttons>
+</pagetitle>
