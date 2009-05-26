@@ -19,6 +19,14 @@
     <target name="prepare">
         <mkdir dir="${build.dir}"/>
         <mkdir dir="${build.class}"/>
+        <mkdir dir="${build.class}/${package}"/>
+        <mkdir dir="${build.class}/${package}/resource"/>
+    </target>
+
+    <target name="resources" depends="prepare">
+        <copy todir="${build.class}/${package}/resource">
+            <fileset dir="src/${package}/resource" includes="*.properties"/>
+        </copy>
     </target>
 
     <target name="compile" depends="prepare">
@@ -30,7 +38,7 @@
       </javac> 
     </target>
 
-    <target name="jar" depends="compile">
+    <target name="jar" depends="compile,resources">
       <jar jarfile="${build.class}/${jarname}"
            basedir="${build.class}"
            includes="${package}/**">
@@ -47,3 +55,4 @@
         <delete dir="${build.class}/${package}"/>
     </target>
 </project>
+
